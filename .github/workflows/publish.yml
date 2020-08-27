@@ -31,4 +31,5 @@ jobs:
       - name: Publish Package to NPM
         run: |
           echo '//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}' > .npmrc
+          npm config set registry https://registry.npmjs.org
           npm publish --access public
