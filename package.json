@@ -1,12 +1,12 @@
 {
-  "name": "@searchspring/snapi-oas",
+  "name": "@searchspring/snapi-spec",
   "version": "0.1.0",
   "description": "SNAP OpenAPI Specification",
   "main": "index.js",
   "scripts": {},
   "repository": {
     "type": "git",
-    "url": "https://github.com/searchspring/snapi-oas.git"
+    "url": "https://github.com/searchspring/snapi-spec.git"
   },
   "license": "Unlicense"
 }
