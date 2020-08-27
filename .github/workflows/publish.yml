@@ -29,7 +29,6 @@ jobs:
           npm publish
 
       - name: Publish Package to NPM
-        if: env.GIT_TAG_NAME != ''
         run: |
           echo '//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}' > .npmrc
           npm publish --access public
