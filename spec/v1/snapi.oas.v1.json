@@ -6,7 +6,7 @@
     },
     "description" : "Searchspring SNAP Search API",
     "title" : "SNAPI",
-    "version" : "0.1.5",
+    "version" : "0.1.6",
     "x-logo" : {
       "url" : "./images/searchspring_logo.svg",
       "altText" : "Searchspring Snap"
@@ -3151,10 +3151,10 @@
           } ],
           "sorts" : [ {
             "field" : "field",
-            "direction" : "ascending"
+            "direction" : "asc"
           }, {
             "field" : "field",
-            "direction" : "ascending"
+            "direction" : "asc"
           } ],
           "merchandising" : {
             "landingPage" : "landingPage",
@@ -3258,13 +3258,9 @@
           },
           "sorting" : [ {
             "field" : "field",
-            "name" : "name",
-            "type" : "field",
             "direction" : "asc"
           }, {
             "field" : "field",
-            "name" : "name",
-            "type" : "field",
             "direction" : "asc"
           } ],
           "results" : [ {
@@ -3525,16 +3521,14 @@
         "example" : {
           "sortOptions" : [ {
             "field" : "field",
-            "name" : "name",
             "label" : "label",
-            "type" : "type",
-            "direction" : "direction"
+            "type" : "field",
+            "direction" : "asc"
           }, {
             "field" : "field",
-            "name" : "name",
             "label" : "label",
-            "type" : "type",
-            "direction" : "direction"
+            "type" : "field",
+            "direction" : "asc"
           } ],
           "facets" : {
             "key" : {
@@ -3561,25 +3555,23 @@
       "MetaResponseModelSortOption" : {
         "example" : {
           "field" : "field",
-          "name" : "name",
           "label" : "label",
-          "type" : "type",
-          "direction" : "direction"
+          "type" : "field",
+          "direction" : "asc"
         },
         "properties" : {
+          "type" : {
+            "enum" : [ "field", "relevance" ],
+            "type" : "string"
+          },
           "field" : {
             "type" : "string"
           },
-          "label" : {
-            "type" : "string"
-          },
           "direction" : {
+            "enum" : [ "asc", "desc" ],
             "type" : "string"
           },
-          "type" : {
-            "type" : "string"
-          },
-          "name" : {
+          "label" : {
             "type" : "string"
           }
         },
@@ -3611,6 +3603,8 @@
           "$ref" : "#/components/schemas/MetaResponseModelFacet"
         }, {
           "$ref" : "#/components/schemas/MetaResponseModelFacetDefaults"
+        }, {
+          "$ref" : "#/components/schemas/MetaResponseModelFacetValue"
         } ]
       },
       "MetaResponseModelFacetDefaults" : {
@@ -3618,11 +3612,17 @@
           "label" : {
             "type" : "string"
           },
-          "multiple" : {
-            "type" : "string"
-          },
           "collapse" : {
             "type" : "boolean"
+          }
+        },
+        "type" : "object"
+      },
+      "MetaResponseModelFacetValue" : {
+        "properties" : {
+          "multiple" : {
+            "enum" : [ "single", "or", "and" ],
+            "type" : "string"
           }
         },
         "type" : "object"
@@ -3632,6 +3632,8 @@
           "$ref" : "#/components/schemas/MetaResponseModelFacet"
         }, {
           "$ref" : "#/components/schemas/MetaResponseModelFacetDefaults"
+        }, {
+          "$ref" : "#/components/schemas/MetaResponseModelFacetValue"
         } ]
       },
       "MetaResponseModelFacetPalette" : {
@@ -3639,6 +3641,8 @@
           "$ref" : "#/components/schemas/MetaResponseModelFacet"
         }, {
           "$ref" : "#/components/schemas/MetaResponseModelFacetDefaults"
+        }, {
+          "$ref" : "#/components/schemas/MetaResponseModelFacetValue"
         } ]
       },
       "MetaResponseModelFacetSlider" : {
@@ -3655,6 +3659,8 @@
           "$ref" : "#/components/schemas/MetaResponseModelFacet"
         }, {
           "$ref" : "#/components/schemas/MetaResponseModelFacetDefaults"
+        }, {
+          "$ref" : "#/components/schemas/MetaResponseModelFacetValue"
         }, {
           "$ref" : "#/components/schemas/MetaResponseModelFacetHierarchy_allOf"
         } ]
@@ -3734,7 +3740,7 @@
       "SearchRequestModel_sorts" : {
         "example" : {
           "field" : "field",
-          "direction" : "ascending"
+          "direction" : "asc"
         },
         "properties" : {
           "field" : {
@@ -3743,7 +3749,7 @@
           },
           "direction" : {
             "description" : "Direction to sort results by field (ascending / descending).",
-            "enum" : [ "ascending", "descending" ],
+            "enum" : [ "asc", "desc" ],
             "type" : "string"
           }
         }
@@ -3897,18 +3903,9 @@
       "SearchResponseModel_sorting" : {
         "example" : {
           "field" : "field",
-          "name" : "name",
-          "type" : "field",
           "direction" : "asc"
         },
         "properties" : {
-          "type" : {
-            "enum" : [ "field", "score" ],
-            "type" : "string"
-          },
-          "name" : {
-            "type" : "string"
-          },
           "field" : {
             "type" : "string"
           },
@@ -4162,15 +4159,6 @@
       },
       "MetaResponseModelFacetSlider_allOf" : {
         "properties" : {
-          "label" : {
-            "type" : "string"
-          },
-          "multiple" : {
-            "type" : "string"
-          },
-          "collapse" : {
-            "type" : "boolean"
-          },
           "formatSeparator" : {
             "type" : "string"
           },
@@ -4181,15 +4169,6 @@
       },
       "MetaResponseModelFacetHierarchy_allOf" : {
         "properties" : {
-          "label" : {
-            "type" : "string"
-          },
-          "multiple" : {
-            "type" : "string"
-          },
-          "collapse" : {
-            "type" : "boolean"
-          },
           "hierarchyDelimiter" : {
             "type" : "string"
           }

@@ -4,7 +4,7 @@ info:
     name: Searchspring
   description: Searchspring SNAP Search API
   title: SNAPI
-  version: 0.1.5
+  version: 0.1.6
   x-logo:
     url: ./images/searchspring_logo.svg
     altText: Searchspring Snap
@@ -2736,9 +2736,9 @@ components:
           type: value
         sorts:
         - field: field
-          direction: ascending
+          direction: asc
         - field: field
-          direction: ascending
+          direction: asc
         merchandising:
           landingPage: landingPage
           disabled: true
@@ -2819,12 +2819,8 @@ components:
           page: 6
         sorting:
         - field: field
-          name: name
-          type: field
           direction: asc
         - field: field
-          name: name
-          type: field
           direction: asc
         results:
         - mappings:
@@ -3027,15 +3023,13 @@ components:
       example:
         sortOptions:
         - field: field
-          name: name
           label: label
-          type: type
-          direction: direction
+          type: field
+          direction: asc
         - field: field
-          name: name
           label: label
-          type: type
-          direction: direction
+          type: field
+          direction: asc
         facets:
           key:
             display: display
@@ -3052,20 +3046,23 @@ components:
     MetaResponseModelSortOption:
       example:
         field: field
-        name: name
         label: label
-        type: type
-        direction: direction
+        type: field
+        direction: asc
       properties:
+        type:
+          enum:
+          - field
+          - relevance
+          type: string
         field:
           type: string
-        label:
-          type: string
         direction:
+          enum:
+          - asc
+          - desc
           type: string
-        type:
-          type: string
-        name:
+        label:
           type: string
       type: object
     MetaResponseModelFacet:
@@ -3087,23 +3084,33 @@ components:
       allOf:
       - $ref: '#/components/schemas/MetaResponseModelFacet'
       - $ref: '#/components/schemas/MetaResponseModelFacetDefaults'
+      - $ref: '#/components/schemas/MetaResponseModelFacetValue'
     MetaResponseModelFacetDefaults:
       properties:
         label:
           type: string
-        multiple:
-          type: string
         collapse:
           type: boolean
+      type: object
+    MetaResponseModelFacetValue:
+      properties:
+        multiple:
+          enum:
+          - single
+          - or
+          - and
+          type: string
       type: object
     MetaResponseModelFacetGrid:
       allOf:
       - $ref: '#/components/schemas/MetaResponseModelFacet'
       - $ref: '#/components/schemas/MetaResponseModelFacetDefaults'
+      - $ref: '#/components/schemas/MetaResponseModelFacetValue'
     MetaResponseModelFacetPalette:
       allOf:
       - $ref: '#/components/schemas/MetaResponseModelFacet'
       - $ref: '#/components/schemas/MetaResponseModelFacetDefaults'
+      - $ref: '#/components/schemas/MetaResponseModelFacetValue'
     MetaResponseModelFacetSlider:
       allOf:
       - $ref: '#/components/schemas/MetaResponseModelFacet'
@@ -3113,6 +3120,7 @@ components:
       allOf:
       - $ref: '#/components/schemas/MetaResponseModelFacet'
       - $ref: '#/components/schemas/MetaResponseModelFacetDefaults'
+      - $ref: '#/components/schemas/MetaResponseModelFacetValue'
       - $ref: '#/components/schemas/MetaResponseModelFacetHierarchy_allOf'
     Meta_Request_Parameter_Model:
       properties:
@@ -3163,7 +3171,7 @@ components:
     SearchRequestModel_sorts:
       example:
         field: field
-        direction: ascending
+        direction: asc
       properties:
         field:
           description: Field to sort results by.
@@ -3171,8 +3179,8 @@ components:
         direction:
           description: Direction to sort results by field (ascending / descending).
           enum:
-          - ascending
-          - descending
+          - asc
+          - desc
           type: string
     SearchRequestModel_search_query:
       example:
@@ -3277,17 +3285,8 @@ components:
     SearchResponseModel_sorting:
       example:
         field: field
-        name: name
-        type: field
         direction: asc
       properties:
-        type:
-          enum:
-          - field
-          - score
-          type: string
-        name:
-          type: string
         field:
           type: string
         direction:
@@ -3482,23 +3481,11 @@ components:
           $ref: '#/components/schemas/SearchRequestModelFilterRange_allOf_value'
     MetaResponseModelFacetSlider_allOf:
       properties:
-        label:
-          type: string
-        multiple:
-          type: string
-        collapse:
-          type: boolean
         formatSeparator:
           type: string
         formatValue:
           type: string
     MetaResponseModelFacetHierarchy_allOf:
       properties:
-        label:
-          type: string
-        multiple:
-          type: string
-        collapse:
-          type: boolean
         hierarchyDelimiter:
           type: string
