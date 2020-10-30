@@ -4,7 +4,7 @@ info:
     name: Searchspring
   description: Searchspring SNAP Search API
   title: SNAPI
-  version: 0.1.6
+  version: 0.1.7
   x-logo:
     url: ./images/searchspring_logo.svg
     altText: Searchspring Snap
@@ -154,6 +154,7 @@ components:
         pagination:
           totalResults: 11
           page: 1
+          defaultPageSize: 24
           pageSize: 3
         results:
         - id: "172554"
@@ -485,6 +486,7 @@ components:
         pagination:
           totalResults: 11
           page: 1
+          defaultPageSize: 24
           pageSize: 3
         results:
         - id: "172554"
@@ -835,6 +837,7 @@ components:
         pagination:
           totalResults: 1305
           page: 1
+          defaultPageSize: 24
           pageSize: 2
         results:
         - id: "175130"
@@ -1667,6 +1670,7 @@ components:
         pagination:
           totalResults: 758
           page: 1
+          defaultPageSize: 24
           pageSize: 2
         results:
         - id: "134892"
@@ -2815,7 +2819,8 @@ components:
       example:
         pagination:
           totalResults: 0
-          pageSize: 1
+          defaultPageSize: 1
+          pageSize: 5
           page: 6
         sorting:
         - field: field
@@ -2827,8 +2832,8 @@ components:
             core:
               uid: uid
               thumbnailImageUrl: thumbnailImageUrl
-              price: 5.962133916683182
-              msrp: 5.637376656633329
+              price: 5.637376656633329
+              msrp: 2.3021358869347655
               imageUrl: imageUrl
               name: name
               sku: sku
@@ -2839,8 +2844,8 @@ components:
               core:
                 uid: uid
                 thumbnailImageUrl: thumbnailImageUrl
-                price: 5.962133916683182
-                msrp: 5.637376656633329
+                price: 5.637376656633329
+                msrp: 2.3021358869347655
                 imageUrl: imageUrl
                 name: name
                 sku: sku
@@ -2852,8 +2857,8 @@ components:
               core:
                 uid: uid
                 thumbnailImageUrl: thumbnailImageUrl
-                price: 5.962133916683182
-                msrp: 5.637376656633329
+                price: 5.637376656633329
+                msrp: 2.3021358869347655
                 imageUrl: imageUrl
                 name: name
                 sku: sku
@@ -2867,8 +2872,8 @@ components:
             core:
               uid: uid
               thumbnailImageUrl: thumbnailImageUrl
-              price: 5.962133916683182
-              msrp: 5.637376656633329
+              price: 5.637376656633329
+              msrp: 2.3021358869347655
               imageUrl: imageUrl
               name: name
               sku: sku
@@ -2879,8 +2884,8 @@ components:
               core:
                 uid: uid
                 thumbnailImageUrl: thumbnailImageUrl
-                price: 5.962133916683182
-                msrp: 5.637376656633329
+                price: 5.637376656633329
+                msrp: 2.3021358869347655
                 imageUrl: imageUrl
                 name: name
                 sku: sku
@@ -2892,8 +2897,8 @@ components:
               core:
                 uid: uid
                 thumbnailImageUrl: thumbnailImageUrl
-                price: 5.962133916683182
-                msrp: 5.637376656633329
+                price: 5.637376656633329
+                msrp: 2.3021358869347655
                 imageUrl: imageUrl
                 name: name
                 sku: sku
@@ -2949,8 +2954,8 @@ components:
       example:
         uid: uid
         thumbnailImageUrl: thumbnailImageUrl
-        price: 5.962133916683182
-        msrp: 5.637376656633329
+        price: 5.637376656633329
+        msrp: 2.3021358869347655
         imageUrl: imageUrl
         name: name
         sku: sku
@@ -3273,12 +3278,15 @@ components:
     SearchResponseModel_pagination:
       example:
         totalResults: 0
-        pageSize: 1
+        defaultPageSize: 1
+        pageSize: 5
         page: 6
       properties:
         totalResults:
           type: integer
         page:
+          type: integer
+        defaultPageSize:
           type: integer
         pageSize:
           type: integer
@@ -3299,8 +3307,8 @@ components:
         core:
           uid: uid
           thumbnailImageUrl: thumbnailImageUrl
-          price: 5.962133916683182
-          msrp: 5.637376656633329
+          price: 5.637376656633329
+          msrp: 2.3021358869347655
           imageUrl: imageUrl
           name: name
           sku: sku
@@ -3315,8 +3323,8 @@ components:
           core:
             uid: uid
             thumbnailImageUrl: thumbnailImageUrl
-            price: 5.962133916683182
-            msrp: 5.637376656633329
+            price: 5.637376656633329
+            msrp: 2.3021358869347655
             imageUrl: imageUrl
             name: name
             sku: sku
@@ -3336,8 +3344,8 @@ components:
           core:
             uid: uid
             thumbnailImageUrl: thumbnailImageUrl
-            price: 5.962133916683182
-            msrp: 5.637376656633329
+            price: 5.637376656633329
+            msrp: 2.3021358869347655
             imageUrl: imageUrl
             name: name
             sku: sku
@@ -3348,8 +3356,8 @@ components:
             core:
               uid: uid
               thumbnailImageUrl: thumbnailImageUrl
-              price: 5.962133916683182
-              msrp: 5.637376656633329
+              price: 5.637376656633329
+              msrp: 2.3021358869347655
               imageUrl: imageUrl
               name: name
               sku: sku
@@ -3361,8 +3369,8 @@ components:
             core:
               uid: uid
               thumbnailImageUrl: thumbnailImageUrl
-              price: 5.962133916683182
-              msrp: 5.637376656633329
+              price: 5.637376656633329
+              msrp: 2.3021358869347655
               imageUrl: imageUrl
               name: name
               sku: sku
