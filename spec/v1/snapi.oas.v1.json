@@ -6,7 +6,7 @@
     },
     "description" : "Searchspring SNAP Search API",
     "title" : "SNAPI",
-    "version" : "0.1.7",
+    "version" : "0.1.8",
     "x-logo" : {
       "url" : "./images/searchspring_logo.svg",
       "altText" : "Searchspring Snap"
@@ -922,6 +922,9 @@
       },
       "search-response-example-1" : {
         "value" : {
+          "search" : {
+            "query" : "dress"
+          },
           "pagination" : {
             "totalResults" : 1305,
             "page" : 1,
@@ -1877,6 +1880,9 @@
       },
       "search-response-example-2" : {
         "value" : {
+          "search" : {
+            "query" : ""
+          },
           "pagination" : {
             "totalResults" : 758,
             "page" : 1,
@@ -3127,7 +3133,7 @@
         "allOf" : [ {
           "$ref" : "#/components/schemas/AutocompleteResponseModel_allOf"
         }, {
-          "$ref" : "#/components/schemas/SearchResponseModel"
+          "$ref" : "#/components/schemas/ResponseModel"
         } ]
       },
       "SearchRequestModel" : {
@@ -3254,155 +3260,26 @@
         } ]
       },
       "SearchResponseModel" : {
-        "example" : {
-          "pagination" : {
-            "totalResults" : 0,
-            "defaultPageSize" : 1,
-            "pageSize" : 5,
-            "page" : 6
-          },
-          "sorting" : [ {
-            "field" : "field",
-            "direction" : "asc"
-          }, {
-            "field" : "field",
-            "direction" : "asc"
-          } ],
-          "results" : [ {
-            "mappings" : {
-              "core" : {
-                "uid" : "uid",
-                "thumbnailImageUrl" : "thumbnailImageUrl",
-                "price" : 5.637376656633329,
-                "msrp" : 2.3021358869347655,
-                "imageUrl" : "imageUrl",
-                "name" : "name",
-                "sku" : "sku",
-                "brand" : "brand",
-                "url" : "url"
-              }
-            },
-            "children" : [ {
-              "mappings" : {
-                "core" : {
-                  "uid" : "uid",
-                  "thumbnailImageUrl" : "thumbnailImageUrl",
-                  "price" : 5.637376656633329,
-                  "msrp" : 2.3021358869347655,
-                  "imageUrl" : "imageUrl",
-                  "name" : "name",
-                  "sku" : "sku",
-                  "brand" : "brand",
-                  "url" : "url"
-                }
-              },
-              "attributes" : {
-                "key" : "{}"
-              }
-            }, {
-              "mappings" : {
-                "core" : {
-                  "uid" : "uid",
-                  "thumbnailImageUrl" : "thumbnailImageUrl",
-                  "price" : 5.637376656633329,
-                  "msrp" : 2.3021358869347655,
-                  "imageUrl" : "imageUrl",
-                  "name" : "name",
-                  "sku" : "sku",
-                  "brand" : "brand",
-                  "url" : "url"
-                }
-              },
-              "attributes" : {
-                "key" : "{}"
-              }
-            } ],
-            "attributes" : "{}",
-            "id" : "id"
-          }, {
-            "mappings" : {
-              "core" : {
-                "uid" : "uid",
-                "thumbnailImageUrl" : "thumbnailImageUrl",
-                "price" : 5.637376656633329,
-                "msrp" : 2.3021358869347655,
-                "imageUrl" : "imageUrl",
-                "name" : "name",
-                "sku" : "sku",
-                "brand" : "brand",
-                "url" : "url"
-              }
-            },
-            "children" : [ {
-              "mappings" : {
-                "core" : {
-                  "uid" : "uid",
-                  "thumbnailImageUrl" : "thumbnailImageUrl",
-                  "price" : 5.637376656633329,
-                  "msrp" : 2.3021358869347655,
-                  "imageUrl" : "imageUrl",
-                  "name" : "name",
-                  "sku" : "sku",
-                  "brand" : "brand",
-                  "url" : "url"
-                }
-              },
-              "attributes" : {
-                "key" : "{}"
-              }
-            }, {
-              "mappings" : {
-                "core" : {
-                  "uid" : "uid",
-                  "thumbnailImageUrl" : "thumbnailImageUrl",
-                  "price" : 5.637376656633329,
-                  "msrp" : 2.3021358869347655,
-                  "imageUrl" : "imageUrl",
-                  "name" : "name",
-                  "sku" : "sku",
-                  "brand" : "brand",
-                  "url" : "url"
-                }
-              },
-              "attributes" : {
-                "key" : "{}"
-              }
-            } ],
-            "attributes" : "{}",
-            "id" : "id"
-          } ],
-          "merchandising" : {
-            "redirect" : "redirect",
-            "content" : {
-              "footer" : [ "footer", "footer" ],
-              "left" : [ "left", "left" ],
-              "header" : [ "header", "header" ],
-              "banner" : [ "banner", "banner" ]
-            }
-          },
-          "facets" : [ {
-            "field" : "field",
-            "filtered" : true,
-            "type" : "type"
-          }, {
-            "field" : "field",
-            "filtered" : true,
-            "type" : "type"
-          } ]
-        },
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/SearchResponseModel_allOf"
+        }, {
+          "$ref" : "#/components/schemas/ResponseModel"
+        } ]
+      },
+      "ResponseModel" : {
         "properties" : {
           "pagination" : {
-            "$ref" : "#/components/schemas/SearchResponseModel_pagination"
+            "$ref" : "#/components/schemas/ResponseModel_pagination"
           },
           "sorting" : {
             "items" : {
-              "$ref" : "#/components/schemas/SearchResponseModel_sorting"
+              "$ref" : "#/components/schemas/ResponseModel_sorting"
             },
             "type" : "array"
           },
           "results" : {
             "items" : {
-              "$ref" : "#/components/schemas/SearchResponseModel_results"
+              "$ref" : "#/components/schemas/ResponseModel_results"
             },
             "type" : "array"
           },
@@ -3413,7 +3290,7 @@
             "type" : "array"
           },
           "merchandising" : {
-            "$ref" : "#/components/schemas/SearchResponseModel_merchandising"
+            "$ref" : "#/components/schemas/ResponseModel_merchandising"
           }
         },
         "title" : "Search Response Data Model",
@@ -3421,17 +3298,6 @@
       },
       "SearchResponseModelResultCoreMappings" : {
         "description" : "Mapping of core fields for the result object",
-        "example" : {
-          "uid" : "uid",
-          "thumbnailImageUrl" : "thumbnailImageUrl",
-          "price" : 5.637376656633329,
-          "msrp" : 2.3021358869347655,
-          "imageUrl" : "imageUrl",
-          "name" : "name",
-          "sku" : "sku",
-          "brand" : "brand",
-          "url" : "url"
-        },
         "properties" : {
           "uid" : {
             "description" : "Unique identifier of result",
@@ -3481,11 +3347,6 @@
             "range" : "#/components/schemas/SearchResponseModelFacetRange"
           },
           "propertyName" : "type"
-        },
-        "example" : {
-          "field" : "field",
-          "filtered" : true,
-          "type" : "type"
         },
         "properties" : {
           "type" : {
@@ -3887,13 +3748,21 @@
           }
         }
       },
-      "SearchResponseModel_pagination" : {
-        "example" : {
-          "totalResults" : 0,
-          "defaultPageSize" : 1,
-          "pageSize" : 5,
-          "page" : 6
-        },
+      "SearchResponseModel_allOf_search" : {
+        "properties" : {
+          "query" : {
+            "type" : "string"
+          }
+        }
+      },
+      "SearchResponseModel_allOf" : {
+        "properties" : {
+          "search" : {
+            "$ref" : "#/components/schemas/SearchResponseModel_allOf_search"
+          }
+        }
+      },
+      "ResponseModel_pagination" : {
         "properties" : {
           "totalResults" : {
             "type" : "integer"
@@ -3909,11 +3778,7 @@
           }
         }
       },
-      "SearchResponseModel_sorting" : {
-        "example" : {
-          "field" : "field",
-          "direction" : "asc"
-        },
+      "ResponseModel_sorting" : {
         "properties" : {
           "field" : {
             "type" : "string"
@@ -3924,48 +3789,17 @@
           }
         }
       },
-      "SearchResponseModel_mappings" : {
-        "example" : {
-          "core" : {
-            "uid" : "uid",
-            "thumbnailImageUrl" : "thumbnailImageUrl",
-            "price" : 5.637376656633329,
-            "msrp" : 2.3021358869347655,
-            "imageUrl" : "imageUrl",
-            "name" : "name",
-            "sku" : "sku",
-            "brand" : "brand",
-            "url" : "url"
-          }
-        },
+      "ResponseModel_mappings" : {
         "properties" : {
           "core" : {
             "$ref" : "#/components/schemas/SearchResponseModelResultCoreMappings"
           }
         }
       },
-      "SearchResponseModel_children" : {
-        "example" : {
-          "mappings" : {
-            "core" : {
-              "uid" : "uid",
-              "thumbnailImageUrl" : "thumbnailImageUrl",
-              "price" : 5.637376656633329,
-              "msrp" : 2.3021358869347655,
-              "imageUrl" : "imageUrl",
-              "name" : "name",
-              "sku" : "sku",
-              "brand" : "brand",
-              "url" : "url"
-            }
-          },
-          "attributes" : {
-            "key" : "{}"
-          }
-        },
+      "ResponseModel_children" : {
         "properties" : {
           "mappings" : {
-            "$ref" : "#/components/schemas/SearchResponseModel_mappings"
+            "$ref" : "#/components/schemas/ResponseModel_mappings"
           },
           "attributes" : {
             "additionalProperties" : true,
@@ -3973,65 +3807,13 @@
           }
         }
       },
-      "SearchResponseModel_results" : {
-        "example" : {
-          "mappings" : {
-            "core" : {
-              "uid" : "uid",
-              "thumbnailImageUrl" : "thumbnailImageUrl",
-              "price" : 5.637376656633329,
-              "msrp" : 2.3021358869347655,
-              "imageUrl" : "imageUrl",
-              "name" : "name",
-              "sku" : "sku",
-              "brand" : "brand",
-              "url" : "url"
-            }
-          },
-          "children" : [ {
-            "mappings" : {
-              "core" : {
-                "uid" : "uid",
-                "thumbnailImageUrl" : "thumbnailImageUrl",
-                "price" : 5.637376656633329,
-                "msrp" : 2.3021358869347655,
-                "imageUrl" : "imageUrl",
-                "name" : "name",
-                "sku" : "sku",
-                "brand" : "brand",
-                "url" : "url"
-              }
-            },
-            "attributes" : {
-              "key" : "{}"
-            }
-          }, {
-            "mappings" : {
-              "core" : {
-                "uid" : "uid",
-                "thumbnailImageUrl" : "thumbnailImageUrl",
-                "price" : 5.637376656633329,
-                "msrp" : 2.3021358869347655,
-                "imageUrl" : "imageUrl",
-                "name" : "name",
-                "sku" : "sku",
-                "brand" : "brand",
-                "url" : "url"
-              }
-            },
-            "attributes" : {
-              "key" : "{}"
-            }
-          } ],
-          "attributes" : "{}",
-          "id" : "id"
-        },
+      "ResponseModel_results" : {
         "properties" : {
           "id" : {
             "type" : "string"
           },
           "mappings" : {
-            "$ref" : "#/components/schemas/SearchResponseModel_mappings"
+            "$ref" : "#/components/schemas/ResponseModel_mappings"
           },
           "attributes" : {
             "description" : "Additional fields for results - these are site specific fields which can have various value types",
@@ -4039,19 +3821,13 @@
           },
           "children" : {
             "items" : {
-              "$ref" : "#/components/schemas/SearchResponseModel_children"
+              "$ref" : "#/components/schemas/ResponseModel_children"
             },
             "type" : "array"
           }
         }
       },
-      "SearchResponseModel_merchandising_content" : {
-        "example" : {
-          "footer" : [ "footer", "footer" ],
-          "left" : [ "left", "left" ],
-          "header" : [ "header", "header" ],
-          "banner" : [ "banner", "banner" ]
-        },
+      "ResponseModel_merchandising_content" : {
         "properties" : {
           "header" : {
             "items" : {
@@ -4079,22 +3855,13 @@
           }
         }
       },
-      "SearchResponseModel_merchandising" : {
-        "example" : {
-          "redirect" : "redirect",
-          "content" : {
-            "footer" : [ "footer", "footer" ],
-            "left" : [ "left", "left" ],
-            "header" : [ "header", "header" ],
-            "banner" : [ "banner", "banner" ]
-          }
-        },
+      "ResponseModel_merchandising" : {
         "properties" : {
           "redirect" : {
             "type" : "string"
           },
           "content" : {
-            "$ref" : "#/components/schemas/SearchResponseModel_merchandising_content"
+            "$ref" : "#/components/schemas/ResponseModel_merchandising_content"
           }
         }
       },

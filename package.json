@@ -1,6 +1,6 @@
 {
   "name": "@searchspring/snapi-oas",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "SNAP OpenAPI Specification",
   "main": "index.js",
   "scripts": {},

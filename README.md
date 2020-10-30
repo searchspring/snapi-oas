@@ -1,4 +1,4 @@
-# SNAPI OpenAPI Specification v0.1.7
+# SNAPI OpenAPI Specification v0.1.8
 
 :warning: WARNING!!! :warning:
 ### This API is currently in testing and not yet ready for production usage. ###
