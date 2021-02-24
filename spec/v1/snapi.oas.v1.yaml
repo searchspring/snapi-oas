@@ -3,8 +3,8 @@ info:
   contact:
     name: Searchspring
   description: Searchspring Snap Search API
-  title: SNAPI
-  version: 0.1.9
+  title: snAPI
+  version: 0.1.10
   x-logo:
     url: ./images/searchspring_logo.svg
     altText: Searchspring Snap
@@ -2833,6 +2833,13 @@ components:
           direction: asc
         - field: field
           direction: asc
+        filters:
+        - field: field
+          label: label
+          type: value
+        - field: field
+          label: label
+          type: value
         results:
         - mappings:
             core:
@@ -2941,6 +2948,10 @@ components:
       properties:
         search:
           $ref: '#/components/schemas/SearchResponseModel_search'
+        filters:
+          items:
+            $ref: '#/components/schemas/SearchResponseModelFilter'
+          type: array
         pagination:
           $ref: '#/components/schemas/SearchResponseModel_pagination'
         sorting:
@@ -2959,6 +2970,37 @@ components:
           $ref: '#/components/schemas/SearchResponseModel_merchandising'
       title: Search Response Data Model
       type: object
+    SearchResponseModelFilter:
+      discriminator:
+        mapping:
+          value: '#/components/schemas/SearchResponseModelFilterValue'
+          range: '#/components/schemas/SearchResponseModelFilterRange'
+        propertyName: type
+      example:
+        field: field
+        label: label
+        type: value
+      properties:
+        type:
+          enum:
+          - value
+          - range
+          type: string
+        field:
+          type: string
+        label:
+          type: string
+      required:
+      - type
+      type: object
+    SearchResponseModelFilterValue:
+      allOf:
+      - $ref: '#/components/schemas/SearchResponseModelFilter'
+      - $ref: '#/components/schemas/SearchRequestModelFilterValue_allOf'
+    SearchResponseModelFilterRange:
+      allOf:
+      - $ref: '#/components/schemas/SearchResponseModelFilter'
+      - $ref: '#/components/schemas/SearchRequestModelFilterRange_allOf'
     SearchResponseModelResultCoreMappings:
       description: Mapping of core fields for the result object
       example:
