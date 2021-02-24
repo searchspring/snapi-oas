@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   contact:
     name: Searchspring
-  description: Searchspring SNAP Search API
+  description: Searchspring Snap Search API
   title: SNAPI
   version: 0.1.9
   x-logo:
@@ -2872,7 +2872,8 @@ components:
                 url: url
             attributes:
               key: '{}'
-          attributes: '{}'
+          attributes:
+            key: '{}'
           id: id
         - mappings:
             core:
@@ -2912,7 +2913,8 @@ components:
                 url: url
             attributes:
               key: '{}'
-          attributes: '{}'
+          attributes:
+            key: '{}'
           id: id
         merchandising:
           redirect: redirect
@@ -2998,6 +3000,12 @@ components:
           description: Brand of result
           type: string
       title: Result Core Field Mappings
+      type: object
+    SearchResponseModelResultAttributes:
+      additionalProperties: true
+      description: Additional fields for results - these are site specific fields
+        which can have various value types
+      title: Result Custom Attributes
       type: object
     SearchResponseModelFacet:
       discriminator:
@@ -3149,10 +3157,13 @@ components:
       properties:
         count:
           type: integer
+      title: AutocompleteRequestModel_suggestions
+      type: object
     AutocompleteRequestModel_allOf:
       properties:
         suggestions:
           $ref: '#/components/schemas/AutocompleteRequestModel_suggestions'
+      type: object
     AutocompleteResponseModel_allOf_autocomplete_suggested:
       properties:
         text:
@@ -3161,10 +3172,12 @@ components:
           type: string
         source:
           type: string
+      type: object
     AutocompleteResponseModel_allOf_autocomplete_alternatives:
       properties:
         text:
           type: string
+      type: object
     AutocompleteResponseModel_allOf_autocomplete:
       properties:
         query:
@@ -3177,10 +3190,12 @@ components:
           items:
             $ref: '#/components/schemas/AutocompleteResponseModel_allOf_autocomplete_alternatives'
           type: array
+      type: object
     AutocompleteResponseModel_allOf:
       properties:
         autocomplete:
           $ref: '#/components/schemas/AutocompleteResponseModel_allOf_autocomplete'
+      type: object
     SearchRequestModel_sorts:
       example:
         field: field
@@ -3195,6 +3210,7 @@ components:
           - asc
           - desc
           type: string
+      type: object
     SearchRequestModel_search_query:
       example:
         string: string
@@ -3204,6 +3220,7 @@ components:
           type: string
         spellCorrection:
           type: boolean
+      type: object
     SearchRequestModel_search:
       example:
         query:
@@ -3215,6 +3232,7 @@ components:
           $ref: '#/components/schemas/SearchRequestModel_search_query'
         subQuery:
           type: string
+      type: object
     SearchRequestModel_pagination:
       example:
         pageSize: 6
@@ -3224,6 +3242,7 @@ components:
           type: integer
         pageSize:
           type: integer
+      type: object
     SearchRequestModel_facets:
       example:
         valueLimit: 5
@@ -3247,6 +3266,7 @@ components:
           items:
             type: string
           type: array
+      type: object
     SearchRequestModel_merchandising:
       example:
         landingPage: landingPage
@@ -3263,32 +3283,38 @@ components:
           type: array
         landingPage:
           type: string
+      type: object
     SearchRequestModel_tracking:
       example:
         loggedInUserId: loggedInUserId
       properties:
         loggedInUserId:
           type: string
+      type: object
     SearchRequestModelFilterValue_allOf:
       properties:
         value:
           type: string
+      type: object
     SearchRequestModelFilterRange_allOf_value:
       properties:
         low:
           type: number
         high:
           type: number
+      type: object
     SearchRequestModelFilterRange_allOf:
       properties:
         value:
           $ref: '#/components/schemas/SearchRequestModelFilterRange_allOf_value'
+      type: object
     SearchResponseModel_search:
       example:
         query: query
       properties:
         query:
           type: string
+      type: object
     SearchResponseModel_pagination:
       example:
         totalResults: 0
@@ -3304,6 +3330,7 @@ components:
           type: integer
         pageSize:
           type: integer
+      type: object
     SearchResponseModel_sorting:
       example:
         field: field
@@ -3316,6 +3343,7 @@ components:
           - asc
           - desc
           type: string
+      type: object
     SearchResponseModel_mappings:
       example:
         core:
@@ -3331,6 +3359,7 @@ components:
       properties:
         core:
           $ref: '#/components/schemas/SearchResponseModelResultCoreMappings'
+      type: object
     SearchResponseModel_children:
       example:
         mappings:
@@ -3351,7 +3380,11 @@ components:
           $ref: '#/components/schemas/SearchResponseModel_mappings'
         attributes:
           additionalProperties: true
+          description: Additional fields for results - these are site specific fields
+            which can have various value types
+          title: Result Custom Attributes
           type: object
+      type: object
     SearchResponseModel_results:
       example:
         mappings:
@@ -3392,7 +3425,8 @@ components:
               url: url
           attributes:
             key: '{}'
-        attributes: '{}'
+        attributes:
+          key: '{}'
         id: id
       properties:
         id:
@@ -3400,13 +3434,16 @@ components:
         mappings:
           $ref: '#/components/schemas/SearchResponseModel_mappings'
         attributes:
+          additionalProperties: true
           description: Additional fields for results - these are site specific fields
             which can have various value types
+          title: Result Custom Attributes
           type: object
         children:
           items:
             $ref: '#/components/schemas/SearchResponseModel_children'
           type: array
+      type: object
     SearchResponseModel_merchandising_content:
       example:
         footer:
@@ -3438,6 +3475,7 @@ components:
           items:
             type: string
           type: array
+      type: object
     SearchResponseModel_merchandising:
       example:
         redirect: redirect
@@ -3459,6 +3497,7 @@ components:
           type: string
         content:
           $ref: '#/components/schemas/SearchResponseModel_merchandising_content'
+      type: object
     SearchResponseModelFacetValue_allOf_values:
       properties:
         filtered:
@@ -3469,12 +3508,14 @@ components:
           type: string
         count:
           type: integer
+      type: object
     SearchResponseModelFacetValue_allOf:
       properties:
         values:
           items:
             $ref: '#/components/schemas/SearchResponseModelFacetValue_allOf_values'
           type: array
+      type: object
     SearchResponseModelFacetRangeBuckets_allOf_values:
       properties:
         filtered:
@@ -3487,12 +3528,14 @@ components:
           type: string
         count:
           type: integer
+      type: object
     SearchResponseModelFacetRangeBuckets_allOf:
       properties:
         values:
           items:
             $ref: '#/components/schemas/SearchResponseModelFacetRangeBuckets_allOf_values'
           type: array
+      type: object
     SearchResponseModelFacetRange_allOf:
       properties:
         step:
@@ -3501,13 +3544,16 @@ components:
           $ref: '#/components/schemas/SearchRequestModelFilterRange_allOf_value'
         active:
           $ref: '#/components/schemas/SearchRequestModelFilterRange_allOf_value'
+      type: object
     MetaResponseModelFacetSlider_allOf:
       properties:
         formatSeparator:
           type: string
         formatValue:
           type: string
+      type: object
     MetaResponseModelFacetHierarchy_allOf:
       properties:
         hierarchyDelimiter:
           type: string
+      type: object

@@ -4,7 +4,7 @@
     "contact" : {
       "name" : "Searchspring"
     },
-    "description" : "Searchspring SNAP Search API",
+    "description" : "Searchspring Snap Search API",
     "title" : "SNAPI",
     "version" : "0.1.9",
     "x-logo" : {
@@ -3137,50 +3137,6 @@
         } ]
       },
       "SearchRequestModel" : {
-        "example" : {
-          "search" : {
-            "query" : {
-              "string" : "string",
-              "spellCorrection" : true
-            },
-            "subQuery" : "subQuery"
-          },
-          "pagination" : {
-            "pageSize" : 6,
-            "page" : 0
-          },
-          "siteId" : "siteId",
-          "filters" : [ {
-            "field" : "field",
-            "background" : true,
-            "type" : "value"
-          }, {
-            "field" : "field",
-            "background" : true,
-            "type" : "value"
-          } ],
-          "sorts" : [ {
-            "field" : "field",
-            "direction" : "asc"
-          }, {
-            "field" : "field",
-            "direction" : "asc"
-          } ],
-          "merchandising" : {
-            "landingPage" : "landingPage",
-            "disabled" : true,
-            "segments" : [ "segments", "segments" ]
-          },
-          "tracking" : {
-            "loggedInUserId" : "loggedInUserId"
-          },
-          "facets" : {
-            "valueLimit" : 5,
-            "include" : [ "include", "include" ],
-            "limit" : 1,
-            "exclude" : [ "exclude", "exclude" ]
-          }
-        },
         "properties" : {
           "siteId" : {
             "pattern" : "[a-z0-9]{6}",
@@ -3225,11 +3181,6 @@
           },
           "propertyName" : "type"
         },
-        "example" : {
-          "field" : "field",
-          "background" : true,
-          "type" : "value"
-        },
         "properties" : {
           "type" : {
             "enum" : [ "value", "range" ],
@@ -3260,145 +3211,6 @@
         } ]
       },
       "SearchResponseModel" : {
-        "example" : {
-          "search" : {
-            "query" : "query"
-          },
-          "pagination" : {
-            "totalResults" : 0,
-            "defaultPageSize" : 1,
-            "pageSize" : 5,
-            "page" : 6
-          },
-          "sorting" : [ {
-            "field" : "field",
-            "direction" : "asc"
-          }, {
-            "field" : "field",
-            "direction" : "asc"
-          } ],
-          "results" : [ {
-            "mappings" : {
-              "core" : {
-                "uid" : "uid",
-                "thumbnailImageUrl" : "thumbnailImageUrl",
-                "price" : 5.637376656633329,
-                "msrp" : 2.3021358869347655,
-                "imageUrl" : "imageUrl",
-                "name" : "name",
-                "sku" : "sku",
-                "brand" : "brand",
-                "url" : "url"
-              }
-            },
-            "children" : [ {
-              "mappings" : {
-                "core" : {
-                  "uid" : "uid",
-                  "thumbnailImageUrl" : "thumbnailImageUrl",
-                  "price" : 5.637376656633329,
-                  "msrp" : 2.3021358869347655,
-                  "imageUrl" : "imageUrl",
-                  "name" : "name",
-                  "sku" : "sku",
-                  "brand" : "brand",
-                  "url" : "url"
-                }
-              },
-              "attributes" : {
-                "key" : "{}"
-              }
-            }, {
-              "mappings" : {
-                "core" : {
-                  "uid" : "uid",
-                  "thumbnailImageUrl" : "thumbnailImageUrl",
-                  "price" : 5.637376656633329,
-                  "msrp" : 2.3021358869347655,
-                  "imageUrl" : "imageUrl",
-                  "name" : "name",
-                  "sku" : "sku",
-                  "brand" : "brand",
-                  "url" : "url"
-                }
-              },
-              "attributes" : {
-                "key" : "{}"
-              }
-            } ],
-            "attributes" : "{}",
-            "id" : "id"
-          }, {
-            "mappings" : {
-              "core" : {
-                "uid" : "uid",
-                "thumbnailImageUrl" : "thumbnailImageUrl",
-                "price" : 5.637376656633329,
-                "msrp" : 2.3021358869347655,
-                "imageUrl" : "imageUrl",
-                "name" : "name",
-                "sku" : "sku",
-                "brand" : "brand",
-                "url" : "url"
-              }
-            },
-            "children" : [ {
-              "mappings" : {
-                "core" : {
-                  "uid" : "uid",
-                  "thumbnailImageUrl" : "thumbnailImageUrl",
-                  "price" : 5.637376656633329,
-                  "msrp" : 2.3021358869347655,
-                  "imageUrl" : "imageUrl",
-                  "name" : "name",
-                  "sku" : "sku",
-                  "brand" : "brand",
-                  "url" : "url"
-                }
-              },
-              "attributes" : {
-                "key" : "{}"
-              }
-            }, {
-              "mappings" : {
-                "core" : {
-                  "uid" : "uid",
-                  "thumbnailImageUrl" : "thumbnailImageUrl",
-                  "price" : 5.637376656633329,
-                  "msrp" : 2.3021358869347655,
-                  "imageUrl" : "imageUrl",
-                  "name" : "name",
-                  "sku" : "sku",
-                  "brand" : "brand",
-                  "url" : "url"
-                }
-              },
-              "attributes" : {
-                "key" : "{}"
-              }
-            } ],
-            "attributes" : "{}",
-            "id" : "id"
-          } ],
-          "merchandising" : {
-            "redirect" : "redirect",
-            "content" : {
-              "footer" : [ "footer", "footer" ],
-              "left" : [ "left", "left" ],
-              "header" : [ "header", "header" ],
-              "banner" : [ "banner", "banner" ]
-            }
-          },
-          "facets" : [ {
-            "field" : "field",
-            "filtered" : true,
-            "type" : "type"
-          }, {
-            "field" : "field",
-            "filtered" : true,
-            "type" : "type"
-          } ]
-        },
         "properties" : {
           "search" : {
             "$ref" : "#/components/schemas/SearchResponseModel_search"
@@ -3433,17 +3245,6 @@
       },
       "SearchResponseModelResultCoreMappings" : {
         "description" : "Mapping of core fields for the result object",
-        "example" : {
-          "uid" : "uid",
-          "thumbnailImageUrl" : "thumbnailImageUrl",
-          "price" : 5.637376656633329,
-          "msrp" : 2.3021358869347655,
-          "imageUrl" : "imageUrl",
-          "name" : "name",
-          "sku" : "sku",
-          "brand" : "brand",
-          "url" : "url"
-        },
         "properties" : {
           "uid" : {
             "description" : "Unique identifier of result",
@@ -3485,6 +3286,12 @@
         "title" : "Result Core Field Mappings",
         "type" : "object"
       },
+      "SearchResponseModelResultAttributes" : {
+        "additionalProperties" : true,
+        "description" : "Additional fields for results - these are site specific fields which can have various value types",
+        "title" : "Result Custom Attributes",
+        "type" : "object"
+      },
       "SearchResponseModelFacet" : {
         "discriminator" : {
           "mapping" : {
@@ -3493,11 +3300,6 @@
             "range" : "#/components/schemas/SearchResponseModelFacetRange"
           },
           "propertyName" : "type"
-        },
-        "example" : {
-          "field" : "field",
-          "filtered" : true,
-          "type" : "type"
         },
         "properties" : {
           "type" : {
@@ -3535,24 +3337,6 @@
         } ]
       },
       "MetaResponseModel" : {
-        "example" : {
-          "sortOptions" : [ {
-            "field" : "field",
-            "label" : "label",
-            "type" : "field",
-            "direction" : "asc"
-          }, {
-            "field" : "field",
-            "label" : "label",
-            "type" : "field",
-            "direction" : "asc"
-          } ],
-          "facets" : {
-            "key" : {
-              "display" : "display"
-            }
-          }
-        },
         "properties" : {
           "sortOptions" : {
             "items" : {
@@ -3570,12 +3354,6 @@
         "type" : "object"
       },
       "MetaResponseModelSortOption" : {
-        "example" : {
-          "field" : "field",
-          "label" : "label",
-          "type" : "field",
-          "direction" : "asc"
-        },
         "properties" : {
           "type" : {
             "enum" : [ "field", "relevance" ],
@@ -3604,9 +3382,6 @@
             "hierarchy" : "#/components/schemas/MetaResponseModelFacetHierarchy"
           },
           "propertyName" : "display"
-        },
-        "example" : {
-          "display" : "display"
         },
         "properties" : {
           "display" : {
@@ -3699,14 +3474,17 @@
           "count" : {
             "type" : "integer"
           }
-        }
+        },
+        "title" : "AutocompleteRequestModel_suggestions",
+        "type" : "object"
       },
       "AutocompleteRequestModel_allOf" : {
         "properties" : {
           "suggestions" : {
             "$ref" : "#/components/schemas/AutocompleteRequestModel_suggestions"
           }
-        }
+        },
+        "type" : "object"
       },
       "AutocompleteResponseModel_allOf_autocomplete_suggested" : {
         "properties" : {
@@ -3719,14 +3497,16 @@
           "source" : {
             "type" : "string"
           }
-        }
+        },
+        "type" : "object"
       },
       "AutocompleteResponseModel_allOf_autocomplete_alternatives" : {
         "properties" : {
           "text" : {
             "type" : "string"
           }
-        }
+        },
+        "type" : "object"
       },
       "AutocompleteResponseModel_allOf_autocomplete" : {
         "properties" : {
@@ -3745,20 +3525,18 @@
             },
             "type" : "array"
           }
-        }
+        },
+        "type" : "object"
       },
       "AutocompleteResponseModel_allOf" : {
         "properties" : {
           "autocomplete" : {
             "$ref" : "#/components/schemas/AutocompleteResponseModel_allOf_autocomplete"
           }
-        }
+        },
+        "type" : "object"
       },
       "SearchRequestModel_sorts" : {
-        "example" : {
-          "field" : "field",
-          "direction" : "asc"
-        },
         "properties" : {
           "field" : {
             "description" : "Field to sort results by.",
@@ -3769,13 +3547,10 @@
             "enum" : [ "asc", "desc" ],
             "type" : "string"
           }
-        }
+        },
+        "type" : "object"
       },
       "SearchRequestModel_search_query" : {
-        "example" : {
-          "string" : "string",
-          "spellCorrection" : true
-        },
         "properties" : {
           "string" : {
             "type" : "string"
@@ -3783,16 +3558,10 @@
           "spellCorrection" : {
             "type" : "boolean"
           }
-        }
+        },
+        "type" : "object"
       },
       "SearchRequestModel_search" : {
-        "example" : {
-          "query" : {
-            "string" : "string",
-            "spellCorrection" : true
-          },
-          "subQuery" : "subQuery"
-        },
         "properties" : {
           "query" : {
             "$ref" : "#/components/schemas/SearchRequestModel_search_query"
@@ -3800,13 +3569,10 @@
           "subQuery" : {
             "type" : "string"
           }
-        }
+        },
+        "type" : "object"
       },
       "SearchRequestModel_pagination" : {
-        "example" : {
-          "pageSize" : 6,
-          "page" : 0
-        },
         "properties" : {
           "page" : {
             "type" : "integer"
@@ -3814,15 +3580,10 @@
           "pageSize" : {
             "type" : "integer"
           }
-        }
+        },
+        "type" : "object"
       },
       "SearchRequestModel_facets" : {
-        "example" : {
-          "valueLimit" : 5,
-          "include" : [ "include", "include" ],
-          "limit" : 1,
-          "exclude" : [ "exclude", "exclude" ]
-        },
         "properties" : {
           "limit" : {
             "type" : "integer"
@@ -3842,14 +3603,10 @@
             },
             "type" : "array"
           }
-        }
+        },
+        "type" : "object"
       },
       "SearchRequestModel_merchandising" : {
-        "example" : {
-          "landingPage" : "landingPage",
-          "disabled" : true,
-          "segments" : [ "segments", "segments" ]
-        },
         "properties" : {
           "disabled" : {
             "type" : "boolean"
@@ -3863,24 +3620,24 @@
           "landingPage" : {
             "type" : "string"
           }
-        }
+        },
+        "type" : "object"
       },
       "SearchRequestModel_tracking" : {
-        "example" : {
-          "loggedInUserId" : "loggedInUserId"
-        },
         "properties" : {
           "loggedInUserId" : {
             "type" : "string"
           }
-        }
+        },
+        "type" : "object"
       },
       "SearchRequestModelFilterValue_allOf" : {
         "properties" : {
           "value" : {
             "type" : "string"
           }
-        }
+        },
+        "type" : "object"
       },
       "SearchRequestModelFilterRange_allOf_value" : {
         "properties" : {
@@ -3890,32 +3647,26 @@
           "high" : {
             "type" : "number"
           }
-        }
+        },
+        "type" : "object"
       },
       "SearchRequestModelFilterRange_allOf" : {
         "properties" : {
           "value" : {
             "$ref" : "#/components/schemas/SearchRequestModelFilterRange_allOf_value"
           }
-        }
+        },
+        "type" : "object"
       },
       "SearchResponseModel_search" : {
-        "example" : {
-          "query" : "query"
-        },
         "properties" : {
           "query" : {
             "type" : "string"
           }
-        }
+        },
+        "type" : "object"
       },
       "SearchResponseModel_pagination" : {
-        "example" : {
-          "totalResults" : 0,
-          "defaultPageSize" : 1,
-          "pageSize" : 5,
-          "page" : 6
-        },
         "properties" : {
           "totalResults" : {
             "type" : "integer"
@@ -3929,13 +3680,10 @@
           "pageSize" : {
             "type" : "integer"
           }
-        }
+        },
+        "type" : "object"
       },
       "SearchResponseModel_sorting" : {
-        "example" : {
-          "field" : "field",
-          "direction" : "asc"
-        },
         "properties" : {
           "field" : {
             "type" : "string"
@@ -3944,110 +3692,29 @@
             "enum" : [ "asc", "desc" ],
             "type" : "string"
           }
-        }
+        },
+        "type" : "object"
       },
       "SearchResponseModel_mappings" : {
-        "example" : {
-          "core" : {
-            "uid" : "uid",
-            "thumbnailImageUrl" : "thumbnailImageUrl",
-            "price" : 5.637376656633329,
-            "msrp" : 2.3021358869347655,
-            "imageUrl" : "imageUrl",
-            "name" : "name",
-            "sku" : "sku",
-            "brand" : "brand",
-            "url" : "url"
-          }
-        },
         "properties" : {
           "core" : {
             "$ref" : "#/components/schemas/SearchResponseModelResultCoreMappings"
           }
-        }
+        },
+        "type" : "object"
       },
       "SearchResponseModel_children" : {
-        "example" : {
-          "mappings" : {
-            "core" : {
-              "uid" : "uid",
-              "thumbnailImageUrl" : "thumbnailImageUrl",
-              "price" : 5.637376656633329,
-              "msrp" : 2.3021358869347655,
-              "imageUrl" : "imageUrl",
-              "name" : "name",
-              "sku" : "sku",
-              "brand" : "brand",
-              "url" : "url"
-            }
-          },
-          "attributes" : {
-            "key" : "{}"
-          }
-        },
         "properties" : {
           "mappings" : {
             "$ref" : "#/components/schemas/SearchResponseModel_mappings"
           },
           "attributes" : {
-            "additionalProperties" : true,
-            "type" : "object"
+            "$ref" : "#/components/schemas/SearchResponseModelResultAttributes"
           }
-        }
+        },
+        "type" : "object"
       },
       "SearchResponseModel_results" : {
-        "example" : {
-          "mappings" : {
-            "core" : {
-              "uid" : "uid",
-              "thumbnailImageUrl" : "thumbnailImageUrl",
-              "price" : 5.637376656633329,
-              "msrp" : 2.3021358869347655,
-              "imageUrl" : "imageUrl",
-              "name" : "name",
-              "sku" : "sku",
-              "brand" : "brand",
-              "url" : "url"
-            }
-          },
-          "children" : [ {
-            "mappings" : {
-              "core" : {
-                "uid" : "uid",
-                "thumbnailImageUrl" : "thumbnailImageUrl",
-                "price" : 5.637376656633329,
-                "msrp" : 2.3021358869347655,
-                "imageUrl" : "imageUrl",
-                "name" : "name",
-                "sku" : "sku",
-                "brand" : "brand",
-                "url" : "url"
-              }
-            },
-            "attributes" : {
-              "key" : "{}"
-            }
-          }, {
-            "mappings" : {
-              "core" : {
-                "uid" : "uid",
-                "thumbnailImageUrl" : "thumbnailImageUrl",
-                "price" : 5.637376656633329,
-                "msrp" : 2.3021358869347655,
-                "imageUrl" : "imageUrl",
-                "name" : "name",
-                "sku" : "sku",
-                "brand" : "brand",
-                "url" : "url"
-              }
-            },
-            "attributes" : {
-              "key" : "{}"
-            }
-          } ],
-          "attributes" : "{}",
-          "id" : "id"
-        },
         "properties" : {
           "id" : {
             "type" : "string"
@@ -4056,8 +3723,7 @@
             "$ref" : "#/components/schemas/SearchResponseModel_mappings"
           },
           "attributes" : {
-            "description" : "Additional fields for results - these are site specific fields which can have various value types",
-            "type" : "object"
+            "$ref" : "#/components/schemas/SearchResponseModelResultAttributes"
           },
           "children" : {
             "items" : {
@@ -4065,15 +3731,10 @@
             },
             "type" : "array"
           }
-        }
+        },
+        "type" : "object"
       },
       "SearchResponseModel_merchandising_content" : {
-        "example" : {
-          "footer" : [ "footer", "footer" ],
-          "left" : [ "left", "left" ],
-          "header" : [ "header", "header" ],
-          "banner" : [ "banner", "banner" ]
-        },
         "properties" : {
           "header" : {
             "items" : {
@@ -4099,18 +3760,10 @@
             },
             "type" : "array"
           }
-        }
+        },
+        "type" : "object"
       },
       "SearchResponseModel_merchandising" : {
-        "example" : {
-          "redirect" : "redirect",
-          "content" : {
-            "footer" : [ "footer", "footer" ],
-            "left" : [ "left", "left" ],
-            "header" : [ "header", "header" ],
-            "banner" : [ "banner", "banner" ]
-          }
-        },
         "properties" : {
           "redirect" : {
             "type" : "string"
@@ -4118,7 +3771,8 @@
           "content" : {
             "$ref" : "#/components/schemas/SearchResponseModel_merchandising_content"
           }
-        }
+        },
+        "type" : "object"
       },
       "SearchResponseModelFacetValue_allOf_values" : {
         "properties" : {
@@ -4134,7 +3788,8 @@
           "count" : {
             "type" : "integer"
           }
-        }
+        },
+        "type" : "object"
       },
       "SearchResponseModelFacetValue_allOf" : {
         "properties" : {
@@ -4144,7 +3799,8 @@
             },
             "type" : "array"
           }
-        }
+        },
+        "type" : "object"
       },
       "SearchResponseModelFacetRangeBuckets_allOf_values" : {
         "properties" : {
@@ -4163,7 +3819,8 @@
           "count" : {
             "type" : "integer"
           }
-        }
+        },
+        "type" : "object"
       },
       "SearchResponseModelFacetRangeBuckets_allOf" : {
         "properties" : {
@@ -4173,7 +3830,8 @@
             },
             "type" : "array"
           }
-        }
+        },
+        "type" : "object"
       },
       "SearchResponseModelFacetRange_allOf" : {
         "properties" : {
@@ -4186,7 +3844,8 @@
           "active" : {
             "$ref" : "#/components/schemas/SearchRequestModelFilterRange_allOf_value"
           }
-        }
+        },
+        "type" : "object"
       },
       "MetaResponseModelFacetSlider_allOf" : {
         "properties" : {
@@ -4196,14 +3855,16 @@
           "formatValue" : {
             "type" : "string"
           }
-        }
+        },
+        "type" : "object"
       },
       "MetaResponseModelFacetHierarchy_allOf" : {
         "properties" : {
           "hierarchyDelimiter" : {
             "type" : "string"
           }
-        }
+        },
+        "type" : "object"
       }
     }
   }
