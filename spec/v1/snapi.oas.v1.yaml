@@ -4,7 +4,7 @@ info:
     name: Searchspring
   description: Searchspring Snap Search API
   title: snAPI
-  version: 0.1.10
+  version: 0.1.11
   x-logo:
     url: ./images/searchspring_logo.svg
     altText: Searchspring Snap
@@ -2730,6 +2730,7 @@ components:
           query:
             string: string
             spellCorrection: true
+          redirectResponse: full
           subQuery: subQuery
         pagination:
           pageSize: 6
@@ -2822,6 +2823,7 @@ components:
     SearchResponseModel:
       example:
         search:
+          didYouMean: didYouMean
           query: query
         pagination:
           totalResults: 0
@@ -3268,11 +3270,19 @@ components:
         query:
           string: string
           spellCorrection: true
+        redirectResponse: full
         subQuery: subQuery
       properties:
         query:
           $ref: '#/components/schemas/SearchRequestModel_search_query'
         subQuery:
+          type: string
+        redirectResponse:
+          description: Changes how Redirects behave in the response.
+          enum:
+          - full
+          - minimal
+          - direct
           type: string
       type: object
     SearchRequestModel_pagination:
@@ -3352,9 +3362,13 @@ components:
       type: object
     SearchResponseModel_search:
       example:
+        didYouMean: didYouMean
         query: query
       properties:
         query:
+          type: string
+        didYouMean:
+          description: The suggested query after spelling correction.
           type: string
       type: object
     SearchResponseModel_pagination:

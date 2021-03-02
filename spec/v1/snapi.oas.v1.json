@@ -6,7 +6,7 @@
     },
     "description" : "Searchspring Snap Search API",
     "title" : "snAPI",
-    "version" : "0.1.10",
+    "version" : "0.1.11",
     "x-logo" : {
       "url" : "./images/searchspring_logo.svg",
       "altText" : "Searchspring Snap"
@@ -3611,6 +3611,11 @@
           },
           "subQuery" : {
             "type" : "string"
+          },
+          "redirectResponse" : {
+            "description" : "Changes how Redirects behave in the response.",
+            "enum" : [ "full", "minimal", "direct" ],
+            "type" : "string"
           }
         },
         "type" : "object"
@@ -3704,6 +3709,10 @@
       "SearchResponseModel_search" : {
         "properties" : {
           "query" : {
+            "type" : "string"
+          },
+          "didYouMean" : {
+            "description" : "The suggested query after spelling correction.",
             "type" : "string"
           }
         },
