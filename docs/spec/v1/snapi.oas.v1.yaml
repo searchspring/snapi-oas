@@ -1,0 +1,3615 @@
+openapi: 3.0.3
+info:
+  contact:
+    name: Searchspring
+  description: Searchspring Snap Search API
+  title: snAPI
+  version: 0.1.11
+  x-logo:
+    url: ./images/searchspring_logo.svg
+    altText: Searchspring Snap
+servers:
+- url: http://snapi.kube.searchspring.io/api/v1
+tags:
+- description: Retrieve search configuration data. This data to be used in conjunction
+    with search/autocomplete response data.
+  name: Meta
+- description: Query suggestions with indexed search data. Returned data should be
+    combined with Meta data.
+  name: Autocomplete
+- description: For use in querying indexed search data. Returned data should be combined
+    with Meta data.
+  name: Search
+paths:
+  /autocomplete:
+    post:
+      description: autocomplete search
+      operationId: post-autocomplete
+      requestBody:
+        content:
+          application/json:
+            examples:
+              example 1:
+                $ref: '#/components/examples/autocomplete-request-example-1'
+              example 2:
+                $ref: '#/components/examples/autocomplete-request-example-2'
+            schema:
+              $ref: '#/components/schemas/AutocompleteRequestModel'
+        description: search parameters
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                example 1:
+                  $ref: '#/components/examples/autocomplete-response-example-1'
+                example 2:
+                  $ref: '#/components/examples/autocomplete-response-example-2'
+              schema:
+                $ref: '#/components/schemas/AutocompleteResponseModel'
+          description: OK
+      summary: autocomplete
+      tags:
+      - Autocomplete
+      x-snap-function: autocomplete
+  /search:
+    post:
+      description: standard search
+      operationId: post-search
+      requestBody:
+        content:
+          application/json:
+            examples:
+              example 1:
+                $ref: '#/components/examples/search-request-example-1'
+              example 2:
+                $ref: '#/components/examples/search-request-example-2'
+            schema:
+              $ref: '#/components/schemas/SearchRequestModel'
+        description: search parameters
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                example 1:
+                  $ref: '#/components/examples/search-response-example-1'
+                example 2:
+                  $ref: '#/components/examples/search-response-example-2'
+              schema:
+                $ref: '#/components/schemas/SearchResponseModel'
+          description: OK
+      summary: search
+      tags:
+      - Search
+      x-snap-function: search
+  /meta:
+    post:
+      description: Retrieve the meta data for the account.
+      operationId: post-meta
+      requestBody:
+        $ref: '#/components/requestBodies/Meta_Request_Parameter_Model'
+        content:
+          application/json:
+            examples:
+              example 1:
+                $ref: '#/components/examples/meta-request-example-1'
+            schema:
+              properties:
+                siteId:
+                  description: siteId of account
+                  pattern: '[a-z0-9]{6}'
+                  type: string
+              required:
+              - siteId
+              title: Meta Request Parameter Model
+              type: object
+        description: Required siteId of account
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                example 1:
+                  $ref: '#/components/examples/meta-response-example-1'
+              schema:
+                $ref: '#/components/schemas/MetaResponseModel'
+          description: OK
+      summary: meta data (post)
+      tags:
+      - Meta
+components:
+  examples:
+    autocomplete-request-example-1:
+      value:
+        siteId: scmq7n
+        suggestions:
+          count: 5
+        search:
+          query:
+            string: yellw sock
+            spellCorrection: false
+        pagination:
+          pageSize: 3
+        tracking:
+          loggedInUserId: user@searchspring.com
+    autocomplete-request-example-2:
+      value:
+        siteId: scmq7n
+        suggestions:
+          count: 5
+        search:
+          query:
+            string: yellw
+            spellCorrection: true
+        pagination:
+          pageSize: 3
+        tracking:
+          loggedInUserId: user@searchspring.com
+    autocomplete-response-example-1:
+      value:
+        autocomplete:
+          query: yellw sock
+          alternatives: []
+        pagination:
+          totalResults: 11
+          page: 1
+          defaultPageSize: 24
+          pageSize: 3
+        results:
+        - id: "172554"
+          mappings:
+            core:
+              uid: "172554"
+              price: 16
+              msrp: 25
+              url: /product/A-GA-G2-L4581
+              thumbnailImageUrl: https://searchspring-demo-content.s3.amazonaws.com/demo/fashion/product_images_thumb_med/16_10_pajama_party__698_thumb_med.jpg
+              imageUrl: https://searchspring-demo-content.s3.amazonaws.com/demo/fashion/product_images_large/16_10_pajama_party__698_large.jpg
+              name: Gather Near Gray Ankle Socks
+              sku: A-GA-G2-L4581
+              brand: Girly Accessories
+          attributes:
+            intellisuggestData: eJwrTs4tNM9jYKhMzckpVyjOT85mcNR1ByIjXR8TUwtDBhA0ZjA0ZEgvykwBADcTC9s
+            intellisuggestSignature: 99c3d567d7f9e71a473d2b3640442e5bec8b13f2edf7f313d44ef91d096048e5
+            ss_insights_quadrant: Poor Performer
+            gross_margin: "34"
+            ss_product_type: Socks
+            keywords: sock- socks, footwear, foot wear, comfy, cosy, cozy, casual,
+              cool, trendy, holiday, sleep, short socks, ankle socks, cable, cable
+              socks, cable knit, cable knit socks, grey, gray, light grey, light gray
+            multi_colors: "no"
+            description: The thing about socks is that, despite your best efforts
+              at keeping them pulled up, they inevitably succumb to gravity and simply
+              gather around your ankles. How shamefully lazy of them, right? But have
+              no fear, these ankle socks are aerodynamic, and with their low center
+              of gravity, we promise they won’t bunch around your ankles (mostly because
+              they stop at the ankle, but that is the point, after all). • Imported
+            title: Gather Near Gray Ankle Socks
+            ss_clicks: "1297"
+            condition: New
+            sales_rank: "1272"
+            ss_sale_price: "16"
+            product_type:
+            - Shop Lookbook &gt; Pajama Party
+            - All Accessories &gt; Knee Socks
+            - All Accessories
+            - Gifts for Her
+            - Gifts for Her &gt; Gifts Under $25
+            - Gifts for Her &gt; Gifts Under $50
+            days_since_published: "52"
+            ss_category_hierarchy:
+            - All Accessories
+            - Gifts for Her&gt;Gifts Under $25
+            - Gifts for Her
+            - Shop Lookbook
+            - Shop Lookbook&gt;Pajama Party
+            - Gifts for Her&gt;Gifts Under $50
+            - All Accessories&gt;Knee Socks
+            on_sale: "No"
+            quantity_available: "52"
+            popularity: "1272"
+            product_type_unigram: socks
+            id: c2a25e40a3ed9a077cc82c5eab72a2f2
+        - id: "106413"
+          mappings:
+            core:
+              uid: "106413"
+              price: 18
+              msrp: 25
+              url: /product/A-GA-R7-T2763
+              thumbnailImageUrl: https://searchspring-demo-content.s3.amazonaws.com/demo/fashion/product_images_thumb_med/478a1094_1_thumb_med.jpg
+              imageUrl: https://searchspring-demo-content.s3.amazonaws.com/demo/fashion/product_images_large/478a1094_1_large.jpg
+              name: Watch The Leaves Fall Boot Socks
+              sku: A-GA-R7-T2763
+              brand: Girly Accessories
+          attributes:
+            intellisuggestData: eJwrTs4tNM9jYKhMzckpVyjOT85mcNR1d9QNMtcNMTI3M2YwZDBiAJKGDOlFmSkAOQ0L9A
+            intellisuggestSignature: f50fa0e803a3c66eec0f7da2277878684bb71c25dbfce4b74fd380cbf330756b
+            ss_insights_quadrant: Over Exposed
+            gross_margin: "56"
+            ss_product_type: Watch
+            keywords: bootsocks, tall socks, knee socks, knit socks, socks
+            color:
+            - Red
+            multi_colors: "no"
+            description: With Autumn on the horizon and when it does arrive, surely
+              you will “Watch The Leaves Fall” toward the ground! Even as they come
+              down to the ground, two things that will stay up, keep you up to date
+              style wise, and comfy are these boot socks that will be a welcome fashion
+              find during the cooler months! Let your legs slay the scene and have
+              you looking a lot hotter than the temperature on an early autumn evening!
+              Knit boot socks with a scalloped cuff. • 100% Cotton • Imported
+            title: Watch The Leaves Fall Boot Socks
+            ss_clicks: "3032"
+            color_family:
+            - Red
+            sales_rank: "332"
+            ss_sale_price: "18"
+            size_universal: One Size
+            ss_category_hierarchy:
+            - Gifts for Her&gt;Gifts Under $25
+            - Gifts for Her
+            - Gifts for Her&gt;Gifts Under $50
+            on_sale: "Yes"
+            sale_price: "8"
+            condition: New
+            product_type:
+            - Gifts for Her
+            - Gifts for Her &gt; Gifts Under $25
+            - Gifts for Her &gt; Gifts Under $50
+            size:
+            - ONE SIZE
+            material: Cotton
+            days_since_published: "27"
+            quantity_available: "0"
+            popularity: "332"
+            product_type_unigram: socks
+            id: 9e3abc0752c52ca65ab5f72d44b3c976
+        - id: "112212"
+          mappings:
+            core:
+              uid: "112212"
+              price: 24
+              msrp: 25
+              url: /product/A-GA-E7-L4165
+              thumbnailImageUrl: https://searchspring-demo-content.s3.amazonaws.com/demo/fashion/product_images_thumb_med/844a5581_1_thumb_med.jpg
+              imageUrl: https://searchspring-demo-content.s3.amazonaws.com/demo/fashion/product_images_large/844a5581_1_large.jpg
+              name: Wrap Up Boot Socks
+              sku: A-GA-E7-L4165
+              brand: Girly Accessories
+          attributes:
+            intellisuggestData: eJwrTs4tNM9jYKhMzckpVyjOT85mcNR1d9R1Ndf1MTE0M2UwZDAGQkNDhvSizBQANz4L3g
+            intellisuggestSignature: 68d260943c3f6be8738b69786850bc0dba0d0697668d5ecda43a4f4985c628ae
+            ss_insights_quadrant: Best Performer
+            gross_margin: "56"
+            ss_product_type: Socks
+            keywords: boot socks, boot sock, sock, socks, lace trim, lace, lace socks,
+              buttons, button socks
+            color:
+            - Green
+            multi_colors: "no"
+            description: Remember your very favorite socks when you were a little
+              girl, that had the frilly lace and cute accents? The ones you couldn't
+              wait to pull out your Mary Janes to wear with them? Meet the grown-up
+              version, and get ready to Wrap Up those toes in toasty warm, super cute,
+              boot socks! Features open knit and crochet detail, and positively adorable
+              wooden button accent.
+            title: Wrap Up Boot Socks
+            sale_price: "5"
+            ss_clicks: "671"
+            color_family:
+            - Green
+            condition: New
+            sales_rank: "1882"
+            ss_sale_price: "24"
+            product_type:
+            - Gifts for Her
+            - Gifts for Her &gt; Gifts Under $25
+            - Gifts for Her &gt; Gifts Under $50
+            size:
+            - ONE SIZE
+            days_since_published: "32"
+            size_universal: One Size
+            ss_category_hierarchy:
+            - Gifts for Her&gt;Gifts Under $25
+            - Gifts for Her
+            - Gifts for Her&gt;Gifts Under $50
+            on_sale: "Yes"
+            quantity_available: "0"
+            popularity: "1882"
+            product_type_unigram: socks
+            id: c130395164da79724fc2c6da5a82c9ab
+        facets:
+        - type: value
+          field: color_family
+          filtered: false
+          values:
+          - filtered: false
+            value: Gray
+            label: Gray
+            count: 3
+          - filtered: false
+            value: Black
+            label: Black
+            count: 2
+          - filtered: false
+            value: Red
+            label: Red
+            count: 2
+          - filtered: false
+            value: White
+            label: White
+            count: 2
+          - filtered: false
+            value: Green
+            label: Green
+            count: 1
+        - type: value
+          field: ss_category_hierarchy
+          filtered: false
+          values:
+          - filtered: false
+            value: Gifts for Her
+            label: Gifts for Her
+            count: 11
+          - filtered: false
+            value: All Accessories
+            label: All Accessories
+            count: 4
+          - filtered: false
+            value: Shop Lookbook
+            label: Shop Lookbook
+            count: 4
+          - filtered: false
+            value: All Sale
+            label: All Sale
+            count: 1
+          - filtered: false
+            value: All Shoes
+            label: All Shoes
+            count: 1
+          - filtered: false
+            value: Shop By Trend
+            label: Shop By Trend
+            count: 1
+        - type: range-buckets
+          field: price
+          filtered: false
+          values:
+          - filtered: false
+            high: 20
+            label: up to $20
+            count: 7
+          - filtered: false
+            low: 20
+            high: 30
+            label: $20 to $30
+            count: 3
+          - filtered: false
+            low: 30
+            high: 40
+            label: $30 to $40
+            count: 2
+        - type: value
+          field: size
+          filtered: false
+          values:
+          - filtered: false
+            value: "6"
+            label: "6"
+            count: 2
+          - filtered: false
+            value: "7"
+            label: "7"
+            count: 2
+          - filtered: false
+            value: "8"
+            label: "8"
+            count: 2
+          - filtered: false
+            value: "9"
+            label: "9"
+            count: 2
+          - filtered: false
+            value: "10"
+            label: "10"
+            count: 2
+          - filtered: false
+            value: "5.5"
+            label: "5.5"
+            count: 2
+          - filtered: false
+            value: "6.5"
+            label: "6.5"
+            count: 2
+          - filtered: false
+            value: "7.5"
+            label: "7.5"
+            count: 2
+          - filtered: false
+            value: "8.5"
+            label: "8.5"
+            count: 2
+          - filtered: false
+            value: ONE SIZE
+            label: ONE SIZE
+            count: 8
+        - type: value
+          field: brand
+          filtered: false
+          values:
+          - filtered: false
+            value: Girly Accessories
+            label: Girly Accessories
+            count: 7
+          - filtered: false
+            value: Girly Accessorires
+            label: Girly Accessorires
+            count: 2
+          - filtered: false
+            value: Qupid
+            label: Qupid
+            count: 2
+        - type: value
+          field: on_sale
+          filtered: false
+          values:
+          - filtered: false
+            value: "No"
+            label: "No"
+            count: 7
+          - filtered: false
+            value: "Yes"
+            label: "Yes"
+            count: 4
+        - type: value
+          field: material
+          filtered: false
+          values:
+          - filtered: false
+            value: Polyester
+            label: Polyester
+            count: 3
+          - filtered: false
+            value: Cotton
+            label: Cotton
+            count: 1
+        merchandising:
+          redirect: ""
+          content: {}
+    autocomplete-response-example-2:
+      value:
+        autocomplete:
+          query: yellw sock
+          alternatives: []
+        pagination:
+          totalResults: 11
+          page: 1
+          defaultPageSize: 24
+          pageSize: 3
+        results:
+        - id: "172554"
+          mappings:
+            core:
+              uid: "172554"
+              price: 16
+              msrp: 25
+              url: /product/A-GA-G2-L4581
+              thumbnailImageUrl: https://searchspring-demo-content.s3.amazonaws.com/demo/fashion/product_images_thumb_med/16_10_pajama_party__698_thumb_med.jpg
+              imageUrl: https://searchspring-demo-content.s3.amazonaws.com/demo/fashion/product_images_large/16_10_pajama_party__698_large.jpg
+              name: Gather Near Gray Ankle Socks
+              sku: A-GA-G2-L4581
+              brand: Girly Accessories
+          attributes:
+            intellisuggestData: eJwrTs4tNM9jYKhMzckpVyjOT85mcNR1ByIjXR8TUwtDBhA0ZjA0ZEgvykwBADcTC9s
+            intellisuggestSignature: 99c3d567d7f9e71a473d2b3640442e5bec8b13f2edf7f313d44ef91d096048e5
+            ss_insights_quadrant: Poor Performer
+            gross_margin: "34"
+            ss_product_type: Socks
+            keywords: sock- socks, footwear, foot wear, comfy, cosy, cozy, casual,
+              cool, trendy, holiday, sleep, short socks, ankle socks, cable, cable
+              socks, cable knit, cable knit socks, grey, gray, light grey, light gray
+            multi_colors: "no"
+            description: The thing about socks is that, despite your best efforts
+              at keeping them pulled up, they inevitably succumb to gravity and simply
+              gather around your ankles. How shamefully lazy of them, right? But have
+              no fear, these ankle socks are aerodynamic, and with their low center
+              of gravity, we promise they won’t bunch around your ankles (mostly because
+              they stop at the ankle, but that is the point, after all). • Imported
+            title: Gather Near Gray Ankle Socks
+            ss_clicks: "1297"
+            condition: New
+            sales_rank: "1272"
+            ss_sale_price: "16"
+            product_type:
+            - Shop Lookbook &gt; Pajama Party
+            - All Accessories &gt; Knee Socks
+            - All Accessories
+            - Gifts for Her
+            - Gifts for Her &gt; Gifts Under $25
+            - Gifts for Her &gt; Gifts Under $50
+            days_since_published: "52"
+            ss_category_hierarchy:
+            - All Accessories
+            - Gifts for Her&gt;Gifts Under $25
+            - Gifts for Her
+            - Shop Lookbook
+            - Shop Lookbook&gt;Pajama Party
+            - Gifts for Her&gt;Gifts Under $50
+            - All Accessories&gt;Knee Socks
+            on_sale: "No"
+            quantity_available: "52"
+            popularity: "1272"
+            product_type_unigram: socks
+            id: c2a25e40a3ed9a077cc82c5eab72a2f2
+        - id: "106413"
+          mappings:
+            core:
+              uid: "106413"
+              price: 18
+              msrp: 25
+              url: /product/A-GA-R7-T2763
+              thumbnailImageUrl: https://searchspring-demo-content.s3.amazonaws.com/demo/fashion/product_images_thumb_med/478a1094_1_thumb_med.jpg
+              imageUrl: https://searchspring-demo-content.s3.amazonaws.com/demo/fashion/product_images_large/478a1094_1_large.jpg
+              name: Watch The Leaves Fall Boot Socks
+              sku: A-GA-R7-T2763
+              brand: Girly Accessories
+          attributes:
+            intellisuggestData: eJwrTs4tNM9jYKhMzckpVyjOT85mcNR1d9QNMtcNMTI3M2YwZDBiAJKGDOlFmSkAOQ0L9A
+            intellisuggestSignature: f50fa0e803a3c66eec0f7da2277878684bb71c25dbfce4b74fd380cbf330756b
+            ss_insights_quadrant: Over Exposed
+            gross_margin: "56"
+            ss_product_type: Watch
+            keywords: bootsocks, tall socks, knee socks, knit socks, socks
+            color:
+            - Red
+            multi_colors: "no"
+            description: With Autumn on the horizon and when it does arrive, surely
+              you will “Watch The Leaves Fall” toward the ground! Even as they come
+              down to the ground, two things that will stay up, keep you up to date
+              style wise, and comfy are these boot socks that will be a welcome fashion
+              find during the cooler months! Let your legs slay the scene and have
+              you looking a lot hotter than the temperature on an early autumn evening!
+              Knit boot socks with a scalloped cuff. • 100% Cotton • Imported
+            title: Watch The Leaves Fall Boot Socks
+            ss_clicks: "3032"
+            color_family:
+            - Red
+            sales_rank: "332"
+            ss_sale_price: "18"
+            size_universal: One Size
+            ss_category_hierarchy:
+            - Gifts for Her&gt;Gifts Under $25
+            - Gifts for Her
+            - Gifts for Her&gt;Gifts Under $50
+            on_sale: "Yes"
+            sale_price: "8"
+            condition: New
+            product_type:
+            - Gifts for Her
+            - Gifts for Her &gt; Gifts Under $25
+            - Gifts for Her &gt; Gifts Under $50
+            size:
+            - ONE SIZE
+            material: Cotton
+            days_since_published: "27"
+            quantity_available: "0"
+            popularity: "332"
+            product_type_unigram: socks
+            id: 9e3abc0752c52ca65ab5f72d44b3c976
+        - id: "112212"
+          mappings:
+            core:
+              uid: "112212"
+              price: 24
+              msrp: 25
+              url: /product/A-GA-E7-L4165
+              thumbnailImageUrl: https://searchspring-demo-content.s3.amazonaws.com/demo/fashion/product_images_thumb_med/844a5581_1_thumb_med.jpg
+              imageUrl: https://searchspring-demo-content.s3.amazonaws.com/demo/fashion/product_images_large/844a5581_1_large.jpg
+              name: Wrap Up Boot Socks
+              sku: A-GA-E7-L4165
+              brand: Girly Accessories
+          attributes:
+            intellisuggestData: eJwrTs4tNM9jYKhMzckpVyjOT85mcNR1d9R1Ndf1MTE0M2UwZDAGQkNDhvSizBQANz4L3g
+            intellisuggestSignature: 68d260943c3f6be8738b69786850bc0dba0d0697668d5ecda43a4f4985c628ae
+            ss_insights_quadrant: Best Performer
+            gross_margin: "56"
+            ss_product_type: Socks
+            keywords: boot socks, boot sock, sock, socks, lace trim, lace, lace socks,
+              buttons, button socks
+            color:
+            - Green
+            multi_colors: "no"
+            description: Remember your very favorite socks when you were a little
+              girl, that had the frilly lace and cute accents? The ones you couldn't
+              wait to pull out your Mary Janes to wear with them? Meet the grown-up
+              version, and get ready to Wrap Up those toes in toasty warm, super cute,
+              boot socks! Features open knit and crochet detail, and positively adorable
+              wooden button accent.
+            title: Wrap Up Boot Socks
+            sale_price: "5"
+            ss_clicks: "671"
+            color_family:
+            - Green
+            condition: New
+            sales_rank: "1882"
+            ss_sale_price: "24"
+            product_type:
+            - Gifts for Her
+            - Gifts for Her &gt; Gifts Under $25
+            - Gifts for Her &gt; Gifts Under $50
+            size:
+            - ONE SIZE
+            days_since_published: "32"
+            size_universal: One Size
+            ss_category_hierarchy:
+            - Gifts for Her&gt;Gifts Under $25
+            - Gifts for Her
+            - Gifts for Her&gt;Gifts Under $50
+            on_sale: "Yes"
+            quantity_available: "0"
+            popularity: "1882"
+            product_type_unigram: socks
+            id: c130395164da79724fc2c6da5a82c9ab
+        facets:
+        - type: value
+          field: color_family
+          filtered: false
+          values:
+          - filtered: false
+            value: Gray
+            label: Gray
+            count: 3
+          - filtered: false
+            value: Black
+            label: Black
+            count: 2
+          - filtered: false
+            value: Red
+            label: Red
+            count: 2
+          - filtered: false
+            value: White
+            label: White
+            count: 2
+          - filtered: false
+            value: Green
+            label: Green
+            count: 1
+        - type: value
+          field: ss_category_hierarchy
+          filtered: false
+          values:
+          - filtered: false
+            value: Gifts for Her
+            label: Gifts for Her
+            count: 11
+          - filtered: false
+            value: All Accessories
+            label: All Accessories
+            count: 4
+          - filtered: false
+            value: Shop Lookbook
+            label: Shop Lookbook
+            count: 4
+          - filtered: false
+            value: All Sale
+            label: All Sale
+            count: 1
+          - filtered: false
+            value: All Shoes
+            label: All Shoes
+            count: 1
+          - filtered: false
+            value: Shop By Trend
+            label: Shop By Trend
+            count: 1
+        - type: range-buckets
+          field: price
+          filtered: false
+          values:
+          - filtered: false
+            high: 20
+            label: up to $20
+            count: 7
+          - filtered: false
+            low: 20
+            high: 30
+            label: $20 to $30
+            count: 3
+          - filtered: false
+            low: 30
+            high: 40
+            label: $30 to $40
+            count: 2
+        - type: value
+          field: size
+          filtered: false
+          values:
+          - filtered: false
+            value: "6"
+            label: "6"
+            count: 2
+          - filtered: false
+            value: "7"
+            label: "7"
+            count: 2
+          - filtered: false
+            value: "8"
+            label: "8"
+            count: 2
+          - filtered: false
+            value: "9"
+            label: "9"
+            count: 2
+          - filtered: false
+            value: "10"
+            label: "10"
+            count: 2
+          - filtered: false
+            value: "5.5"
+            label: "5.5"
+            count: 2
+          - filtered: false
+            value: "6.5"
+            label: "6.5"
+            count: 2
+          - filtered: false
+            value: "7.5"
+            label: "7.5"
+            count: 2
+          - filtered: false
+            value: "8.5"
+            label: "8.5"
+            count: 2
+          - filtered: false
+            value: ONE SIZE
+            label: ONE SIZE
+            count: 8
+        - type: value
+          field: brand
+          filtered: false
+          values:
+          - filtered: false
+            value: Girly Accessories
+            label: Girly Accessories
+            count: 7
+          - filtered: false
+            value: Girly Accessorires
+            label: Girly Accessorires
+            count: 2
+          - filtered: false
+            value: Qupid
+            label: Qupid
+            count: 2
+        - type: value
+          field: on_sale
+          filtered: false
+          values:
+          - filtered: false
+            value: "No"
+            label: "No"
+            count: 7
+          - filtered: false
+            value: "Yes"
+            label: "Yes"
+            count: 4
+        - type: value
+          field: material
+          filtered: false
+          values:
+          - filtered: false
+            value: Polyester
+            label: Polyester
+            count: 3
+          - filtered: false
+            value: Cotton
+            label: Cotton
+            count: 1
+        merchandising:
+          redirect: ""
+          content: {}
+    search-request-example-1:
+      value:
+        siteId: scmq7n
+        search:
+          query:
+            string: dress
+        pagination:
+          pageSize: 2
+        tracking:
+          loggedInUserId: user@searchspring.com
+    search-request-example-2:
+      value:
+        siteId: scmq7n
+        filters:
+        - field: color_family
+          type: value
+          value: Blue
+          background: false
+        pagination:
+          pageSize: 2
+        tracking:
+          loggedInUserId: user@searchspring.com
+    search-response-example-1:
+      value:
+        search:
+          query: dress
+        pagination:
+          totalResults: 1305
+          page: 1
+          defaultPageSize: 24
+          pageSize: 2
+        results:
+        - id: "175130"
+          mappings:
+            core:
+              uid: "175130"
+              price: 62
+              msrp: 75
+              url: /product/C-MNJ-P3-24230
+              thumbnailImageUrl: https://searchspring-demo-content.s3.amazonaws.com/demo/fashion/product_images_thumb_med/16_12_holiday_2_588_thumb_med.jpg
+              imageUrl: https://searchspring-demo-content.s3.amazonaws.com/demo/fashion/product_images_large/16_12_holiday_2_588_large.jpg
+              name: Addicted To Love Blush Pink Maxi Dress
+              sku: C-MNJ-P3-24230
+              brand: Maniju
+          attributes:
+            intellisuggestData: eJwrTs4tNM9jYEgpSi0uZnDW9fXz0g0w1jUyMTI2YDAEQiMGQ2MDU4b0oswUAAfcCqs
+            intellisuggestSignature: 1565c8fd28958dd49a5a44bc311122e0a481d67503b8601d94504d3559361e55
+            ss_insights_quadrant: Poor Performer
+            gross_margin: "73"
+            ss_product_type: Blush
+            keywords: formal, event, occasion, guest, date, maxi, maxie, maxy, long
+              dress, gown, pretty, elegant, pink, light pink, blush, blush pink
+            color:
+            - Pink
+            multi_colors: "no"
+            description: Some are addicted to illicit substances. Others, to attention.
+              But you, like so many women before you, have a much more intoxicating,
+              and far more difficult addiction to grapple with; you’re addicted to
+              love, and the only cure is being wooed and pursued like the precious
+              prize you are. And like the knights errant, donning their armor as they
+              prepare to win your heart, your armor is your wardrobe, and this dress
+              far more essential than chain mail (without all the chafing). Maxi dress
+              features hidden back zipper, half lined, v-back, belt detail at waist,
+              embroidered bodice. Model is wearing a small. • 93% Polyester 7% Spandex
+              • Hand Wash Cold • Lined • Imported
+            title: Addicted To Love Blush Pink Maxi Dress
+            ss_clicks: "2599"
+            color_family:
+            - Pink
+            sales_rank: "1817"
+            ss_sale_price: "62"
+            ss_category_hierarchy:
+            - All Sale
+            - Gifts for Her
+            - All Sale&gt;Dresses on sale
+            - All Sale&gt;70% off
+            - Valentine's Day&gt;Valentine's Day Dresses
+            - Valentine's Day
+            on_sale: "Yes"
+            collection: Addicted To Love
+            sale_price: "18.6"
+            condition: New
+            product_type:
+            - All Sale &gt; 70% off
+            - Valentine's Day &gt; Valentine's Day Dresses
+            - All Sale &gt; Dresses on sale
+            - All Sale
+            - Gifts for Her
+            size:
+            - Small
+            - Medium
+            - Large
+            material: Polyester
+            days_since_published: "20"
+            size_dress:
+            - Small
+            - Medium
+            - Large
+            quantity_available: "1"
+            popularity: "1817"
+            product_type_unigram: dress
+            id: 39ee37b385cd9254adc75f055b8bb533
+        - id: "180100"
+          mappings:
+            core:
+              uid: "180100"
+              price: 42
+              msrp: 50
+              url: /product/C-LU-I6-515BI
+              thumbnailImageUrl: https://searchspring-demo-content.s3.amazonaws.com/demo/fashion/product_images_thumb_med/2786_copyright_reddressboutique_2017_thumb_med.jpg
+              imageUrl: https://searchspring-demo-content.s3.amazonaws.com/demo/fashion/product_images_large/2786_copyright_reddressboutique_2017_large.jpg
+              name: Bright And Breezy Floral Print Midi Dress
+              sku: C-LU-I6-515BI
+              brand: Lush
+          attributes:
+            intellisuggestData: eJwrTs4tNM9jYEgpSi0uZnDW9QnV9TTTNTU0dfJkMGQwAkJDYwNThvSizBQA_fsKjw
+            intellisuggestSignature: 2470533b5e3a7b3181a6f7428e5a560a505ad52912357b7e63db0dc0a89dbe41
+            ss_insights_quadrant: Under Exposed
+            gross_margin: "26"
+            ss_product_type: Dress
+            keywords: midi, spring, summer, floral, vacation, blue, beige, green,
+              tan, floral print, tropical, palm, printed dress, long dress, knee length
+            multi_colors: "no"
+            pattern: Floral
+            description: Sometimes you want to be Bright And Breezy instead of down
+              in the dumps and there's nothing that will get you there faster than
+              this eye candy of a dress. It's simple yet fun, with that vacation vibe
+              printed all over it. Can't you just feel that tropical heat now? Model
+              is wearing a small. • 100% Rayon • Hand Wash Cold • Lined • Imported
+            title: Bright And Breezy Floral Print Midi Dress
+            sale_price: "25.2"
+            ss_clicks: "4051"
+            condition: New
+            sales_rank: "2612"
+            ss_sale_price: "42"
+            product_type:
+            - Shop By Trend &gt; Fresh Florals
+            - All Dresses &gt; Print Dresses
+            - Shop By Trend &gt; Tropical Prints
+            - All Sale &gt; 40% off
+            - Shop By Trend &gt; Vacation Ready
+            - All Sale &gt; Dresses on sale
+            - Gifts for Her
+            - Gifts for Her &gt; Gifts Under $50
+            size:
+            - Small
+            - Medium
+            - Large
+            days_since_published: "118"
+            season: Spring
+            ss_category_hierarchy:
+            - Shop By Trend
+            - All Dresses
+            - Shop By Trend&gt;Fresh Florals
+            - All Sale
+            - All Dresses&gt;Print Dresses
+            - All Sale&gt;40% off
+            - Gifts for Her
+            - All Sale&gt;Dresses on sale
+            - Shop By Trend&gt;Vacation Ready
+            - Gifts for Her&gt;Gifts Under $50
+            - Shop By Trend&gt;Tropical Prints
+            on_sale: "Yes"
+            size_dress:
+            - Small
+            - Medium
+            - Large
+            quantity_available: "47"
+            popularity: "2612"
+            product_type_unigram: dress
+            id: 8cc0c7a2312de6d13ab7b2a90a8ec53f
+        facets:
+        - type: value
+          field: color_family
+          filtered: false
+          values:
+          - filtered: false
+            value: Blue
+            label: Blue
+            count: 292
+          - filtered: false
+            value: White
+            label: White
+            count: 239
+          - filtered: false
+            value: Pink
+            label: Pink
+            count: 163
+          - filtered: false
+            value: Red
+            label: Red
+            count: 112
+          - filtered: false
+            value: Green
+            label: Green
+            count: 104
+          - filtered: false
+            value: Black
+            label: Black
+            count: 83
+          - filtered: false
+            value: Gray
+            label: Gray
+            count: 59
+          - filtered: false
+            value: Beige
+            label: Beige
+            count: 51
+          - filtered: false
+            value: Orange
+            label: Orange
+            count: 44
+          - filtered: false
+            value: Purple
+            label: Purple
+            count: 33
+          - filtered: false
+            value: Yellow
+            label: Yellow
+            count: 30
+          - filtered: false
+            value: Brown
+            label: Brown
+            count: 11
+          - filtered: false
+            value: Grey
+            label: Grey
+            count: 2
+        - type: value
+          field: ss_category_hierarchy
+          filtered: false
+          values:
+          - filtered: false
+            value: Gifts for Her
+            label: Gifts for Her
+            count: 1305
+          - filtered: false
+            value: Shop By Trend
+            label: Shop By Trend
+            count: 404
+          - filtered: false
+            value: All Dresses
+            label: All Dresses
+            count: 400
+          - filtered: false
+            value: Brands We Love
+            label: Brands We Love
+            count: 165
+          - filtered: false
+            value: Special Occasion
+            label: Special Occasion
+            count: 116
+          - filtered: false
+            value: Trending
+            label: Trending
+            count: 80
+          - filtered: false
+            value: All Sale
+            label: All Sale
+            count: 57
+          - filtered: false
+            value: Memorial Day Sale
+            label: Memorial Day Sale
+            count: 40
+          - filtered: false
+            value: Playsuits
+            label: Playsuits
+            count: 37
+          - filtered: false
+            value: What's New
+            label: What's New
+            count: 34
+          - filtered: false
+            value: Style Influencer
+            label: Style Influencer
+            count: 33
+          - filtered: false
+            value: All Tops
+            label: All Tops
+            count: 26
+          - filtered: false
+            value: Valentine's Day
+            label: Valentine's Day
+            count: 24
+          - filtered: false
+            value: Athleisure
+            label: Athleisure
+            count: 14
+          - filtered: false
+            value: Swimwear
+            label: Swimwear
+            count: 12
+          - filtered: false
+            value: Going Fast
+            label: Going Fast
+            count: 8
+          - filtered: false
+            value: White & Blue Looks
+            label: White & Blue Looks
+            count: 7
+          - filtered: false
+            value: Notify of Restock
+            label: Notify of Restock
+            count: 5
+          - filtered: false
+            value: All Bottoms
+            label: All Bottoms
+            count: 4
+          - filtered: false
+            value: All Intimates
+            label: All Intimates
+            count: 3
+          - filtered: false
+            value: Back in Stock
+            label: Back in Stock
+            count: 2
+          - filtered: false
+            value: Shop By Outfit
+            label: Shop By Outfit
+            count: 2
+          - filtered: false
+            value: All Shoes
+            label: All Shoes
+            count: 1
+          - filtered: false
+            value: Top Rated
+            label: Top Rated
+            count: 1
+        - type: range-buckets
+          field: price
+          filtered: false
+          values:
+          - filtered: false
+            high: 20
+            label: up to $20
+            count: 5
+          - filtered: false
+            low: 20
+            high: 30
+            label: $20 to $30
+            count: 40
+          - filtered: false
+            low: 30
+            high: 40
+            label: $30 to $40
+            count: 482
+          - filtered: false
+            low: 40
+            high: 50
+            label: $40 to $50
+            count: 588
+          - filtered: false
+            low: 50
+            high: 75
+            label: $50 to $75
+            count: 203
+          - filtered: false
+            low: 75
+            high: 100
+            label: $75 to $100
+            count: 11
+          - filtered: false
+            low: 100
+            high: 150
+            label: $100 to $150
+            count: 5
+        - type: value
+          field: size
+          filtered: false
+          values:
+          - filtered: false
+            value: "2"
+            label: "2"
+            count: 1
+          - filtered: false
+            value: "4"
+            label: "4"
+            count: 1
+          - filtered: false
+            value: "6"
+            label: "6"
+            count: 2
+          - filtered: false
+            value: "7"
+            label: "7"
+            count: 1
+          - filtered: false
+            value: "8"
+            label: "8"
+            count: 2
+          - filtered: false
+            value: "9"
+            label: "9"
+            count: 1
+          - filtered: false
+            value: "10"
+            label: "10"
+            count: 1
+          - filtered: false
+            value: X-Small
+            label: X-Small
+            count: 38
+          - filtered: false
+            value: Small
+            label: Small
+            count: 1301
+          - filtered: false
+            value: Medium
+            label: Medium
+            count: 1301
+          - filtered: false
+            value: Large
+            label: Large
+            count: 1301
+          - filtered: false
+            value: X-Large
+            label: X-Large
+            count: 12
+          - filtered: false
+            value: 1X
+            label: 1X
+            count: 4
+          - filtered: false
+            value: 2X
+            label: 2X
+            count: 4
+          - filtered: false
+            value: 3X
+            label: 3X
+            count: 4
+          - filtered: false
+            value: "5.5"
+            label: "5.5"
+            count: 1
+          - filtered: false
+            value: "6.5"
+            label: "6.5"
+            count: 1
+          - filtered: false
+            value: "7.5"
+            label: "7.5"
+            count: 1
+          - filtered: false
+            value: "8.5"
+            label: "8.5"
+            count: 1
+          - filtered: false
+            value: ONE SIZE
+            label: ONE SIZE
+            count: 2
+        - type: value
+          field: on_sale
+          filtered: false
+          values:
+          - filtered: false
+            value: "No"
+            label: "No"
+            count: 871
+          - filtered: false
+            value: "Yes"
+            label: "Yes"
+            count: 434
+        - type: value
+          field: brand
+          filtered: false
+          values:
+          - filtered: false
+            value: 4 Sienna
+            label: 4 Sienna
+            count: 3
+          - filtered: false
+            value: 12 PM by Mon Ami
+            label: 12 PM by Mon Ami
+            count: 10
+          - filtered: false
+            value: 143 Story
+            label: 143 Story
+            count: 1
+          - filtered: false
+            value: Aakaa
+            label: Aakaa
+            count: 24
+          - filtered: false
+            value: Adrienne
+            label: Adrienne
+            count: 44
+          - filtered: false
+            value: After Market
+            label: After Market
+            count: 2
+          - filtered: false
+            value: Anama
+            label: Anama
+            count: 5
+          - filtered: false
+            value: ANM
+            label: ANM
+            count: 1
+          - filtered: false
+            value: Ark & Co
+            label: Ark & Co
+            count: 5
+          - filtered: false
+            value: Aryeh
+            label: Aryeh
+            count: 11
+          - filtered: false
+            value: Audrey 3+1
+            label: Audrey 3+1
+            count: 8
+          - filtered: false
+            value: Audry 3+1
+            label: Audry 3+1
+            count: 2
+          - filtered: false
+            value: Aura L'atiste
+            label: Aura L'atiste
+            count: 48
+          - filtered: false
+            value: Ayepeach
+            label: Ayepeach
+            count: 7
+          - filtered: false
+            value: B. Sharp
+            label: B. Sharp
+            count: 3
+          - filtered: false
+            value: Banana
+            label: Banana
+            count: 1
+          - filtered: false
+            value: BB Dakota
+            label: BB Dakota
+            count: 5
+          - filtered: false
+            value: BB Daktota
+            label: BB Daktota
+            count: 1
+          - filtered: false
+            value: Beautifully
+            label: Beautifully
+            count: 1
+          - filtered: false
+            value: Blu Pepper
+            label: Blu Pepper
+            count: 5
+          - filtered: false
+            value: Blushing Heart
+            label: Blushing Heart
+            count: 1
+          - filtered: false
+            value: Bo Bel/Hello Miss
+            label: Bo Bel/Hello Miss
+            count: 1
+          - filtered: false
+            value: BSharp
+            label: BSharp
+            count: 1
+          - filtered: false
+            value: Buddy Love
+            label: Buddy Love
+            count: 1
+          - filtered: false
+            value: Cals Collection
+            label: Cals Collection
+            count: 1
+          - filtered: false
+            value: Caramela
+            label: Caramela
+            count: 2
+          - filtered: false
+            value: Catch Me
+            label: Catch Me
+            count: 2
+          - filtered: false
+            value: Ces Femme
+            label: Ces Femme
+            count: 10
+          - filtered: false
+            value: Cezanne
+            label: Cezanne
+            count: 15
+          - filtered: false
+            value: Cherish
+            label: Cherish
+            count: 1
+          - filtered: false
+            value: City Classified
+            label: City Classified
+            count: 1
+          - filtered: false
+            value: Color Thread
+            label: Color Thread
+            count: 5
+          - filtered: false
+            value: Cotton Candy
+            label: Cotton Candy
+            count: 7
+          - filtered: false
+            value: Dance & Marvel
+            label: Dance & Marvel
+            count: 2
+          - filtered: false
+            value: Deco
+            label: Deco
+            count: 3
+          - filtered: false
+            value: Depri
+            label: Depri
+            count: 1
+          - filtered: false
+            value: Do+Be
+            label: Do+Be
+            count: 13
+          - filtered: false
+            value: Dreamers
+            label: Dreamers
+            count: 5
+          - filtered: false
+            value: Dress Forum
+            label: Dress Forum
+            count: 8
+          - filtered: false
+            value: Dresscode
+            label: Dresscode
+            count: 3
+          - filtered: false
+            value: E2 Clothing
+            label: E2 Clothing
+            count: 14
+          - filtered: false
+            value: Easel
+            label: Easel
+            count: 3
+          - filtered: false
+            value: Ellison
+            label: Ellison
+            count: 3
+          - filtered: false
+            value: Emory Park
+            label: Emory Park
+            count: 2
+          - filtered: false
+            value: En Creme
+            label: En Creme
+            count: 13
+          - filtered: false
+            value: English Factory
+            label: English Factory
+            count: 3
+          - filtered: false
+            value: Entro
+            label: Entro
+            count: 59
+          - filtered: false
+            value: Essue
+            label: Essue
+            count: 1
+          - filtered: false
+            value: Ever After
+            label: Ever After
+            count: 26
+          - filtered: false
+            value: Everly
+            label: Everly
+            count: 20
+        - type: value
+          field: size_dress
+          filtered: false
+          values:
+          - filtered: false
+            value: 1X
+            label: 1X
+            count: 4
+          - filtered: false
+            value: 2X
+            label: 2X
+            count: 4
+          - filtered: false
+            value: 3X
+            label: 3X
+            count: 4
+          - filtered: false
+            value: Large
+            label: Large
+            count: 1301
+          - filtered: false
+            value: Medium
+            label: Medium
+            count: 1301
+          - filtered: false
+            value: Small
+            label: Small
+            count: 1301
+          - filtered: false
+            value: X-Large
+            label: X-Large
+            count: 12
+          - filtered: false
+            value: X-Small
+            label: X-Small
+            count: 38
+        - type: value
+          field: material
+          filtered: false
+          values:
+          - filtered: false
+            value: Wool
+            label: Wool
+            count: 1
+          - filtered: false
+            value: Spandex
+            label: Spandex
+            count: 123
+          - filtered: false
+            value: Silk
+            label: Silk
+            count: 7
+          - filtered: false
+            value: Polyester
+            label: Polyester
+            count: 669
+          - filtered: false
+            value: Linen
+            label: Linen
+            count: 14
+          - filtered: false
+            value: Leather
+            label: Leather
+            count: 2
+          - filtered: false
+            value: Denim
+            label: Denim
+            count: 7
+          - filtered: false
+            value: Cotton
+            label: Cotton
+            count: 210
+        - type: value
+          field: dress_length_name
+          filtered: false
+          values:
+          - filtered: false
+            value: Mini
+            label: Mini
+            count: 192
+          - filtered: false
+            value: Micro
+            label: Micro
+            count: 50
+          - filtered: false
+            value: Knee
+            label: Knee
+            count: 40
+          - filtered: false
+            value: Floor
+            label: Floor
+            count: 54
+          - filtered: false
+            value: Calf
+            label: Calf
+            count: 11
+          - filtered: false
+            value: Below Knee
+            label: Below Knee
+            count: 7
+          - filtered: false
+            value: Below knee
+            label: Below knee
+            count: 3
+          - filtered: false
+            value: Ankle
+            label: Ankle
+            count: 29
+          - filtered: false
+            value: Above Knee
+            label: Above Knee
+            count: 109
+          - filtered: false
+            value: Above knee
+            label: Above knee
+            count: 55
+        - type: value
+          field: season
+          filtered: false
+          values:
+          - filtered: false
+            value: Summer
+            label: Summer
+            count: 210
+          - filtered: false
+            value: Spring
+            label: Spring
+            count: 182
+          - filtered: false
+            value: Fall
+            label: Fall
+            count: 81
+          - filtered: false
+            value: Winter
+            label: Winter
+            count: 8
+        - type: value
+          field: pattern
+          filtered: false
+          values:
+          - filtered: false
+            value: Print
+            label: Print
+            count: 177
+          - filtered: false
+            value: Floral
+            label: Floral
+            count: 84
+          - filtered: false
+            value: Stripe
+            label: Stripe
+            count: 54
+          - filtered: false
+            value: Embroidered
+            label: Embroidered
+            count: 42
+          - filtered: false
+            value: Camo
+            label: Camo
+            count: 2
+          - filtered: false
+            value: Dot
+            label: Dot
+            count: 2
+          - filtered: false
+            value: Paisley
+            label: Paisley
+            count: 2
+          - filtered: false
+            value: Plaid
+            label: Plaid
+            count: 2
+        - type: value
+          field: saturation
+          filtered: false
+          values:
+          - filtered: false
+            value: high
+            label: high
+            count: 39
+          - filtered: false
+            value: low
+            label: low
+            count: 56
+          - filtered: false
+            value: med
+            label: med
+            count: 40
+        merchandising:
+          redirect: ""
+          content: {}
+    search-response-example-2:
+      value:
+        search:
+          query: ""
+        pagination:
+          totalResults: 758
+          page: 1
+          defaultPageSize: 24
+          pageSize: 2
+        results:
+        - id: "134892"
+          mappings:
+            core:
+              uid: "134892"
+              price: 18
+              msrp: 25
+              url: /product/J-GS-I3-35603
+              thumbnailImageUrl: https://searchspring-demo-content.s3.amazonaws.com/demo/fashion/product_images_thumb_med/6b9a1749_2_thumb_med.jpg
+              imageUrl: https://searchspring-demo-content.s3.amazonaws.com/demo/fashion/product_images_large/6b9a1749_2_large.jpg
+              name: Add Some Whimsy Headband
+              sku: J-GS-I3-35603
+              brand: Stella
+          attributes:
+            intellisuggestData: eJwrTs4tNM9jYGDw0nUP1vU01jU2NTMwZjAEQiMGc1MLhvSizBQAohoIIA
+            intellisuggestSignature: a13f2db06703dd89ac57bcad143733241f15be20715a7acbdaf1edf11a41edf8
+            ss_insights_quadrant: Under Exposed
+            gross_margin: "32"
+            ss_product_type: Headband
+            keywords: turquoise, head band, head wear, jewelry, accessories, accessory
+            color:
+            - Blue
+            multi_colors: "no"
+            description: Simple and sophisticated and then “Add Some Whimsy” and you’ve
+              got the perfect combination of your winning style. This heavenly headband
+              is just what you need to add that whimsical touch to any outfit. Elastic
+              beaded headband. Circumference measures 20&quot;
+            title: Add Some Whimsy Headband
+            sale_price: "12.6"
+            ss_clicks: "4278"
+            color_family:
+            - Blue
+            condition: New
+            sales_rank: "2499"
+            ss_sale_price: "18"
+            product_type:
+            - All Sale &gt; 30% off
+            - All Sale &gt; Accessories on Sale
+            - All Sale
+            - Gifts for Her
+            - Gifts for Her &gt; Gifts Under $25
+            - Gifts for Her &gt; Gifts Under $50
+            size:
+            - ONE SIZE
+            days_since_published: "160"
+            size_universal: One Size
+            ss_category_hierarchy:
+            - All Sale
+            - Gifts for Her&gt;Gifts Under $25
+            - All Sale&gt;Accessories on Sale
+            - Gifts for Her
+            - Gifts for Her&gt;Gifts Under $50
+            - All Sale&gt;30% off
+            on_sale: "Yes"
+            quantity_available: "3"
+            popularity: "2499"
+            product_type_unigram: headband
+            id: d904225d4fa4bb0177ac82b4611d82f2
+        - id: "177366"
+          mappings:
+            core:
+              uid: "177366"
+              price: 79
+              msrp: 100
+              url: /product/C-BB-I1-16137
+              thumbnailImageUrl: https://searchspring-demo-content.s3.amazonaws.com/demo/fashion/product_images_thumb_med/42_0053_copyright_reddressboutique_2016_thumb_med.jpg
+              imageUrl: https://searchspring-demo-content.s3.amazonaws.com/demo/fashion/product_images_large/42_0053_copyright_reddressboutique_2016_large.jpg
+              name: All In Favor Light Blue Sweater
+              sku: C-BB-I1-16137
+              brand: BB Dakota
+          attributes:
+            intellisuggestData: eJwrTs4tNM9jYGBw1nVy0vU01DU0MzQ2ZzBkMAJCc1MLhvSizBQAnw8IAw
+            intellisuggestSignature: eb7d02a83661c602693cb712b00133618da3f05da71780038d5b04fb44265a2e
+            ss_insights_quadrant: Under Exposed
+            gross_margin: "26"
+            ss_product_type: Sweater
+            keywords: bb dakota, bb sweater, jack by bb dakota, blue, blue bb dakota
+              sweater, long sweater, oversized sweater, cable knit sweater, cable
+              knit, v neck, v-neck top, fall, winter
+            color:
+            - Blue
+            multi_colors: "no"
+            description: What would life be like if there were an audience helping
+              you get dressed every single morning? You could hold up an outfit and
+              the viewers could vote yes or no depending on whether or not they liked
+              it. Creepy or cool? However you view the idea, we're sure that they'd
+              vote 'All In Favor' for this gorgeous red sweater! It's a sure fire
+              winner! Model is wearing an x-small. • 100% Polyester • Hand Wash Cold
+              • Unlined • Imported
+            title: All In Favor Light Blue Sweater
+            ss_clicks: "1581"
+            color_family:
+            - Blue
+            sales_rank: "4050"
+            ss_sale_price: "79"
+            season: Fall
+            ss_category_hierarchy:
+            - All Sale
+            - All Sale&gt;Tops on Sale
+            - Gifts for Her
+            - All Sale&gt;50% off
+            - Brands We Love
+            - Brands We Love&gt;BB Dakota
+            on_sale: "Yes"
+            collection: All In Favor
+            sale_price: "30.5"
+            condition: New
+            product_type:
+            - All Sale &gt; 50% off
+            - Brands We Love &gt; BB Dakota
+            - All Sale &gt; Tops on Sale
+            - All Sale
+            - Gifts for Her
+            size:
+            - X-Small
+            - Small
+            - Medium
+            - Large
+            material: Polyester
+            days_since_published: "96"
+            size_dress:
+            - X-Small
+            - Small
+            - Medium
+            - Large
+            quantity_available: "5"
+            popularity: "4050"
+            product_type_unigram: sweater
+            id: 54099e107c7c4dc35f5649fb54f9c046
+        facets:
+        - type: value
+          field: color_family
+          filtered: true
+          values:
+          - filtered: true
+            value: Blue
+            label: Blue
+            count: 758
+          - filtered: false
+            value: White
+            label: White
+            count: 673
+          - filtered: false
+            value: Pink
+            label: Pink
+            count: 532
+          - filtered: false
+            value: Black
+            label: Black
+            count: 369
+          - filtered: false
+            value: Beige
+            label: Beige
+            count: 316
+          - filtered: false
+            value: Gray
+            label: Gray
+            count: 303
+          - filtered: false
+            value: Red
+            label: Red
+            count: 261
+          - filtered: false
+            value: Green
+            label: Green
+            count: 237
+          - filtered: false
+            value: Yellow
+            label: Yellow
+            count: 202
+          - filtered: false
+            value: Brown
+            label: Brown
+            count: 174
+          - filtered: false
+            value: Orange
+            label: Orange
+            count: 99
+          - filtered: false
+            value: Purple
+            label: Purple
+            count: 79
+          - filtered: false
+            value: Grey
+            label: Grey
+            count: 2
+        - type: value
+          field: ss_category_hierarchy
+          filtered: false
+          values:
+          - filtered: false
+            value: Gifts for Her
+            label: Gifts for Her
+            count: 758
+          - filtered: false
+            value: Shop By Trend
+            label: Shop By Trend
+            count: 261
+          - filtered: false
+            value: What's New
+            label: What's New
+            count: 95
+          - filtered: false
+            value: All Dresses
+            label: All Dresses
+            count: 78
+          - filtered: false
+            value: All Tops
+            label: All Tops
+            count: 63
+          - filtered: false
+            value: Brands We Love
+            label: Brands We Love
+            count: 63
+          - filtered: false
+            value: All Bottoms
+            label: All Bottoms
+            count: 60
+          - filtered: false
+            value: All Jewelry
+            label: All Jewelry
+            count: 48
+          - filtered: false
+            value: All Accessories
+            label: All Accessories
+            count: 44
+          - filtered: false
+            value: Playsuits
+            label: Playsuits
+            count: 44
+          - filtered: false
+            value: Notify of Restock
+            label: Notify of Restock
+            count: 35
+          - filtered: false
+            value: Style Influencer
+            label: Style Influencer
+            count: 33
+          - filtered: false
+            value: Swimwear
+            label: Swimwear
+            count: 31
+          - filtered: false
+            value: All Sale
+            label: All Sale
+            count: 29
+          - filtered: false
+            value: Going Fast
+            label: Going Fast
+            count: 23
+          - filtered: false
+            value: Trending
+            label: Trending
+            count: 19
+          - filtered: false
+            value: Special Occasion
+            label: Special Occasion
+            count: 17
+          - filtered: false
+            value: Memorial Day Sale
+            label: Memorial Day Sale
+            count: 15
+          - filtered: false
+            value: Back in Stock
+            label: Back in Stock
+            count: 11
+          - filtered: false
+            value: White & Blue Looks
+            label: White & Blue Looks
+            count: 11
+          - filtered: false
+            value: Athleisure
+            label: Athleisure
+            count: 10
+          - filtered: false
+            value: All Pajamas
+            label: All Pajamas
+            count: 6
+          - filtered: false
+            value: Shop Lookbook
+            label: Shop Lookbook
+            count: 6
+          - filtered: false
+            value: Valentine's Day
+            label: Valentine's Day
+            count: 6
+          - filtered: false
+            value: All Shoes
+            label: All Shoes
+            count: 5
+          - filtered: false
+            value: Home & Office Decor
+            label: Home & Office Decor
+            count: 2
+          - filtered: false
+            value: Top Rated
+            label: Top Rated
+            count: 1
+        - type: range-buckets
+          field: price
+          filtered: false
+          values:
+          - filtered: false
+            high: 20
+            label: up to $20
+            count: 47
+          - filtered: false
+            low: 20
+            high: 30
+            label: $20 to $30
+            count: 92
+          - filtered: false
+            low: 30
+            high: 40
+            label: $30 to $40
+            count: 306
+          - filtered: false
+            low: 40
+            high: 50
+            label: $40 to $50
+            count: 259
+          - filtered: false
+            low: 50
+            high: 75
+            label: $50 to $75
+            count: 73
+          - filtered: false
+            low: 75
+            high: 100
+            label: $75 to $100
+            count: 3
+          - filtered: false
+            low: 100
+            high: 150
+            label: $100 to $150
+            count: 5
+          - filtered: false
+            low: 150
+            high: 200
+            label: $150 to $200
+            count: 2
+        - type: value
+          field: size
+          filtered: false
+          values:
+          - filtered: false
+            value: "1"
+            label: "1"
+            count: 11
+          - filtered: false
+            value: "3"
+            label: "3"
+            count: 11
+          - filtered: false
+            value: "5"
+            label: "5"
+            count: 11
+          - filtered: false
+            value: "6"
+            label: "6"
+            count: 12
+          - filtered: false
+            value: "7"
+            label: "7"
+            count: 25
+          - filtered: false
+            value: "8"
+            label: "8"
+            count: 14
+          - filtered: false
+            value: "9"
+            label: "9"
+            count: 24
+          - filtered: false
+            value: "10"
+            label: "10"
+            count: 13
+          - filtered: false
+            value: "11"
+            label: "11"
+            count: 14
+          - filtered: false
+            value: "13"
+            label: "13"
+            count: 11
+          - filtered: false
+            value: "24"
+            label: "24"
+            count: 29
+          - filtered: false
+            value: "25"
+            label: "25"
+            count: 34
+          - filtered: false
+            value: "26"
+            label: "26"
+            count: 37
+          - filtered: false
+            value: "27"
+            label: "27"
+            count: 37
+          - filtered: false
+            value: "28"
+            label: "28"
+            count: 37
+          - filtered: false
+            value: "29"
+            label: "29"
+            count: 37
+          - filtered: false
+            value: "30"
+            label: "30"
+            count: 37
+          - filtered: false
+            value: "31"
+            label: "31"
+            count: 28
+          - filtered: false
+            value: X-Small
+            label: X-Small
+            count: 44
+          - filtered: false
+            value: Small
+            label: Small
+            count: 595
+          - filtered: false
+            value: Medium
+            label: Medium
+            count: 595
+          - filtered: false
+            value: Large
+            label: Large
+            count: 594
+          - filtered: false
+            value: L/XL
+            label: L/XL
+            count: 1
+          - filtered: false
+            value: X-Large
+            label: X-Large
+            count: 9
+          - filtered: false
+            value: 1X
+            label: 1X
+            count: 1
+          - filtered: false
+            value: 2X
+            label: 2X
+            count: 1
+          - filtered: false
+            value: 3X
+            label: 3X
+            count: 1
+          - filtered: false
+            value: "5.5"
+            label: "5.5"
+            count: 6
+          - filtered: false
+            value: "6.5"
+            label: "6.5"
+            count: 11
+          - filtered: false
+            value: "7.5"
+            label: "7.5"
+            count: 12
+          - filtered: false
+            value: "8.5"
+            label: "8.5"
+            count: 12
+          - filtered: false
+            value: ONE SIZE
+            label: ONE SIZE
+            count: 37
+        - type: value
+          field: on_sale
+          filtered: false
+          values:
+          - filtered: false
+            value: "No"
+            label: "No"
+            count: 513
+          - filtered: false
+            value: "Yes"
+            label: "Yes"
+            count: 245
+        - type: value
+          field: brand
+          filtered: false
+          values:
+          - filtered: false
+            value: 4 Sienna
+            label: 4 Sienna
+            count: 5
+          - filtered: false
+            value: 5th Avenue
+            label: 5th Avenue
+            count: 3
+          - filtered: false
+            value: 12 PM by Mon Ami
+            label: 12 PM by Mon Ami
+            count: 4
+          - filtered: false
+            value: 36point5
+            label: 36point5
+            count: 1
+          - filtered: false
+            value: 143 Story
+            label: 143 Story
+            count: 1
+          - filtered: false
+            value: Aakaa
+            label: Aakaa
+            count: 8
+          - filtered: false
+            value: Activusa
+            label: Activusa
+            count: 1
+          - filtered: false
+            value: Adrienne
+            label: Adrienne
+            count: 33
+          - filtered: false
+            value: After Market
+            label: After Market
+            count: 1
+          - filtered: false
+            value: Amazing Sport
+            label: Amazing Sport
+            count: 1
+          - filtered: false
+            value: American Bazi
+            label: American Bazi
+            count: 2
+          - filtered: false
+            value: Anama
+            label: Anama
+            count: 4
+          - filtered: false
+            value: Anzell
+            label: Anzell
+            count: 4
+          - filtered: false
+            value: Ark & Co
+            label: Ark & Co
+            count: 2
+          - filtered: false
+            value: Aryeh
+            label: Aryeh
+            count: 2
+          - filtered: false
+            value: Audrey 3+1
+            label: Audrey 3+1
+            count: 2
+          - filtered: false
+            value: Aura L'atiste
+            label: Aura L'atiste
+            count: 11
+          - filtered: false
+            value: Bamboo
+            label: Bamboo
+            count: 1
+          - filtered: false
+            value: Banana
+            label: Banana
+            count: 1
+          - filtered: false
+            value: BB Dakota
+            label: BB Dakota
+            count: 1
+          - filtered: false
+            value: Beach Joy
+            label: Beach Joy
+            count: 4
+          - filtered: false
+            value: Blu Pepper
+            label: Blu Pepper
+            count: 5
+          - filtered: false
+            value: Bozzolo
+            label: Bozzolo
+            count: 1
+          - filtered: false
+            value: Breckelle's
+            label: Breckelle's
+            count: 3
+          - filtered: false
+            value: Buddy Love
+            label: Buddy Love
+            count: 1
+          - filtered: false
+            value: Caramela
+            label: Caramela
+            count: 1
+          - filtered: false
+            value: Caribbean Queen
+            label: Caribbean Queen
+            count: 4
+          - filtered: false
+            value: Catch Me
+            label: Catch Me
+            count: 1
+          - filtered: false
+            value: Celebrity
+            label: Celebrity
+            count: 2
+          - filtered: false
+            value: Cello Jeans
+            label: Cello Jeans
+            count: 1
+          - filtered: false
+            value: Ces Femme
+            label: Ces Femme
+            count: 6
+          - filtered: false
+            value: Cezanne
+            label: Cezanne
+            count: 2
+          - filtered: false
+            value: Cherish
+            label: Cherish
+            count: 1
+          - filtered: false
+            value: Ciffy Classified
+            label: Ciffy Classified
+            count: 1
+          - filtered: false
+            value: City Classified
+            label: City Classified
+            count: 1
+          - filtered: false
+            value: Coalition
+            label: Coalition
+            count: 1
+          - filtered: false
+            value: Color Thread
+            label: Color Thread
+            count: 1
+          - filtered: false
+            value: Colorfully Yours
+            label: Colorfully Yours
+            count: 9
+          - filtered: false
+            value: Cotton Candy
+            label: Cotton Candy
+            count: 2
+          - filtered: false
+            value: Creative Group
+            label: Creative Group
+            count: 4
+          - filtered: false
+            value: Dance & Marvel
+            label: Dance & Marvel
+            count: 3
+          - filtered: false
+            value: David & Young
+            label: David & Young
+            count: 1
+          - filtered: false
+            value: Depri
+            label: Depri
+            count: 2
+          - filtered: false
+            value: Dippin' Daisy's
+            label: Dippin' Daisy's
+            count: 1
+          - filtered: false
+            value: Do+Be
+            label: Do+Be
+            count: 4
+          - filtered: false
+            value: Dreamers
+            label: Dreamers
+            count: 3
+          - filtered: false
+            value: Dresscode
+            label: Dresscode
+            count: 1
+          - filtered: false
+            value: E2 Clothing
+            label: E2 Clothing
+            count: 7
+          - filtered: false
+            value: Ellison
+            label: Ellison
+            count: 2
+          - filtered: false
+            value: Emory Park
+            label: Emory Park
+            count: 1
+        - type: value
+          field: size_dress
+          filtered: false
+          values:
+          - filtered: false
+            value: 1X
+            label: 1X
+            count: 1
+          - filtered: false
+            value: 2X
+            label: 2X
+            count: 1
+          - filtered: false
+            value: 3X
+            label: 3X
+            count: 1
+          - filtered: false
+            value: L/XL
+            label: L/XL
+            count: 1
+          - filtered: false
+            value: Large
+            label: Large
+            count: 594
+          - filtered: false
+            value: Medium
+            label: Medium
+            count: 595
+          - filtered: false
+            value: Small
+            label: Small
+            count: 595
+          - filtered: false
+            value: X-Large
+            label: X-Large
+            count: 9
+          - filtered: false
+            value: X-Small
+            label: X-Small
+            count: 44
+        - type: value
+          field: material
+          filtered: false
+          values:
+          - filtered: false
+            value: Wool
+            label: Wool
+            count: 1
+          - filtered: false
+            value: Spandex
+            label: Spandex
+            count: 67
+          - filtered: false
+            value: Silk
+            label: Silk
+            count: 3
+          - filtered: false
+            value: Rubber
+            label: Rubber
+            count: 2
+          - filtered: false
+            value: Polyester
+            label: Polyester
+            count: 240
+          - filtered: false
+            value: Linen
+            label: Linen
+            count: 12
+          - filtered: false
+            value: Leather
+            label: Leather
+            count: 2
+          - filtered: false
+            value: Denim
+            label: Denim
+            count: 50
+          - filtered: false
+            value: Cotton
+            label: Cotton
+            count: 169
+        - type: value
+          field: season
+          filtered: false
+          values:
+          - filtered: false
+            value: Summer
+            label: Summer
+            count: 131
+          - filtered: false
+            value: Spring
+            label: Spring
+            count: 100
+          - filtered: false
+            value: Fall
+            label: Fall
+            count: 32
+          - filtered: false
+            value: Winter
+            label: Winter
+            count: 2
+        - type: value
+          field: pattern
+          filtered: false
+          values:
+          - filtered: false
+            value: Print
+            label: Print
+            count: 109
+          - filtered: false
+            value: Stripe
+            label: Stripe
+            count: 47
+          - filtered: false
+            value: Floral
+            label: Floral
+            count: 27
+          - filtered: false
+            value: Embroidered
+            label: Embroidered
+            count: 22
+          - filtered: false
+            value: Plaid
+            label: Plaid
+            count: 5
+          - filtered: false
+            value: Paisley
+            label: Paisley
+            count: 2
+          - filtered: false
+            value: Dot
+            label: Dot
+            count: 1
+        - type: value
+          field: dress_length_name
+          filtered: false
+          values:
+          - filtered: false
+            value: Mini
+            label: Mini
+            count: 41
+          - filtered: false
+            value: Micro
+            label: Micro
+            count: 8
+          - filtered: false
+            value: Knee
+            label: Knee
+            count: 14
+          - filtered: false
+            value: Floor
+            label: Floor
+            count: 12
+          - filtered: false
+            value: Below Knee
+            label: Below Knee
+            count: 2
+          - filtered: false
+            value: Ankle
+            label: Ankle
+            count: 9
+          - filtered: false
+            value: Above Knee
+            label: Above Knee
+            count: 28
+          - filtered: false
+            value: Above knee
+            label: Above knee
+            count: 13
+        - type: value
+          field: size_pants
+          filtered: false
+          values:
+          - filtered: false
+            value: "1"
+            label: "1"
+            count: 2
+          - filtered: false
+            value: "3"
+            label: "3"
+            count: 2
+          - filtered: false
+            value: "5"
+            label: "5"
+            count: 2
+          - filtered: false
+            value: "7"
+            label: "7"
+            count: 2
+          - filtered: false
+            value: "9"
+            label: "9"
+            count: 2
+          - filtered: false
+            value: "11"
+            label: "11"
+            count: 2
+          - filtered: false
+            value: "13"
+            label: "13"
+            count: 2
+          - filtered: false
+            value: "24"
+            label: "24"
+            count: 29
+          - filtered: false
+            value: "25"
+            label: "25"
+            count: 34
+          - filtered: false
+            value: "26"
+            label: "26"
+            count: 37
+          - filtered: false
+            value: "27"
+            label: "27"
+            count: 37
+          - filtered: false
+            value: "28"
+            label: "28"
+            count: 37
+          - filtered: false
+            value: "29"
+            label: "29"
+            count: 37
+          - filtered: false
+            value: "30"
+            label: "30"
+            count: 37
+          - filtered: false
+            value: "31"
+            label: "31"
+            count: 28
+        - type: value
+          field: saturation
+          filtered: false
+          values:
+          - filtered: false
+            value: high
+            label: high
+            count: 10
+          - filtered: false
+            value: low
+            label: low
+            count: 3
+          - filtered: false
+            value: med
+            label: med
+            count: 10
+        merchandising:
+          redirect: ""
+          content: {}
+    meta-request-example-1:
+      value:
+        siteId: scmq7n
+    meta-response-example-1:
+      value:
+        sortOptions:
+        - field: title
+          label: Name (A - Z)
+          direction: asc
+          type: field
+        - field: sales_rank
+          label: Most Popular
+          direction: desc
+          type: field
+        - field: price
+          label: Price ($$$ - $)
+          direction: desc
+          type: field
+        - field: price
+          label: Price ($ - $S$)
+          direction: asc
+          type: field
+        - field: title
+          label: Name (Z - A)
+          direction: desc
+          type: field
+        facets:
+          color_family:
+            display: palette
+            label: Color
+            multiple: or
+            collapse: true
+          ss_category_hierarchy:
+            display: hierarchy
+            label: Category
+            hierarchyDelimiter: '>'
+            multiple: single
+            collapse: false
+          price:
+            display: list
+            label: Price
+            multiple: single
+            collapse: true
+          size:
+            display: grid
+            label: Size
+            multiple: and
+            collapse: true
+          on_sale:
+            display: list
+            label: On Sale
+            multiple: single
+            collapse: true
+          brand:
+            display: list
+            label: Brand
+            multiple: single
+            collapse: true
+          size_dress:
+            display: grid
+            label: Dress Size
+            multiple: single
+            collapse: true
+          material:
+            display: list
+            label: Material
+            multiple: single
+            collapse: true
+          season:
+            display: list
+            label: Season
+            multiple: single
+            collapse: true
+          pattern:
+            display: list
+            label: Pattern
+            multiple: single
+            collapse: true
+          dress_length_name:
+            display: list
+            label: Dress Length
+            multiple: or
+            collapse: true
+          saturation:
+            display: list
+            label: Color Intensity
+            multiple: single
+            collapse: false
+          size_pants:
+            display: list
+            label: Pant Size
+            multiple: single
+            collapse: true
+  requestBodies:
+    Meta_Request_Parameter_Model:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Meta_Request_Parameter_Model'
+  schemas:
+    AutocompleteRequestModel:
+      allOf:
+      - $ref: '#/components/schemas/AutocompleteRequestModel_allOf'
+      - $ref: '#/components/schemas/SearchRequestModel'
+    AutocompleteResponseModel:
+      allOf:
+      - $ref: '#/components/schemas/AutocompleteResponseModel_allOf'
+      - $ref: '#/components/schemas/SearchResponseModel'
+    SearchRequestModel:
+      example:
+        search:
+          query:
+            string: string
+            spellCorrection: true
+          redirectResponse: full
+          subQuery: subQuery
+        pagination:
+          pageSize: 6
+          page: 0
+        siteId: siteId
+        filters:
+        - field: field
+          background: true
+          type: value
+        - field: field
+          background: true
+          type: value
+        sorts:
+        - field: field
+          direction: asc
+        - field: field
+          direction: asc
+        merchandising:
+          landingPage: landingPage
+          disabled: true
+          segments:
+          - segments
+          - segments
+        tracking:
+          loggedInUserId: loggedInUserId
+        facets:
+          valueLimit: 5
+          include:
+          - include
+          - include
+          limit: 1
+          exclude:
+          - exclude
+          - exclude
+      properties:
+        siteId:
+          pattern: '[a-z0-9]{6}'
+          type: string
+        sorts:
+          items:
+            $ref: '#/components/schemas/SearchRequestModel_sorts'
+          type: array
+        search:
+          $ref: '#/components/schemas/SearchRequestModel_search'
+        filters:
+          items:
+            $ref: '#/components/schemas/SearchRequestModelFilter'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/SearchRequestModel_pagination'
+        facets:
+          $ref: '#/components/schemas/SearchRequestModel_facets'
+        merchandising:
+          $ref: '#/components/schemas/SearchRequestModel_merchandising'
+        tracking:
+          $ref: '#/components/schemas/SearchRequestModel_tracking'
+      title: Search Request Data Model
+      type: object
+    SearchRequestModelFilter:
+      discriminator:
+        mapping:
+          value: '#/components/schemas/SearchRequestModelFilterValue'
+          range: '#/components/schemas/SearchRequestModelFilterRange'
+        propertyName: type
+      example:
+        field: field
+        background: true
+        type: value
+      properties:
+        type:
+          enum:
+          - value
+          - range
+          type: string
+        field:
+          type: string
+        background:
+          type: boolean
+      required:
+      - type
+      type: object
+    SearchRequestModelFilterValue:
+      allOf:
+      - $ref: '#/components/schemas/SearchRequestModelFilter'
+      - $ref: '#/components/schemas/SearchRequestModelFilterValue_allOf'
+    SearchRequestModelFilterRange:
+      allOf:
+      - $ref: '#/components/schemas/SearchRequestModelFilter'
+      - $ref: '#/components/schemas/SearchRequestModelFilterRange_allOf'
+    SearchResponseModel:
+      example:
+        search:
+          didYouMean: didYouMean
+          query: query
+        pagination:
+          totalResults: 0
+          defaultPageSize: 1
+          pageSize: 5
+          page: 6
+        sorting:
+        - field: field
+          direction: asc
+        - field: field
+          direction: asc
+        filters:
+        - field: field
+          label: label
+          type: value
+        - field: field
+          label: label
+          type: value
+        results:
+        - mappings:
+            core:
+              uid: uid
+              thumbnailImageUrl: thumbnailImageUrl
+              price: 5.637376656633329
+              msrp: 2.3021358869347655
+              imageUrl: imageUrl
+              name: name
+              sku: sku
+              brand: brand
+              url: url
+          children:
+          - mappings:
+              core:
+                uid: uid
+                thumbnailImageUrl: thumbnailImageUrl
+                price: 5.637376656633329
+                msrp: 2.3021358869347655
+                imageUrl: imageUrl
+                name: name
+                sku: sku
+                brand: brand
+                url: url
+            attributes:
+              key: '{}'
+          - mappings:
+              core:
+                uid: uid
+                thumbnailImageUrl: thumbnailImageUrl
+                price: 5.637376656633329
+                msrp: 2.3021358869347655
+                imageUrl: imageUrl
+                name: name
+                sku: sku
+                brand: brand
+                url: url
+            attributes:
+              key: '{}'
+          attributes:
+            key: '{}'
+          id: id
+        - mappings:
+            core:
+              uid: uid
+              thumbnailImageUrl: thumbnailImageUrl
+              price: 5.637376656633329
+              msrp: 2.3021358869347655
+              imageUrl: imageUrl
+              name: name
+              sku: sku
+              brand: brand
+              url: url
+          children:
+          - mappings:
+              core:
+                uid: uid
+                thumbnailImageUrl: thumbnailImageUrl
+                price: 5.637376656633329
+                msrp: 2.3021358869347655
+                imageUrl: imageUrl
+                name: name
+                sku: sku
+                brand: brand
+                url: url
+            attributes:
+              key: '{}'
+          - mappings:
+              core:
+                uid: uid
+                thumbnailImageUrl: thumbnailImageUrl
+                price: 5.637376656633329
+                msrp: 2.3021358869347655
+                imageUrl: imageUrl
+                name: name
+                sku: sku
+                brand: brand
+                url: url
+            attributes:
+              key: '{}'
+          attributes:
+            key: '{}'
+          id: id
+        merchandising:
+          redirect: redirect
+          content:
+            footer:
+            - footer
+            - footer
+            left:
+            - left
+            - left
+            header:
+            - header
+            - header
+            banner:
+            - banner
+            - banner
+        facets:
+        - field: field
+          filtered: true
+          type: type
+        - field: field
+          filtered: true
+          type: type
+      properties:
+        search:
+          $ref: '#/components/schemas/SearchResponseModel_search'
+        filters:
+          items:
+            $ref: '#/components/schemas/SearchResponseModelFilter'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/SearchResponseModel_pagination'
+        sorting:
+          items:
+            $ref: '#/components/schemas/SearchResponseModel_sorting'
+          type: array
+        results:
+          items:
+            $ref: '#/components/schemas/SearchResponseModel_results'
+          type: array
+        facets:
+          items:
+            $ref: '#/components/schemas/SearchResponseModelFacet'
+          type: array
+        merchandising:
+          $ref: '#/components/schemas/SearchResponseModel_merchandising'
+      title: Search Response Data Model
+      type: object
+    SearchResponseModelFilter:
+      discriminator:
+        mapping:
+          value: '#/components/schemas/SearchResponseModelFilterValue'
+          range: '#/components/schemas/SearchResponseModelFilterRange'
+        propertyName: type
+      example:
+        field: field
+        label: label
+        type: value
+      properties:
+        type:
+          enum:
+          - value
+          - range
+          type: string
+        field:
+          type: string
+        label:
+          type: string
+      required:
+      - type
+      type: object
+    SearchResponseModelFilterValue:
+      allOf:
+      - $ref: '#/components/schemas/SearchResponseModelFilter'
+      - $ref: '#/components/schemas/SearchRequestModelFilterValue_allOf'
+    SearchResponseModelFilterRange:
+      allOf:
+      - $ref: '#/components/schemas/SearchResponseModelFilter'
+      - $ref: '#/components/schemas/SearchRequestModelFilterRange_allOf'
+    SearchResponseModelResultCoreMappings:
+      description: Mapping of core fields for the result object
+      example:
+        uid: uid
+        thumbnailImageUrl: thumbnailImageUrl
+        price: 5.637376656633329
+        msrp: 2.3021358869347655
+        imageUrl: imageUrl
+        name: name
+        sku: sku
+        brand: brand
+        url: url
+      properties:
+        uid:
+          description: Unique identifier of result
+          type: string
+        price:
+          description: Normal price of result
+          type: number
+        msrp:
+          description: MSRP price of result
+          type: number
+        url:
+          description: URL of result
+          type: string
+        thumbnailImageUrl:
+          description: Smaller thumbnail image URL for result
+          type: string
+        imageUrl:
+          description: Normal thumbnail image URL for result
+          type: string
+        name:
+          description: Name for result
+          type: string
+        sku:
+          description: SKU for result
+          type: string
+        brand:
+          description: Brand of result
+          type: string
+      title: Result Core Field Mappings
+      type: object
+    SearchResponseModelResultAttributes:
+      additionalProperties: true
+      description: Additional fields for results - these are site specific fields
+        which can have various value types
+      title: Result Custom Attributes
+      type: object
+    SearchResponseModelFacet:
+      discriminator:
+        mapping:
+          value: '#/components/schemas/SearchResponseModelFacetValue'
+          range-buckets: '#/components/schemas/SearchResponseModelFacetRangeBuckets'
+          range: '#/components/schemas/SearchResponseModelFacetRange'
+        propertyName: type
+      example:
+        field: field
+        filtered: true
+        type: type
+      properties:
+        type:
+          type: string
+        field:
+          type: string
+        filtered:
+          type: boolean
+      required:
+      - type
+      type: object
+    SearchResponseModelFacetValue:
+      allOf:
+      - $ref: '#/components/schemas/SearchResponseModelFacet'
+      - $ref: '#/components/schemas/SearchResponseModelFacetValue_allOf'
+    SearchResponseModelFacetRangeBuckets:
+      allOf:
+      - $ref: '#/components/schemas/SearchResponseModelFacet'
+      - $ref: '#/components/schemas/SearchResponseModelFacetRangeBuckets_allOf'
+    SearchResponseModelFacetRange:
+      allOf:
+      - $ref: '#/components/schemas/SearchResponseModelFacet'
+      - $ref: '#/components/schemas/SearchResponseModelFacetRange_allOf'
+    MetaResponseModel:
+      example:
+        sortOptions:
+        - field: field
+          label: label
+          type: field
+          direction: asc
+        - field: field
+          label: label
+          type: field
+          direction: asc
+        facets:
+          key:
+            display: display
+      properties:
+        sortOptions:
+          items:
+            $ref: '#/components/schemas/MetaResponseModelSortOption'
+          type: array
+        facets:
+          additionalProperties:
+            $ref: '#/components/schemas/MetaResponseModelFacet'
+          type: object
+      type: object
+    MetaResponseModelSortOption:
+      example:
+        field: field
+        label: label
+        type: field
+        direction: asc
+      properties:
+        type:
+          enum:
+          - field
+          - relevance
+          type: string
+        field:
+          type: string
+        direction:
+          enum:
+          - asc
+          - desc
+          type: string
+        label:
+          type: string
+      type: object
+    MetaResponseModelFacet:
+      discriminator:
+        mapping:
+          list: '#/components/schemas/MetaResponseModelFacetList'
+          grid: '#/components/schemas/MetaResponseModelFacetGrid'
+          palette: '#/components/schemas/MetaResponseModelFacetPalette'
+          slider: '#/components/schemas/MetaResponseModelFacetSlider'
+          hierarchy: '#/components/schemas/MetaResponseModelFacetHierarchy'
+        propertyName: display
+      example:
+        display: display
+      properties:
+        display:
+          type: string
+      type: object
+    MetaResponseModelFacetList:
+      allOf:
+      - $ref: '#/components/schemas/MetaResponseModelFacet'
+      - $ref: '#/components/schemas/MetaResponseModelFacetDefaults'
+      - $ref: '#/components/schemas/MetaResponseModelFacetValue'
+    MetaResponseModelFacetDefaults:
+      properties:
+        label:
+          type: string
+        collapse:
+          type: boolean
+      type: object
+    MetaResponseModelFacetValue:
+      properties:
+        multiple:
+          enum:
+          - single
+          - or
+          - and
+          type: string
+      type: object
+    MetaResponseModelFacetGrid:
+      allOf:
+      - $ref: '#/components/schemas/MetaResponseModelFacet'
+      - $ref: '#/components/schemas/MetaResponseModelFacetDefaults'
+      - $ref: '#/components/schemas/MetaResponseModelFacetValue'
+    MetaResponseModelFacetPalette:
+      allOf:
+      - $ref: '#/components/schemas/MetaResponseModelFacet'
+      - $ref: '#/components/schemas/MetaResponseModelFacetDefaults'
+      - $ref: '#/components/schemas/MetaResponseModelFacetValue'
+    MetaResponseModelFacetSlider:
+      allOf:
+      - $ref: '#/components/schemas/MetaResponseModelFacet'
+      - $ref: '#/components/schemas/MetaResponseModelFacetDefaults'
+      - $ref: '#/components/schemas/MetaResponseModelFacetSlider_allOf'
+    MetaResponseModelFacetHierarchy:
+      allOf:
+      - $ref: '#/components/schemas/MetaResponseModelFacet'
+      - $ref: '#/components/schemas/MetaResponseModelFacetDefaults'
+      - $ref: '#/components/schemas/MetaResponseModelFacetValue'
+      - $ref: '#/components/schemas/MetaResponseModelFacetHierarchy_allOf'
+    Meta_Request_Parameter_Model:
+      properties:
+        siteId:
+          description: siteId of account
+          pattern: '[a-z0-9]{6}'
+          type: string
+      required:
+      - siteId
+      title: Meta Request Parameter Model
+      type: object
+    AutocompleteRequestModel_suggestions:
+      properties:
+        count:
+          type: integer
+      title: AutocompleteRequestModel_suggestions
+      type: object
+    AutocompleteRequestModel_allOf:
+      properties:
+        suggestions:
+          $ref: '#/components/schemas/AutocompleteRequestModel_suggestions'
+      type: object
+    AutocompleteResponseModel_allOf_autocomplete_suggested:
+      properties:
+        text:
+          type: string
+        type:
+          type: string
+        source:
+          type: string
+      type: object
+    AutocompleteResponseModel_allOf_autocomplete_alternatives:
+      properties:
+        text:
+          type: string
+      type: object
+    AutocompleteResponseModel_allOf_autocomplete:
+      properties:
+        query:
+          type: string
+        correctedQuery:
+          type: string
+        suggested:
+          $ref: '#/components/schemas/AutocompleteResponseModel_allOf_autocomplete_suggested'
+        alternatives:
+          items:
+            $ref: '#/components/schemas/AutocompleteResponseModel_allOf_autocomplete_alternatives'
+          type: array
+      type: object
+    AutocompleteResponseModel_allOf:
+      properties:
+        autocomplete:
+          $ref: '#/components/schemas/AutocompleteResponseModel_allOf_autocomplete'
+      type: object
+    SearchRequestModel_sorts:
+      example:
+        field: field
+        direction: asc
+      properties:
+        field:
+          description: Field to sort results by.
+          type: string
+        direction:
+          description: Direction to sort results by field (ascending / descending).
+          enum:
+          - asc
+          - desc
+          type: string
+      type: object
+    SearchRequestModel_search_query:
+      example:
+        string: string
+        spellCorrection: true
+      properties:
+        string:
+          type: string
+        spellCorrection:
+          type: boolean
+      type: object
+    SearchRequestModel_search:
+      example:
+        query:
+          string: string
+          spellCorrection: true
+        redirectResponse: full
+        subQuery: subQuery
+      properties:
+        query:
+          $ref: '#/components/schemas/SearchRequestModel_search_query'
+        subQuery:
+          type: string
+        redirectResponse:
+          description: Changes how Redirects behave in the response.
+          enum:
+          - full
+          - minimal
+          - direct
+          type: string
+      type: object
+    SearchRequestModel_pagination:
+      example:
+        pageSize: 6
+        page: 0
+      properties:
+        page:
+          type: integer
+        pageSize:
+          type: integer
+      type: object
+    SearchRequestModel_facets:
+      example:
+        valueLimit: 5
+        include:
+        - include
+        - include
+        limit: 1
+        exclude:
+        - exclude
+        - exclude
+      properties:
+        limit:
+          type: integer
+        valueLimit:
+          type: integer
+        include:
+          items:
+            type: string
+          type: array
+        exclude:
+          items:
+            type: string
+          type: array
+      type: object
+    SearchRequestModel_merchandising:
+      example:
+        landingPage: landingPage
+        disabled: true
+        segments:
+        - segments
+        - segments
+      properties:
+        disabled:
+          type: boolean
+        segments:
+          items:
+            type: string
+          type: array
+        landingPage:
+          type: string
+      type: object
+    SearchRequestModel_tracking:
+      example:
+        loggedInUserId: loggedInUserId
+      properties:
+        loggedInUserId:
+          type: string
+      type: object
+    SearchRequestModelFilterValue_allOf:
+      properties:
+        value:
+          type: string
+      type: object
+    SearchRequestModelFilterRange_allOf_value:
+      properties:
+        low:
+          type: number
+        high:
+          type: number
+      type: object
+    SearchRequestModelFilterRange_allOf:
+      properties:
+        value:
+          $ref: '#/components/schemas/SearchRequestModelFilterRange_allOf_value'
+      type: object
+    SearchResponseModel_search:
+      example:
+        didYouMean: didYouMean
+        query: query
+      properties:
+        query:
+          type: string
+        didYouMean:
+          description: The suggested query after spelling correction.
+          type: string
+      type: object
+    SearchResponseModel_pagination:
+      example:
+        totalResults: 0
+        defaultPageSize: 1
+        pageSize: 5
+        page: 6
+      properties:
+        totalResults:
+          type: integer
+        page:
+          type: integer
+        defaultPageSize:
+          type: integer
+        pageSize:
+          type: integer
+      type: object
+    SearchResponseModel_sorting:
+      example:
+        field: field
+        direction: asc
+      properties:
+        field:
+          type: string
+        direction:
+          enum:
+          - asc
+          - desc
+          type: string
+      type: object
+    SearchResponseModel_mappings:
+      example:
+        core:
+          uid: uid
+          thumbnailImageUrl: thumbnailImageUrl
+          price: 5.637376656633329
+          msrp: 2.3021358869347655
+          imageUrl: imageUrl
+          name: name
+          sku: sku
+          brand: brand
+          url: url
+      properties:
+        core:
+          $ref: '#/components/schemas/SearchResponseModelResultCoreMappings'
+      type: object
+    SearchResponseModel_children:
+      example:
+        mappings:
+          core:
+            uid: uid
+            thumbnailImageUrl: thumbnailImageUrl
+            price: 5.637376656633329
+            msrp: 2.3021358869347655
+            imageUrl: imageUrl
+            name: name
+            sku: sku
+            brand: brand
+            url: url
+        attributes:
+          key: '{}'
+      properties:
+        mappings:
+          $ref: '#/components/schemas/SearchResponseModel_mappings'
+        attributes:
+          additionalProperties: true
+          description: Additional fields for results - these are site specific fields
+            which can have various value types
+          title: Result Custom Attributes
+          type: object
+      type: object
+    SearchResponseModel_results:
+      example:
+        mappings:
+          core:
+            uid: uid
+            thumbnailImageUrl: thumbnailImageUrl
+            price: 5.637376656633329
+            msrp: 2.3021358869347655
+            imageUrl: imageUrl
+            name: name
+            sku: sku
+            brand: brand
+            url: url
+        children:
+        - mappings:
+            core:
+              uid: uid
+              thumbnailImageUrl: thumbnailImageUrl
+              price: 5.637376656633329
+              msrp: 2.3021358869347655
+              imageUrl: imageUrl
+              name: name
+              sku: sku
+              brand: brand
+              url: url
+          attributes:
+            key: '{}'
+        - mappings:
+            core:
+              uid: uid
+              thumbnailImageUrl: thumbnailImageUrl
+              price: 5.637376656633329
+              msrp: 2.3021358869347655
+              imageUrl: imageUrl
+              name: name
+              sku: sku
+              brand: brand
+              url: url
+          attributes:
+            key: '{}'
+        attributes:
+          key: '{}'
+        id: id
+      properties:
+        id:
+          type: string
+        mappings:
+          $ref: '#/components/schemas/SearchResponseModel_mappings'
+        attributes:
+          additionalProperties: true
+          description: Additional fields for results - these are site specific fields
+            which can have various value types
+          title: Result Custom Attributes
+          type: object
+        children:
+          items:
+            $ref: '#/components/schemas/SearchResponseModel_children'
+          type: array
+      type: object
+    SearchResponseModel_merchandising_content:
+      example:
+        footer:
+        - footer
+        - footer
+        left:
+        - left
+        - left
+        header:
+        - header
+        - header
+        banner:
+        - banner
+        - banner
+      properties:
+        header:
+          items:
+            type: string
+          type: array
+        banner:
+          items:
+            type: string
+          type: array
+        footer:
+          items:
+            type: string
+          type: array
+        left:
+          items:
+            type: string
+          type: array
+      type: object
+    SearchResponseModel_merchandising:
+      example:
+        redirect: redirect
+        content:
+          footer:
+          - footer
+          - footer
+          left:
+          - left
+          - left
+          header:
+          - header
+          - header
+          banner:
+          - banner
+          - banner
+      properties:
+        redirect:
+          type: string
+        content:
+          $ref: '#/components/schemas/SearchResponseModel_merchandising_content'
+      type: object
+    SearchResponseModelFacetValue_allOf_values:
+      properties:
+        filtered:
+          type: boolean
+        value:
+          type: string
+        label:
+          type: string
+        count:
+          type: integer
+      type: object
+    SearchResponseModelFacetValue_allOf:
+      properties:
+        values:
+          items:
+            $ref: '#/components/schemas/SearchResponseModelFacetValue_allOf_values'
+          type: array
+      type: object
+    SearchResponseModelFacetRangeBuckets_allOf_values:
+      properties:
+        filtered:
+          type: boolean
+        low:
+          type: number
+        high:
+          type: number
+        label:
+          type: string
+        count:
+          type: integer
+      type: object
+    SearchResponseModelFacetRangeBuckets_allOf:
+      properties:
+        values:
+          items:
+            $ref: '#/components/schemas/SearchResponseModelFacetRangeBuckets_allOf_values'
+          type: array
+      type: object
+    SearchResponseModelFacetRange_allOf:
+      properties:
+        step:
+          type: number
+        range:
+          $ref: '#/components/schemas/SearchRequestModelFilterRange_allOf_value'
+        active:
+          $ref: '#/components/schemas/SearchRequestModelFilterRange_allOf_value'
+      type: object
+    MetaResponseModelFacetSlider_allOf:
+      properties:
+        formatSeparator:
+          type: string
+        formatValue:
+          type: string
+      type: object
+    MetaResponseModelFacetHierarchy_allOf:
+      properties:
+        hierarchyDelimiter:
+          type: string
+      type: object

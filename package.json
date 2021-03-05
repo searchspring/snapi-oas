@@ -8,5 +8,9 @@
     "type": "git",
     "url": "https://github.com/searchspring/snapi-oas.git"
   },
-  "license": "Unlicense"
+  "license": "MIT",
+  "files": [
+    "index.js",
+    "spec/**/*"
+  ]
 }
