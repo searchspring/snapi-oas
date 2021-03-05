@@ -1,16 +1,16 @@
 {
-  "name": "@searchspring/snapi-oas",
-  "version": "0.1.11",
-  "description": "SNAP OpenAPI Specification",
-  "main": "index.js",
-  "scripts": {},
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/searchspring/snapi-oas.git"
-  },
-  "license": "MIT",
-  "files": [
-    "index.js",
-    "spec/**/*"
-  ]
+	"name": "@searchspring/snapi-oas",
+	"version": "0.1.11",
+	"description": "Snap OpenAPI Specification",
+	"author": "Searchspring",
+	"license": "MIT",
+	"main": "index.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/searchspring/snapi-oas.git"
+	},
+	"files": [
+		"index.js",
+		"spec/**/*"
+	]
 }

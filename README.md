@@ -1,7 +1,10 @@
-# SNAPI OpenAPI Specification v0.1.11
+# Snap API OpenAPI Specification v0.1.11
 
-:warning: WARNING!!! :warning:
-### This API is currently in testing and not yet ready for production usage. ###
+https://searchspring.github.io/snapi-oas/  
 
-Docs and API can be found here:  
-http://snapi.kube.searchspring.io/api/v1/
+:warning: **WARNING!!!** :warning:
+### This API is currently in testing and not yet ready for production usage.
+
+:warning: **WARNING!!!** :warning:
+### This repo is auto generated - do not commit directly. Instead make changes to the generator repo.
+https://github.com/searchspring/snap-generator-openapi
