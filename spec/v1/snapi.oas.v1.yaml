@@ -4,7 +4,7 @@ info:
     name: Searchspring
   description: Searchspring Snap Search API
   title: snAPI
-  version: 0.1.12
+  version: 0.1.13
   x-logo:
     url: ./images/searchspring_logo.svg
     altText: Searchspring Snap
@@ -2930,6 +2930,15 @@ components:
         merchandising:
           redirect: redirect
           content:
+            inline:
+            - config:
+                position:
+                  index: 7.061401241503109
+              value: value
+            - config:
+                position:
+                  index: 7.061401241503109
+              value: value
             footer:
             - footer
             - footer
@@ -2971,7 +2980,7 @@ components:
             $ref: '#/components/schemas/SearchResponseModelFacet'
           type: array
         merchandising:
-          $ref: '#/components/schemas/SearchResponseModel_merchandising'
+          $ref: '#/components/schemas/SearchResponseModelMerchandising'
       title: Search Response Data Model
       type: object
     SearchResponseModelFilter:
@@ -3086,6 +3095,37 @@ components:
       allOf:
       - $ref: '#/components/schemas/SearchResponseModelFacet'
       - $ref: '#/components/schemas/SearchResponseModelFacetRange_allOf'
+    SearchResponseModelMerchandising:
+      example:
+        redirect: redirect
+        content:
+          inline:
+          - config:
+              position:
+                index: 7.061401241503109
+            value: value
+          - config:
+              position:
+                index: 7.061401241503109
+            value: value
+          footer:
+          - footer
+          - footer
+          left:
+          - left
+          - left
+          header:
+          - header
+          - header
+          banner:
+          - banner
+          - banner
+      properties:
+        redirect:
+          type: string
+        content:
+          $ref: '#/components/schemas/SearchResponseModelMerchandising_content'
+      type: object
     MetaResponseModel:
       example:
         sortOptions:
@@ -3510,60 +3550,6 @@ components:
             $ref: '#/components/schemas/SearchResponseModel_children'
           type: array
       type: object
-    SearchResponseModel_merchandising_content:
-      example:
-        footer:
-        - footer
-        - footer
-        left:
-        - left
-        - left
-        header:
-        - header
-        - header
-        banner:
-        - banner
-        - banner
-      properties:
-        header:
-          items:
-            type: string
-          type: array
-        banner:
-          items:
-            type: string
-          type: array
-        footer:
-          items:
-            type: string
-          type: array
-        left:
-          items:
-            type: string
-          type: array
-      type: object
-    SearchResponseModel_merchandising:
-      example:
-        redirect: redirect
-        content:
-          footer:
-          - footer
-          - footer
-          left:
-          - left
-          - left
-          header:
-          - header
-          - header
-          banner:
-          - banner
-          - banner
-      properties:
-        redirect:
-          type: string
-        content:
-          $ref: '#/components/schemas/SearchResponseModel_merchandising_content'
-      type: object
     SearchResponseModelFacetValue_allOf_values:
       properties:
         filtered:
@@ -3610,6 +3596,78 @@ components:
           $ref: '#/components/schemas/SearchRequestModelFilterRange_allOf_value'
         active:
           $ref: '#/components/schemas/SearchRequestModelFilterRange_allOf_value'
+      type: object
+    SearchResponseModelMerchandising_content_config_position:
+      example:
+        index: 7.061401241503109
+      properties:
+        index:
+          type: number
+      type: object
+    SearchResponseModelMerchandising_content_config:
+      example:
+        position:
+          index: 7.061401241503109
+      properties:
+        position:
+          $ref: '#/components/schemas/SearchResponseModelMerchandising_content_config_position'
+      type: object
+    SearchResponseModelMerchandising_content_inline:
+      example:
+        config:
+          position:
+            index: 7.061401241503109
+        value: value
+      properties:
+        config:
+          $ref: '#/components/schemas/SearchResponseModelMerchandising_content_config'
+        value:
+          type: string
+      type: object
+    SearchResponseModelMerchandising_content:
+      example:
+        inline:
+        - config:
+            position:
+              index: 7.061401241503109
+          value: value
+        - config:
+            position:
+              index: 7.061401241503109
+          value: value
+        footer:
+        - footer
+        - footer
+        left:
+        - left
+        - left
+        header:
+        - header
+        - header
+        banner:
+        - banner
+        - banner
+      properties:
+        header:
+          items:
+            type: string
+          type: array
+        banner:
+          items:
+            type: string
+          type: array
+        footer:
+          items:
+            type: string
+          type: array
+        left:
+          items:
+            type: string
+          type: array
+        inline:
+          items:
+            $ref: '#/components/schemas/SearchResponseModelMerchandising_content_inline'
+          type: array
       type: object
     MetaResponseModelFacetSlider_allOf:
       properties:
