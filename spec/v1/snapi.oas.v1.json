@@ -6,7 +6,7 @@
     },
     "description" : "Searchspring Snap Search API",
     "title" : "snAPI",
-    "version" : "0.1.13",
+    "version" : "0.1.14",
     "x-logo" : {
       "url" : "./images/searchspring_logo.svg",
       "altText" : "Searchspring Snap"
