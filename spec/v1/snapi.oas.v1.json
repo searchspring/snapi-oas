@@ -6,14 +6,14 @@
     },
     "description" : "Searchspring Snap Search API",
     "title" : "snAPI",
-    "version" : "0.1.14",
+    "version" : "0.1.15",
     "x-logo" : {
       "url" : "./images/searchspring_logo.svg",
       "altText" : "Searchspring Snap"
     }
   },
   "servers" : [ {
-    "url" : "http://snapi.kube.searchspring.io/api/v1"
+    "url" : "https://snapi.kube.searchspring.io/api/v1"
   } ],
   "tags" : [ {
     "description" : "Retrieve search configuration data. This data to be used in conjunction with search/autocomplete response data.",
