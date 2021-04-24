@@ -3458,7 +3458,7 @@
           "label" : {
             "type" : "string"
           },
-          "collapse" : {
+          "collapsed" : {
             "type" : "boolean"
           }
         },

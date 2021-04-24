@@ -3196,7 +3196,7 @@ components:
       properties:
         label:
           type: string
-        collapse:
+        collapsed:
           type: boolean
       type: object
     MetaResponseModelFacetValue:
