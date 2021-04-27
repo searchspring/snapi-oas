@@ -4,7 +4,7 @@ info:
     name: Searchspring
   description: Searchspring Snap Search API
   title: snAPI
-  version: 0.1.15
+  version: 0.1.16
   x-logo:
     url: ./images/searchspring_logo.svg
     altText: Searchspring Snap
@@ -88,7 +88,7 @@ paths:
       description: Retrieve the meta data for the account.
       operationId: post-meta
       requestBody:
-        $ref: '#/components/requestBodies/Meta_Request_Parameter_Model'
+        $ref: '#/components/requestBodies/Meta_Request_Model'
         content:
           application/json:
             examples:
@@ -102,7 +102,7 @@ paths:
                   type: string
               required:
               - siteId
-              title: Meta Request Parameter Model
+              title: Meta Request Model
               type: object
         description: Required siteId of account
       responses:
@@ -2710,11 +2710,11 @@ components:
             multiple: single
             collapse: true
   requestBodies:
-    Meta_Request_Parameter_Model:
+    Meta_Request_Model:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Meta_Request_Parameter_Model'
+            $ref: '#/components/schemas/Meta_Request_Model'
   schemas:
     AutocompleteRequestModel:
       allOf:
@@ -3229,7 +3229,7 @@ components:
       - $ref: '#/components/schemas/MetaResponseModelFacetDefaults'
       - $ref: '#/components/schemas/MetaResponseModelFacetValue'
       - $ref: '#/components/schemas/MetaResponseModelFacetHierarchy_allOf'
-    Meta_Request_Parameter_Model:
+    Meta_Request_Model:
       properties:
         siteId:
           description: siteId of account
@@ -3237,7 +3237,7 @@ components:
           type: string
       required:
       - siteId
-      title: Meta Request Parameter Model
+      title: Meta Request Model
       type: object
     AutocompleteRequestModel_suggestions:
       properties:
