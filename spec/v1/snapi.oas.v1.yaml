@@ -4,7 +4,7 @@ info:
     name: Searchspring
   description: Searchspring Snap Search API
   title: snAPI
-  version: 0.1.16
+  version: 0.1.17
   x-logo:
     url: ./images/searchspring_logo.svg
     altText: Searchspring Snap
@@ -2973,7 +2973,7 @@ components:
           type: array
         results:
           items:
-            $ref: '#/components/schemas/SearchResponseModel_results'
+            $ref: '#/components/schemas/SearchResponseModelResult'
           type: array
         facets:
           items:
@@ -3014,6 +3014,66 @@ components:
       allOf:
       - $ref: '#/components/schemas/SearchResponseModelFilter'
       - $ref: '#/components/schemas/SearchRequestModelFilterRange_allOf'
+    SearchResponseModelResult:
+      example:
+        mappings:
+          core:
+            uid: uid
+            thumbnailImageUrl: thumbnailImageUrl
+            price: 5.637376656633329
+            msrp: 2.3021358869347655
+            imageUrl: imageUrl
+            name: name
+            sku: sku
+            brand: brand
+            url: url
+        children:
+        - mappings:
+            core:
+              uid: uid
+              thumbnailImageUrl: thumbnailImageUrl
+              price: 5.637376656633329
+              msrp: 2.3021358869347655
+              imageUrl: imageUrl
+              name: name
+              sku: sku
+              brand: brand
+              url: url
+          attributes:
+            key: '{}'
+        - mappings:
+            core:
+              uid: uid
+              thumbnailImageUrl: thumbnailImageUrl
+              price: 5.637376656633329
+              msrp: 2.3021358869347655
+              imageUrl: imageUrl
+              name: name
+              sku: sku
+              brand: brand
+              url: url
+          attributes:
+            key: '{}'
+        attributes:
+          key: '{}'
+        id: id
+      properties:
+        id:
+          type: string
+        mappings:
+          $ref: '#/components/schemas/SearchResponseModelResult_mappings'
+        attributes:
+          additionalProperties: true
+          description: Additional fields for results - these are site specific fields
+            which can have various value types
+          title: Result Custom Attributes
+          type: object
+        children:
+          items:
+            $ref: '#/components/schemas/SearchResponseModelResult_children'
+          type: array
+      title: Result
+      type: object
     SearchResponseModelResultCoreMappings:
       description: Mapping of core fields for the result object
       example:
@@ -3450,7 +3510,7 @@ components:
           - desc
           type: string
       type: object
-    SearchResponseModel_mappings:
+    SearchResponseModelResult_mappings:
       example:
         core:
           uid: uid
@@ -3466,7 +3526,7 @@ components:
         core:
           $ref: '#/components/schemas/SearchResponseModelResultCoreMappings'
       type: object
-    SearchResponseModel_children:
+    SearchResponseModelResult_children:
       example:
         mappings:
           core:
@@ -3483,72 +3543,13 @@ components:
           key: '{}'
       properties:
         mappings:
-          $ref: '#/components/schemas/SearchResponseModel_mappings'
+          $ref: '#/components/schemas/SearchResponseModelResult_mappings'
         attributes:
           additionalProperties: true
           description: Additional fields for results - these are site specific fields
             which can have various value types
           title: Result Custom Attributes
           type: object
-      type: object
-    SearchResponseModel_results:
-      example:
-        mappings:
-          core:
-            uid: uid
-            thumbnailImageUrl: thumbnailImageUrl
-            price: 5.637376656633329
-            msrp: 2.3021358869347655
-            imageUrl: imageUrl
-            name: name
-            sku: sku
-            brand: brand
-            url: url
-        children:
-        - mappings:
-            core:
-              uid: uid
-              thumbnailImageUrl: thumbnailImageUrl
-              price: 5.637376656633329
-              msrp: 2.3021358869347655
-              imageUrl: imageUrl
-              name: name
-              sku: sku
-              brand: brand
-              url: url
-          attributes:
-            key: '{}'
-        - mappings:
-            core:
-              uid: uid
-              thumbnailImageUrl: thumbnailImageUrl
-              price: 5.637376656633329
-              msrp: 2.3021358869347655
-              imageUrl: imageUrl
-              name: name
-              sku: sku
-              brand: brand
-              url: url
-          attributes:
-            key: '{}'
-        attributes:
-          key: '{}'
-        id: id
-      properties:
-        id:
-          type: string
-        mappings:
-          $ref: '#/components/schemas/SearchResponseModel_mappings'
-        attributes:
-          additionalProperties: true
-          description: Additional fields for results - these are site specific fields
-            which can have various value types
-          title: Result Custom Attributes
-          type: object
-        children:
-          items:
-            $ref: '#/components/schemas/SearchResponseModel_children'
-          type: array
       type: object
     SearchResponseModelFacetValue_allOf_values:
       properties:

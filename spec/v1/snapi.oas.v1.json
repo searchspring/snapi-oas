@@ -6,7 +6,7 @@
     },
     "description" : "Searchspring Snap Search API",
     "title" : "snAPI",
-    "version" : "0.1.16",
+    "version" : "0.1.17",
     "x-logo" : {
       "url" : "./images/searchspring_logo.svg",
       "altText" : "Searchspring Snap"
@@ -3232,7 +3232,7 @@
           },
           "results" : {
             "items" : {
-              "$ref" : "#/components/schemas/SearchResponseModel_results"
+              "$ref" : "#/components/schemas/SearchResponseModelResult"
             },
             "type" : "array"
           },
@@ -3285,6 +3285,27 @@
         }, {
           "$ref" : "#/components/schemas/SearchRequestModelFilterRange_allOf"
         } ]
+      },
+      "SearchResponseModelResult" : {
+        "properties" : {
+          "id" : {
+            "type" : "string"
+          },
+          "mappings" : {
+            "$ref" : "#/components/schemas/SearchResponseModelResult_mappings"
+          },
+          "attributes" : {
+            "$ref" : "#/components/schemas/SearchResponseModelResultAttributes"
+          },
+          "children" : {
+            "items" : {
+              "$ref" : "#/components/schemas/SearchResponseModelResult_children"
+            },
+            "type" : "array"
+          }
+        },
+        "title" : "Result",
+        "type" : "object"
       },
       "SearchResponseModelResultCoreMappings" : {
         "description" : "Mapping of core fields for the result object",
@@ -3766,7 +3787,7 @@
         },
         "type" : "object"
       },
-      "SearchResponseModel_mappings" : {
+      "SearchResponseModelResult_mappings" : {
         "properties" : {
           "core" : {
             "$ref" : "#/components/schemas/SearchResponseModelResultCoreMappings"
@@ -3774,33 +3795,13 @@
         },
         "type" : "object"
       },
-      "SearchResponseModel_children" : {
+      "SearchResponseModelResult_children" : {
         "properties" : {
           "mappings" : {
-            "$ref" : "#/components/schemas/SearchResponseModel_mappings"
+            "$ref" : "#/components/schemas/SearchResponseModelResult_mappings"
           },
           "attributes" : {
             "$ref" : "#/components/schemas/SearchResponseModelResultAttributes"
-          }
-        },
-        "type" : "object"
-      },
-      "SearchResponseModel_results" : {
-        "properties" : {
-          "id" : {
-            "type" : "string"
-          },
-          "mappings" : {
-            "$ref" : "#/components/schemas/SearchResponseModel_mappings"
-          },
-          "attributes" : {
-            "$ref" : "#/components/schemas/SearchResponseModelResultAttributes"
-          },
-          "children" : {
-            "items" : {
-              "$ref" : "#/components/schemas/SearchResponseModel_children"
-            },
-            "type" : "array"
           }
         },
         "type" : "object"
