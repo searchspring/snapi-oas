@@ -6,7 +6,7 @@
     },
     "description" : "Searchspring Snap Search API",
     "title" : "snAPI",
-    "version" : "0.1.17",
+    "version" : "0.1.18",
     "x-logo" : {
       "url" : "./images/searchspring_logo.svg",
       "altText" : "Searchspring Snap"
@@ -3314,6 +3314,22 @@
             "description" : "Unique identifier of result",
             "type" : "string"
           },
+          "sku" : {
+            "description" : "SKU for result",
+            "type" : "string"
+          },
+          "name" : {
+            "description" : "Name for result",
+            "type" : "string"
+          },
+          "url" : {
+            "description" : "URL of result",
+            "type" : "string"
+          },
+          "addToCartUrl" : {
+            "description" : "Add to cart URL of result",
+            "type" : "string"
+          },
           "price" : {
             "description" : "Normal price of result",
             "type" : "number"
@@ -3322,29 +3338,37 @@
             "description" : "MSRP price of result",
             "type" : "number"
           },
-          "url" : {
-            "description" : "URL of result",
+          "imageUrl" : {
+            "description" : "Normal thumbnail image URL for result",
             "type" : "string"
           },
           "thumbnailImageUrl" : {
             "description" : "Smaller thumbnail image URL for result",
             "type" : "string"
           },
-          "imageUrl" : {
-            "description" : "Normal thumbnail image URL for result",
+          "rating" : {
+            "description" : "Review rating of result",
+            "type" : "number"
+          },
+          "ratingCount" : {
+            "description" : "Number of reviews for result",
             "type" : "string"
           },
-          "name" : {
-            "description" : "Name for result",
+          "description" : {
+            "description" : "Description of result",
             "type" : "string"
           },
-          "sku" : {
-            "description" : "SKU for result",
+          "stockMessage" : {
+            "description" : "Stock Message of result",
             "type" : "string"
           },
           "brand" : {
             "description" : "Brand of result",
             "type" : "string"
+          },
+          "popularity" : {
+            "description" : "Popularity rating of result",
+            "type" : "number"
           }
         },
         "title" : "Result Core Field Mappings",

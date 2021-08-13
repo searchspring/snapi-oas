@@ -4,7 +4,7 @@ info:
     name: Searchspring
   description: Searchspring Snap Search API
   title: snAPI
-  version: 0.1.17
+  version: 0.1.18
   x-logo:
     url: ./images/searchspring_logo.svg
     altText: Searchspring Snap
@@ -2847,40 +2847,58 @@ components:
         results:
         - mappings:
             core:
+              addToCartUrl: addToCartUrl
+              rating: 7.061401241503109
+              description: description
+              ratingCount: ratingCount
+              url: url
+              stockMessage: stockMessage
               uid: uid
               thumbnailImageUrl: thumbnailImageUrl
               price: 5.637376656633329
               msrp: 2.3021358869347655
               imageUrl: imageUrl
+              popularity: 9.301444243932576
               name: name
               sku: sku
               brand: brand
-              url: url
           children:
           - mappings:
               core:
+                addToCartUrl: addToCartUrl
+                rating: 7.061401241503109
+                description: description
+                ratingCount: ratingCount
+                url: url
+                stockMessage: stockMessage
                 uid: uid
                 thumbnailImageUrl: thumbnailImageUrl
                 price: 5.637376656633329
                 msrp: 2.3021358869347655
                 imageUrl: imageUrl
+                popularity: 9.301444243932576
                 name: name
                 sku: sku
                 brand: brand
-                url: url
             attributes:
               key: '{}'
           - mappings:
               core:
+                addToCartUrl: addToCartUrl
+                rating: 7.061401241503109
+                description: description
+                ratingCount: ratingCount
+                url: url
+                stockMessage: stockMessage
                 uid: uid
                 thumbnailImageUrl: thumbnailImageUrl
                 price: 5.637376656633329
                 msrp: 2.3021358869347655
                 imageUrl: imageUrl
+                popularity: 9.301444243932576
                 name: name
                 sku: sku
                 brand: brand
-                url: url
             attributes:
               key: '{}'
           attributes:
@@ -2888,40 +2906,58 @@ components:
           id: id
         - mappings:
             core:
+              addToCartUrl: addToCartUrl
+              rating: 7.061401241503109
+              description: description
+              ratingCount: ratingCount
+              url: url
+              stockMessage: stockMessage
               uid: uid
               thumbnailImageUrl: thumbnailImageUrl
               price: 5.637376656633329
               msrp: 2.3021358869347655
               imageUrl: imageUrl
+              popularity: 9.301444243932576
               name: name
               sku: sku
               brand: brand
-              url: url
           children:
           - mappings:
               core:
+                addToCartUrl: addToCartUrl
+                rating: 7.061401241503109
+                description: description
+                ratingCount: ratingCount
+                url: url
+                stockMessage: stockMessage
                 uid: uid
                 thumbnailImageUrl: thumbnailImageUrl
                 price: 5.637376656633329
                 msrp: 2.3021358869347655
                 imageUrl: imageUrl
+                popularity: 9.301444243932576
                 name: name
                 sku: sku
                 brand: brand
-                url: url
             attributes:
               key: '{}'
           - mappings:
               core:
+                addToCartUrl: addToCartUrl
+                rating: 7.061401241503109
+                description: description
+                ratingCount: ratingCount
+                url: url
+                stockMessage: stockMessage
                 uid: uid
                 thumbnailImageUrl: thumbnailImageUrl
                 price: 5.637376656633329
                 msrp: 2.3021358869347655
                 imageUrl: imageUrl
+                popularity: 9.301444243932576
                 name: name
                 sku: sku
                 brand: brand
-                url: url
             attributes:
               key: '{}'
           attributes:
@@ -2933,11 +2969,11 @@ components:
             inline:
             - config:
                 position:
-                  index: 7.061401241503109
+                  index: 3.616076749251911
               value: value
             - config:
                 position:
-                  index: 7.061401241503109
+                  index: 3.616076749251911
               value: value
             footer:
             - footer
@@ -3018,40 +3054,58 @@ components:
       example:
         mappings:
           core:
+            addToCartUrl: addToCartUrl
+            rating: 7.061401241503109
+            description: description
+            ratingCount: ratingCount
+            url: url
+            stockMessage: stockMessage
             uid: uid
             thumbnailImageUrl: thumbnailImageUrl
             price: 5.637376656633329
             msrp: 2.3021358869347655
             imageUrl: imageUrl
+            popularity: 9.301444243932576
             name: name
             sku: sku
             brand: brand
-            url: url
         children:
         - mappings:
             core:
+              addToCartUrl: addToCartUrl
+              rating: 7.061401241503109
+              description: description
+              ratingCount: ratingCount
+              url: url
+              stockMessage: stockMessage
               uid: uid
               thumbnailImageUrl: thumbnailImageUrl
               price: 5.637376656633329
               msrp: 2.3021358869347655
               imageUrl: imageUrl
+              popularity: 9.301444243932576
               name: name
               sku: sku
               brand: brand
-              url: url
           attributes:
             key: '{}'
         - mappings:
             core:
+              addToCartUrl: addToCartUrl
+              rating: 7.061401241503109
+              description: description
+              ratingCount: ratingCount
+              url: url
+              stockMessage: stockMessage
               uid: uid
               thumbnailImageUrl: thumbnailImageUrl
               price: 5.637376656633329
               msrp: 2.3021358869347655
               imageUrl: imageUrl
+              popularity: 9.301444243932576
               name: name
               sku: sku
               brand: brand
-              url: url
           attributes:
             key: '{}'
         attributes:
@@ -3077,18 +3131,36 @@ components:
     SearchResponseModelResultCoreMappings:
       description: Mapping of core fields for the result object
       example:
+        addToCartUrl: addToCartUrl
+        rating: 7.061401241503109
+        description: description
+        ratingCount: ratingCount
+        url: url
+        stockMessage: stockMessage
         uid: uid
         thumbnailImageUrl: thumbnailImageUrl
         price: 5.637376656633329
         msrp: 2.3021358869347655
         imageUrl: imageUrl
+        popularity: 9.301444243932576
         name: name
         sku: sku
         brand: brand
-        url: url
       properties:
         uid:
           description: Unique identifier of result
+          type: string
+        sku:
+          description: SKU for result
+          type: string
+        name:
+          description: Name for result
+          type: string
+        url:
+          description: URL of result
+          type: string
+        addToCartUrl:
+          description: Add to cart URL of result
           type: string
         price:
           description: Normal price of result
@@ -3096,24 +3168,30 @@ components:
         msrp:
           description: MSRP price of result
           type: number
-        url:
-          description: URL of result
+        imageUrl:
+          description: Normal thumbnail image URL for result
           type: string
         thumbnailImageUrl:
           description: Smaller thumbnail image URL for result
           type: string
-        imageUrl:
-          description: Normal thumbnail image URL for result
+        rating:
+          description: Review rating of result
+          type: number
+        ratingCount:
+          description: Number of reviews for result
           type: string
-        name:
-          description: Name for result
+        description:
+          description: Description of result
           type: string
-        sku:
-          description: SKU for result
+        stockMessage:
+          description: Stock Message of result
           type: string
         brand:
           description: Brand of result
           type: string
+        popularity:
+          description: Popularity rating of result
+          type: number
       title: Result Core Field Mappings
       type: object
     SearchResponseModelResultAttributes:
@@ -3162,11 +3240,11 @@ components:
           inline:
           - config:
               position:
-                index: 7.061401241503109
+                index: 3.616076749251911
             value: value
           - config:
               position:
-                index: 7.061401241503109
+                index: 3.616076749251911
             value: value
           footer:
           - footer
@@ -3513,15 +3591,21 @@ components:
     SearchResponseModelResult_mappings:
       example:
         core:
+          addToCartUrl: addToCartUrl
+          rating: 7.061401241503109
+          description: description
+          ratingCount: ratingCount
+          url: url
+          stockMessage: stockMessage
           uid: uid
           thumbnailImageUrl: thumbnailImageUrl
           price: 5.637376656633329
           msrp: 2.3021358869347655
           imageUrl: imageUrl
+          popularity: 9.301444243932576
           name: name
           sku: sku
           brand: brand
-          url: url
       properties:
         core:
           $ref: '#/components/schemas/SearchResponseModelResultCoreMappings'
@@ -3530,15 +3614,21 @@ components:
       example:
         mappings:
           core:
+            addToCartUrl: addToCartUrl
+            rating: 7.061401241503109
+            description: description
+            ratingCount: ratingCount
+            url: url
+            stockMessage: stockMessage
             uid: uid
             thumbnailImageUrl: thumbnailImageUrl
             price: 5.637376656633329
             msrp: 2.3021358869347655
             imageUrl: imageUrl
+            popularity: 9.301444243932576
             name: name
             sku: sku
             brand: brand
-            url: url
         attributes:
           key: '{}'
       properties:
@@ -3600,7 +3690,7 @@ components:
       type: object
     SearchResponseModelMerchandising_content_config_position:
       example:
-        index: 7.061401241503109
+        index: 3.616076749251911
       properties:
         index:
           type: number
@@ -3608,7 +3698,7 @@ components:
     SearchResponseModelMerchandising_content_config:
       example:
         position:
-          index: 7.061401241503109
+          index: 3.616076749251911
       properties:
         position:
           $ref: '#/components/schemas/SearchResponseModelMerchandising_content_config_position'
@@ -3617,7 +3707,7 @@ components:
       example:
         config:
           position:
-            index: 7.061401241503109
+            index: 3.616076749251911
         value: value
       properties:
         config:
@@ -3630,11 +3720,11 @@ components:
         inline:
         - config:
             position:
-              index: 7.061401241503109
+              index: 3.616076749251911
           value: value
         - config:
             position:
-              index: 7.061401241503109
+              index: 3.616076749251911
           value: value
         footer:
         - footer
