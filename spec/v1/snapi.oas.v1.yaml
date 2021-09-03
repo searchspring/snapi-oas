@@ -4,7 +4,7 @@ info:
     name: Searchspring
   description: Searchspring Snap Search API
   title: snAPI
-  version: 0.1.18
+  version: 0.1.19
   x-logo:
     url: ./images/searchspring_logo.svg
     altText: Searchspring Snap
@@ -2757,6 +2757,7 @@ components:
           - segments
         tracking:
           loggedInUserId: loggedInUserId
+          userId: userId
         facets:
           valueLimit: 5
           include:
@@ -3523,8 +3524,11 @@ components:
     SearchRequestModel_tracking:
       example:
         loggedInUserId: loggedInUserId
+        userId: userId
       properties:
         loggedInUserId:
+          type: string
+        userId:
           type: string
       type: object
     SearchRequestModelFilterValue_allOf:
