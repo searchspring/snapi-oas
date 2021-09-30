@@ -4,7 +4,7 @@ info:
     name: Searchspring
   description: Searchspring Snap Search API
   title: snAPI
-  version: 0.1.19
+  version: 0.1.20
   x-logo:
     url: ./images/searchspring_logo.svg
     altText: Searchspring Snap
@@ -2831,6 +2831,7 @@ components:
         pagination:
           totalResults: 0
           defaultPageSize: 1
+          totalPages: 5
           pageSize: 5
           page: 6
         sorting:
@@ -2849,17 +2850,17 @@ components:
         - mappings:
             core:
               addToCartUrl: addToCartUrl
-              rating: 7.061401241503109
+              rating: 9.301444243932576
               description: description
               ratingCount: ratingCount
               url: url
               stockMessage: stockMessage
               uid: uid
               thumbnailImageUrl: thumbnailImageUrl
-              price: 5.637376656633329
-              msrp: 2.3021358869347655
+              price: 2.3021358869347655
+              msrp: 7.061401241503109
               imageUrl: imageUrl
-              popularity: 9.301444243932576
+              popularity: 3.616076749251911
               name: name
               sku: sku
               brand: brand
@@ -2867,17 +2868,17 @@ components:
           - mappings:
               core:
                 addToCartUrl: addToCartUrl
-                rating: 7.061401241503109
+                rating: 9.301444243932576
                 description: description
                 ratingCount: ratingCount
                 url: url
                 stockMessage: stockMessage
                 uid: uid
                 thumbnailImageUrl: thumbnailImageUrl
-                price: 5.637376656633329
-                msrp: 2.3021358869347655
+                price: 2.3021358869347655
+                msrp: 7.061401241503109
                 imageUrl: imageUrl
-                popularity: 9.301444243932576
+                popularity: 3.616076749251911
                 name: name
                 sku: sku
                 brand: brand
@@ -2886,17 +2887,17 @@ components:
           - mappings:
               core:
                 addToCartUrl: addToCartUrl
-                rating: 7.061401241503109
+                rating: 9.301444243932576
                 description: description
                 ratingCount: ratingCount
                 url: url
                 stockMessage: stockMessage
                 uid: uid
                 thumbnailImageUrl: thumbnailImageUrl
-                price: 5.637376656633329
-                msrp: 2.3021358869347655
+                price: 2.3021358869347655
+                msrp: 7.061401241503109
                 imageUrl: imageUrl
-                popularity: 9.301444243932576
+                popularity: 3.616076749251911
                 name: name
                 sku: sku
                 brand: brand
@@ -2908,17 +2909,17 @@ components:
         - mappings:
             core:
               addToCartUrl: addToCartUrl
-              rating: 7.061401241503109
+              rating: 9.301444243932576
               description: description
               ratingCount: ratingCount
               url: url
               stockMessage: stockMessage
               uid: uid
               thumbnailImageUrl: thumbnailImageUrl
-              price: 5.637376656633329
-              msrp: 2.3021358869347655
+              price: 2.3021358869347655
+              msrp: 7.061401241503109
               imageUrl: imageUrl
-              popularity: 9.301444243932576
+              popularity: 3.616076749251911
               name: name
               sku: sku
               brand: brand
@@ -2926,17 +2927,17 @@ components:
           - mappings:
               core:
                 addToCartUrl: addToCartUrl
-                rating: 7.061401241503109
+                rating: 9.301444243932576
                 description: description
                 ratingCount: ratingCount
                 url: url
                 stockMessage: stockMessage
                 uid: uid
                 thumbnailImageUrl: thumbnailImageUrl
-                price: 5.637376656633329
-                msrp: 2.3021358869347655
+                price: 2.3021358869347655
+                msrp: 7.061401241503109
                 imageUrl: imageUrl
-                popularity: 9.301444243932576
+                popularity: 3.616076749251911
                 name: name
                 sku: sku
                 brand: brand
@@ -2945,17 +2946,17 @@ components:
           - mappings:
               core:
                 addToCartUrl: addToCartUrl
-                rating: 7.061401241503109
+                rating: 9.301444243932576
                 description: description
                 ratingCount: ratingCount
                 url: url
                 stockMessage: stockMessage
                 uid: uid
                 thumbnailImageUrl: thumbnailImageUrl
-                price: 5.637376656633329
-                msrp: 2.3021358869347655
+                price: 2.3021358869347655
+                msrp: 7.061401241503109
                 imageUrl: imageUrl
-                popularity: 9.301444243932576
+                popularity: 3.616076749251911
                 name: name
                 sku: sku
                 brand: brand
@@ -2970,11 +2971,11 @@ components:
             inline:
             - config:
                 position:
-                  index: 3.616076749251911
+                  index: 2.027123023002322
               value: value
             - config:
                 position:
-                  index: 3.616076749251911
+                  index: 2.027123023002322
               value: value
             footer:
             - footer
@@ -3056,17 +3057,17 @@ components:
         mappings:
           core:
             addToCartUrl: addToCartUrl
-            rating: 7.061401241503109
+            rating: 9.301444243932576
             description: description
             ratingCount: ratingCount
             url: url
             stockMessage: stockMessage
             uid: uid
             thumbnailImageUrl: thumbnailImageUrl
-            price: 5.637376656633329
-            msrp: 2.3021358869347655
+            price: 2.3021358869347655
+            msrp: 7.061401241503109
             imageUrl: imageUrl
-            popularity: 9.301444243932576
+            popularity: 3.616076749251911
             name: name
             sku: sku
             brand: brand
@@ -3074,17 +3075,17 @@ components:
         - mappings:
             core:
               addToCartUrl: addToCartUrl
-              rating: 7.061401241503109
+              rating: 9.301444243932576
               description: description
               ratingCount: ratingCount
               url: url
               stockMessage: stockMessage
               uid: uid
               thumbnailImageUrl: thumbnailImageUrl
-              price: 5.637376656633329
-              msrp: 2.3021358869347655
+              price: 2.3021358869347655
+              msrp: 7.061401241503109
               imageUrl: imageUrl
-              popularity: 9.301444243932576
+              popularity: 3.616076749251911
               name: name
               sku: sku
               brand: brand
@@ -3093,17 +3094,17 @@ components:
         - mappings:
             core:
               addToCartUrl: addToCartUrl
-              rating: 7.061401241503109
+              rating: 9.301444243932576
               description: description
               ratingCount: ratingCount
               url: url
               stockMessage: stockMessage
               uid: uid
               thumbnailImageUrl: thumbnailImageUrl
-              price: 5.637376656633329
-              msrp: 2.3021358869347655
+              price: 2.3021358869347655
+              msrp: 7.061401241503109
               imageUrl: imageUrl
-              popularity: 9.301444243932576
+              popularity: 3.616076749251911
               name: name
               sku: sku
               brand: brand
@@ -3133,17 +3134,17 @@ components:
       description: Mapping of core fields for the result object
       example:
         addToCartUrl: addToCartUrl
-        rating: 7.061401241503109
+        rating: 9.301444243932576
         description: description
         ratingCount: ratingCount
         url: url
         stockMessage: stockMessage
         uid: uid
         thumbnailImageUrl: thumbnailImageUrl
-        price: 5.637376656633329
-        msrp: 2.3021358869347655
+        price: 2.3021358869347655
+        msrp: 7.061401241503109
         imageUrl: imageUrl
-        popularity: 9.301444243932576
+        popularity: 3.616076749251911
         name: name
         sku: sku
         brand: brand
@@ -3241,11 +3242,11 @@ components:
           inline:
           - config:
               position:
-                index: 3.616076749251911
+                index: 2.027123023002322
             value: value
           - config:
               position:
-                index: 3.616076749251911
+                index: 2.027123023002322
             value: value
           footer:
           - footer
@@ -3567,6 +3568,7 @@ components:
       example:
         totalResults: 0
         defaultPageSize: 1
+        totalPages: 5
         pageSize: 5
         page: 6
       properties:
@@ -3577,6 +3579,8 @@ components:
         defaultPageSize:
           type: integer
         pageSize:
+          type: integer
+        totalPages:
           type: integer
       type: object
     SearchResponseModel_sorting:
@@ -3596,17 +3600,17 @@ components:
       example:
         core:
           addToCartUrl: addToCartUrl
-          rating: 7.061401241503109
+          rating: 9.301444243932576
           description: description
           ratingCount: ratingCount
           url: url
           stockMessage: stockMessage
           uid: uid
           thumbnailImageUrl: thumbnailImageUrl
-          price: 5.637376656633329
-          msrp: 2.3021358869347655
+          price: 2.3021358869347655
+          msrp: 7.061401241503109
           imageUrl: imageUrl
-          popularity: 9.301444243932576
+          popularity: 3.616076749251911
           name: name
           sku: sku
           brand: brand
@@ -3619,17 +3623,17 @@ components:
         mappings:
           core:
             addToCartUrl: addToCartUrl
-            rating: 7.061401241503109
+            rating: 9.301444243932576
             description: description
             ratingCount: ratingCount
             url: url
             stockMessage: stockMessage
             uid: uid
             thumbnailImageUrl: thumbnailImageUrl
-            price: 5.637376656633329
-            msrp: 2.3021358869347655
+            price: 2.3021358869347655
+            msrp: 7.061401241503109
             imageUrl: imageUrl
-            popularity: 9.301444243932576
+            popularity: 3.616076749251911
             name: name
             sku: sku
             brand: brand
@@ -3694,7 +3698,7 @@ components:
       type: object
     SearchResponseModelMerchandising_content_config_position:
       example:
-        index: 3.616076749251911
+        index: 2.027123023002322
       properties:
         index:
           type: number
@@ -3702,7 +3706,7 @@ components:
     SearchResponseModelMerchandising_content_config:
       example:
         position:
-          index: 3.616076749251911
+          index: 2.027123023002322
       properties:
         position:
           $ref: '#/components/schemas/SearchResponseModelMerchandising_content_config_position'
@@ -3711,7 +3715,7 @@ components:
       example:
         config:
           position:
-            index: 3.616076749251911
+            index: 2.027123023002322
         value: value
       properties:
         config:
@@ -3724,11 +3728,11 @@ components:
         inline:
         - config:
             position:
-              index: 3.616076749251911
+              index: 2.027123023002322
           value: value
         - config:
             position:
-              index: 3.616076749251911
+              index: 2.027123023002322
           value: value
         footer:
         - footer
