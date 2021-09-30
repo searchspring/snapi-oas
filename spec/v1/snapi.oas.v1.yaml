@@ -841,6 +841,7 @@ components:
           page: 1
           defaultPageSize: 24
           pageSize: 2
+          totalPages: 653
         results:
         - id: "175130"
           mappings:
@@ -1676,6 +1677,7 @@ components:
           page: 1
           defaultPageSize: 24
           pageSize: 2
+          totalPages: 379
         results:
         - id: "134892"
           mappings:
