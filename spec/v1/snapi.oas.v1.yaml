@@ -4,7 +4,7 @@ info:
     name: Searchspring
   description: Searchspring Snap Search API
   title: snAPI
-  version: 0.1.20
+  version: 0.1.21
   x-logo:
     url: ./images/searchspring_logo.svg
     altText: Searchspring Snap
@@ -2728,6 +2728,11 @@ components:
       - $ref: '#/components/schemas/SearchResponseModel'
     SearchRequestModel:
       example:
+        personalization:
+          lastViewed: lastViewed
+          shopper: shopper
+          disabled: true
+          cart: cart
         search:
           query:
             string: string
@@ -2758,7 +2763,6 @@ components:
           - segments
           - segments
         tracking:
-          loggedInUserId: loggedInUserId
           userId: userId
         facets:
           valueLimit: 5
@@ -2791,6 +2795,8 @@ components:
           $ref: '#/components/schemas/SearchRequestModel_merchandising'
         tracking:
           $ref: '#/components/schemas/SearchRequestModel_tracking'
+        personalization:
+          $ref: '#/components/schemas/SearchRequestModel_personalization'
       title: Search Request Data Model
       type: object
     SearchRequestModelFilter:
@@ -3526,12 +3532,30 @@ components:
       type: object
     SearchRequestModel_tracking:
       example:
-        loggedInUserId: loggedInUserId
         userId: userId
       properties:
-        loggedInUserId:
-          type: string
         userId:
+          description: shopper identifier
+          type: string
+      type: object
+    SearchRequestModel_personalization:
+      example:
+        lastViewed: lastViewed
+        shopper: shopper
+        disabled: true
+        cart: cart
+      properties:
+        disabled:
+          description: ignore personalized boosts
+          type: boolean
+        cart:
+          description: comma-separated list of the products in cart
+          type: string
+        lastViewed:
+          description: comma-separated list of the last viewed products
+          type: string
+        shopper:
+          description: logged in shopper identifier
           type: string
       type: object
     SearchRequestModelFilterValue_allOf:

@@ -6,7 +6,7 @@
     },
     "description" : "Searchspring Snap Search API",
     "title" : "snAPI",
-    "version" : "0.1.20",
+    "version" : "0.1.21",
     "x-logo" : {
       "url" : "./images/searchspring_logo.svg",
       "altText" : "Searchspring Snap"
@@ -3170,6 +3170,9 @@
           },
           "tracking" : {
             "$ref" : "#/components/schemas/SearchRequestModel_tracking"
+          },
+          "personalization" : {
+            "$ref" : "#/components/schemas/SearchRequestModel_personalization"
           }
         },
         "title" : "Search Request Data Model",
@@ -3735,10 +3738,29 @@
       },
       "SearchRequestModel_tracking" : {
         "properties" : {
-          "loggedInUserId" : {
+          "userId" : {
+            "description" : "shopper identifier",
+            "type" : "string"
+          }
+        },
+        "type" : "object"
+      },
+      "SearchRequestModel_personalization" : {
+        "properties" : {
+          "disabled" : {
+            "description" : "ignore personalized boosts",
+            "type" : "boolean"
+          },
+          "cart" : {
+            "description" : "comma-separated list of the products in cart",
             "type" : "string"
           },
-          "userId" : {
+          "lastViewed" : {
+            "description" : "comma-separated list of the last viewed products",
+            "type" : "string"
+          },
+          "shopper" : {
+            "description" : "logged in shopper identifier",
             "type" : "string"
           }
         },
