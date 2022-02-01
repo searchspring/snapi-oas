@@ -6,7 +6,7 @@
     },
     "description" : "Searchspring Snap Search API",
     "title" : "snAPI",
-    "version" : "0.1.22",
+    "version" : "0.1.23",
     "x-logo" : {
       "url" : "./images/searchspring_logo.svg",
       "altText" : "Searchspring Snap"
@@ -3855,9 +3855,6 @@
       },
       "SearchResponseModelResult_children" : {
         "properties" : {
-          "mappings" : {
-            "$ref" : "#/components/schemas/SearchResponseModelResult_mappings"
-          },
           "attributes" : {
             "$ref" : "#/components/schemas/SearchResponseModelResultAttributes"
           }

@@ -4,7 +4,7 @@ info:
     name: Searchspring
   description: Searchspring Snap Search API
   title: snAPI
-  version: 0.1.22
+  version: 0.1.23
   x-logo:
     url: ./images/searchspring_logo.svg
     altText: Searchspring Snap
@@ -2874,43 +2874,9 @@ components:
               sku: sku
               brand: brand
           children:
-          - mappings:
-              core:
-                addToCartUrl: addToCartUrl
-                rating: 9.301444243932576
-                description: description
-                ratingCount: ratingCount
-                url: url
-                stockMessage: stockMessage
-                uid: uid
-                thumbnailImageUrl: thumbnailImageUrl
-                price: 2.3021358869347655
-                msrp: 7.061401241503109
-                imageUrl: imageUrl
-                popularity: 3.616076749251911
-                name: name
-                sku: sku
-                brand: brand
-            attributes:
+          - attributes:
               key: '{}'
-          - mappings:
-              core:
-                addToCartUrl: addToCartUrl
-                rating: 9.301444243932576
-                description: description
-                ratingCount: ratingCount
-                url: url
-                stockMessage: stockMessage
-                uid: uid
-                thumbnailImageUrl: thumbnailImageUrl
-                price: 2.3021358869347655
-                msrp: 7.061401241503109
-                imageUrl: imageUrl
-                popularity: 3.616076749251911
-                name: name
-                sku: sku
-                brand: brand
-            attributes:
+          - attributes:
               key: '{}'
           attributes:
             key: '{}'
@@ -2933,43 +2899,9 @@ components:
               sku: sku
               brand: brand
           children:
-          - mappings:
-              core:
-                addToCartUrl: addToCartUrl
-                rating: 9.301444243932576
-                description: description
-                ratingCount: ratingCount
-                url: url
-                stockMessage: stockMessage
-                uid: uid
-                thumbnailImageUrl: thumbnailImageUrl
-                price: 2.3021358869347655
-                msrp: 7.061401241503109
-                imageUrl: imageUrl
-                popularity: 3.616076749251911
-                name: name
-                sku: sku
-                brand: brand
-            attributes:
+          - attributes:
               key: '{}'
-          - mappings:
-              core:
-                addToCartUrl: addToCartUrl
-                rating: 9.301444243932576
-                description: description
-                ratingCount: ratingCount
-                url: url
-                stockMessage: stockMessage
-                uid: uid
-                thumbnailImageUrl: thumbnailImageUrl
-                price: 2.3021358869347655
-                msrp: 7.061401241503109
-                imageUrl: imageUrl
-                popularity: 3.616076749251911
-                name: name
-                sku: sku
-                brand: brand
-            attributes:
+          - attributes:
               key: '{}'
           attributes:
             key: '{}'
@@ -3081,43 +3013,9 @@ components:
             sku: sku
             brand: brand
         children:
-        - mappings:
-            core:
-              addToCartUrl: addToCartUrl
-              rating: 9.301444243932576
-              description: description
-              ratingCount: ratingCount
-              url: url
-              stockMessage: stockMessage
-              uid: uid
-              thumbnailImageUrl: thumbnailImageUrl
-              price: 2.3021358869347655
-              msrp: 7.061401241503109
-              imageUrl: imageUrl
-              popularity: 3.616076749251911
-              name: name
-              sku: sku
-              brand: brand
-          attributes:
+        - attributes:
             key: '{}'
-        - mappings:
-            core:
-              addToCartUrl: addToCartUrl
-              rating: 9.301444243932576
-              description: description
-              ratingCount: ratingCount
-              url: url
-              stockMessage: stockMessage
-              uid: uid
-              thumbnailImageUrl: thumbnailImageUrl
-              price: 2.3021358869347655
-              msrp: 7.061401241503109
-              imageUrl: imageUrl
-              popularity: 3.616076749251911
-              name: name
-              sku: sku
-              brand: brand
-          attributes:
+        - attributes:
             key: '{}'
         attributes:
           key: '{}'
@@ -3651,28 +3549,9 @@ components:
       type: object
     SearchResponseModelResult_children:
       example:
-        mappings:
-          core:
-            addToCartUrl: addToCartUrl
-            rating: 9.301444243932576
-            description: description
-            ratingCount: ratingCount
-            url: url
-            stockMessage: stockMessage
-            uid: uid
-            thumbnailImageUrl: thumbnailImageUrl
-            price: 2.3021358869347655
-            msrp: 7.061401241503109
-            imageUrl: imageUrl
-            popularity: 3.616076749251911
-            name: name
-            sku: sku
-            brand: brand
         attributes:
           key: '{}'
       properties:
-        mappings:
-          $ref: '#/components/schemas/SearchResponseModelResult_mappings'
         attributes:
           additionalProperties: true
           description: Additional fields for results - these are site specific fields
