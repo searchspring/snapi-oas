@@ -4,7 +4,7 @@ info:
     name: Searchspring
   description: Searchspring Snap Search API
   title: snAPI
-  version: 0.1.23
+  version: 0.1.24
   x-logo:
     url: ./images/searchspring_logo.svg
     altText: Searchspring Snap
@@ -2766,6 +2766,7 @@ components:
           domain: domain
           userId: userId
         facets:
+          autoDrillDown: true
           valueLimit: 5
           include:
           - include
@@ -3390,6 +3391,7 @@ components:
       type: object
     SearchRequestModel_facets:
       example:
+        autoDrillDown: true
         valueLimit: 5
         include:
         - include
@@ -3399,6 +3401,8 @@ components:
         - exclude
         - exclude
       properties:
+        autoDrillDown:
+          type: boolean
         limit:
           type: integer
         valueLimit:
