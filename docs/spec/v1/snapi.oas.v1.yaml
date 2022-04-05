@@ -4,7 +4,7 @@ info:
     name: Searchspring
   description: Searchspring Snap Search API
   title: snAPI
-  version: 0.1.24
+  version: 0.1.25
   x-logo:
     url: ./images/searchspring_logo.svg
     altText: Searchspring Snap
@@ -2836,6 +2836,7 @@ components:
       example:
         search:
           didYouMean: didYouMean
+          matchType: expanded
           query: query
           originalQuery: originalQuery
         pagination:
@@ -3485,6 +3486,7 @@ components:
     SearchResponseModel_search:
       example:
         didYouMean: didYouMean
+        matchType: expanded
         query: query
         originalQuery: originalQuery
       properties:
@@ -3495,6 +3497,13 @@ components:
           type: string
         originalQuery:
           description: Original query if spell correction occured.
+          type: string
+        matchType:
+          description: Indicates the type of search matching that was required for
+            this search. Will return "expanded" when an Expanded Search is applied
+            after finding zero results for the initial strict search.
+          enum:
+          - expanded
           type: string
       type: object
     SearchResponseModel_pagination:
