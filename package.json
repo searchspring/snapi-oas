@@ -1,6 +1,6 @@
 {
 	"name": "@searchspring/snapi-oas",
-	"version": "0.1.26",
+	"version": "0.1.27",
 	"description": "Snap OpenAPI Specification",
 	"author": "Searchspring",
 	"license": "MIT",
