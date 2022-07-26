@@ -4,7 +4,7 @@ info:
     name: Searchspring
   description: Searchspring Snap Search API
   title: snAPI
-  version: 0.1.27
+  version: 0.1.28
   x-logo:
     url: ./images/searchspring_logo.svg
     altText: Searchspring Snap
@@ -2765,6 +2765,8 @@ components:
           - segments
         tracking:
           domain: domain
+          pageLoadId: pageLoadId
+          sessionId: sessionId
           userId: userId
         facets:
           autoDrillDown: true
@@ -3459,6 +3461,8 @@ components:
     SearchRequestModel_tracking:
       example:
         domain: domain
+        pageLoadId: pageLoadId
+        sessionId: sessionId
         userId: userId
       properties:
         userId:
@@ -3466,6 +3470,12 @@ components:
           type: string
         domain:
           description: current website url
+          type: string
+        sessionId:
+          description: current session id
+          type: string
+        pageLoadId:
+          description: randomly generated page id
           type: string
       type: object
     SearchRequestModel_personalization:

@@ -6,7 +6,7 @@
     },
     "description" : "Searchspring Snap Search API",
     "title" : "snAPI",
-    "version" : "0.1.27",
+    "version" : "0.1.28",
     "x-logo" : {
       "url" : "./images/searchspring_logo.svg",
       "altText" : "Searchspring Snap"
@@ -3756,6 +3756,14 @@
           },
           "domain" : {
             "description" : "current website url",
+            "type" : "string"
+          },
+          "sessionId" : {
+            "description" : "current session id",
+            "type" : "string"
+          },
+          "pageLoadId" : {
+            "description" : "randomly generated page id",
             "type" : "string"
           }
         },
