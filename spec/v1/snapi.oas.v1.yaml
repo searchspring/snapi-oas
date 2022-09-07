@@ -4,7 +4,7 @@ info:
     name: Searchspring
   description: Searchspring Snap Search API
   title: snAPI
-  version: 0.1.28
+  version: 0.1.29
   x-logo:
     url: ./images/searchspring_logo.svg
     altText: Searchspring Snap
@@ -2758,6 +2758,7 @@ components:
           direction: asc
         merchandising:
           intellisuggest: true
+          disableInlineBanners: true
           landingPage: landingPage
           disabled: true
           segments:
@@ -3441,6 +3442,7 @@ components:
     SearchRequestModel_merchandising:
       example:
         intellisuggest: true
+        disableInlineBanners: true
         landingPage: landingPage
         disabled: true
         segments:
@@ -3456,6 +3458,8 @@ components:
         landingPage:
           type: string
         intellisuggest:
+          type: boolean
+        disableInlineBanners:
           type: boolean
       type: object
     SearchRequestModel_tracking:
