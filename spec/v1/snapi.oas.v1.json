@@ -6,7 +6,7 @@
     },
     "description" : "Searchspring Snap Search API",
     "title" : "snAPI",
-    "version" : "0.1.29",
+    "version" : "0.1.30",
     "x-logo" : {
       "url" : "./images/searchspring_logo.svg",
       "altText" : "Searchspring Snap"
@@ -3459,6 +3459,9 @@
               "$ref" : "#/components/schemas/MetaResponseModelFacet"
             },
             "type" : "object"
+          },
+          "pagination" : {
+            "$ref" : "#/components/schemas/MetaResponseModel_pagination"
           }
         },
         "type" : "object"
@@ -3849,9 +3852,6 @@
           "page" : {
             "type" : "integer"
           },
-          "defaultPageSize" : {
-            "type" : "integer"
-          },
           "pageSize" : {
             "type" : "integer"
           },
@@ -4034,6 +4034,14 @@
               "$ref" : "#/components/schemas/SearchResponseModelMerchandising_content_inline"
             },
             "type" : "array"
+          }
+        },
+        "type" : "object"
+      },
+      "MetaResponseModel_pagination" : {
+        "properties" : {
+          "defaultPageSize" : {
+            "type" : "number"
           }
         },
         "type" : "object"
