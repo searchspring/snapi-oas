@@ -4,7 +4,7 @@ info:
     name: Searchspring
   description: Searchspring Snap Search API
   title: snAPI
-  version: 0.1.30
+  version: 0.1.31
   x-logo:
     url: ./images/searchspring_logo.svg
     altText: Searchspring Snap
@@ -2739,6 +2739,7 @@ components:
             spellCorrection: true
           originalQuery: originalQuery
           redirectResponse: full
+          fallbackQuery: fallbackQuery
           subQuery: subQuery
         pagination:
           pageSize: 6
@@ -3388,6 +3389,7 @@ components:
           spellCorrection: true
         originalQuery: originalQuery
         redirectResponse: full
+        fallbackQuery: fallbackQuery
         subQuery: subQuery
       properties:
         query:
@@ -3396,6 +3398,10 @@ components:
           type: string
         originalQuery:
           description: Original query if spell correction occured.
+          type: string
+        fallbackQuery:
+          description: Integrated spell correction parameter is used as a fallback
+            when the query parameter fails to return results.
           type: string
         redirectResponse:
           description: Changes how Redirects behave in the response.
