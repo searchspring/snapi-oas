@@ -4,7 +4,7 @@ info:
     name: Searchspring
   description: Searchspring Snap Search API
   title: snAPI
-  version: 0.1.31
+  version: 0.1.32
   x-logo:
     url: ./images/searchspring_logo.svg
     altText: Searchspring Snap
@@ -2921,6 +2921,7 @@ components:
           - id: id
             title: title
             type: type
+          personalized: true
           content:
             inline:
             - config:
@@ -3165,6 +3166,7 @@ components:
         - id: id
           title: title
           type: type
+        personalized: true
         content:
           inline:
           - config:
@@ -3194,6 +3196,8 @@ components:
           items:
             $ref: '#/components/schemas/SearchResponseModelMerchandising_campaigns'
           type: array
+        personalized:
+          type: boolean
         content:
           $ref: '#/components/schemas/SearchResponseModelMerchandising_content'
       type: object
