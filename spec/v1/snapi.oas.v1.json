@@ -3669,6 +3669,7 @@
       "SearchRequestModel_search_query" : {
         "properties" : {
           "string" : {
+            "description" : "Query value will search the index for terms that match the query. Will support up to 256 characters.",
             "type" : "string"
           },
           "spellCorrection" : {
