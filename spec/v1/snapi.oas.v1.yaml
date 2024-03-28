@@ -4,7 +4,7 @@ info:
     name: Searchspring
   description: Searchspring Snap Search API
   title: snAPI
-  version: 0.1.32
+  version: 0.1.33
   x-logo:
     url: ./images/searchspring_logo.svg
     altText: Searchspring Snap
@@ -2863,6 +2863,9 @@ components:
           type: value
         results:
         - mappings:
+            badges:
+            - '{}'
+            - '{}'
             core:
               addToCartUrl: addToCartUrl
               rating: 7.061401241503109
@@ -2888,6 +2891,9 @@ components:
             key: '{}'
           id: id
         - mappings:
+            badges:
+            - '{}'
+            - '{}'
             core:
               addToCartUrl: addToCartUrl
               rating: 7.061401241503109
@@ -3010,6 +3016,9 @@ components:
     SearchResponseModelResult:
       example:
         mappings:
+          badges:
+          - '{}'
+          - '{}'
           core:
             addToCartUrl: addToCartUrl
             rating: 7.061401241503109
@@ -3117,6 +3126,17 @@ components:
           type: number
       title: Result Core Field Mappings
       type: object
+    SearchResponseModelResultBadges:
+      description: List of matching badges for the result
+      items:
+        properties:
+          tag:
+            type: string
+          value:
+            type: string
+        type: object
+      title: Result Badges Array
+      type: array
     SearchResponseModelResultAttributes:
       additionalProperties: true
       description: Additional fields for results - these are site specific fields
@@ -3203,6 +3223,38 @@ components:
       type: object
     MetaResponseModel:
       example:
+        badges:
+          locations:
+            callouts:
+            - name: name
+              description: description
+              label: label
+            - name: name
+              description: description
+              label: label
+            overlay:
+              left:
+              - name: name
+                description: description
+                label: label
+              - name: name
+                description: description
+                label: label
+              right:
+              - name: name
+                description: description
+                label: label
+              - name: name
+                description: description
+                label: label
+          tags:
+            key:
+              component: component
+              location: location
+              priority: 6.027456183070403
+              parameters:
+                key: '{}'
+              enabled: true
         pagination:
           defaultPageSize: 0.8008281904610115
         sortOptions:
@@ -3228,6 +3280,8 @@ components:
           type: object
         pagination:
           $ref: '#/components/schemas/MetaResponseModel_pagination'
+        badges:
+          $ref: '#/components/schemas/MetaResponseModel_badges'
       type: object
     MetaResponseModelSortOption:
       example:
@@ -3308,6 +3362,42 @@ components:
       - $ref: '#/components/schemas/MetaResponseModelFacetDefaults'
       - $ref: '#/components/schemas/MetaResponseModelFacetValue'
       - $ref: '#/components/schemas/MetaResponseModelFacetHierarchy_allOf'
+    MetaResponseModelBadgeLocation:
+      example:
+        name: name
+        description: description
+        label: label
+      properties:
+        name:
+          type: string
+        label:
+          type: string
+        description:
+          type: string
+      type: object
+    MetaResponseModelBadgeTag:
+      example:
+        component: component
+        location: location
+        priority: 6.027456183070403
+        parameters:
+          key: '{}'
+        enabled: true
+      properties:
+        location:
+          type: string
+        component:
+          type: string
+        priority:
+          type: number
+        enabled:
+          type: boolean
+        parameters:
+          additionalProperties: true
+          description: Additional badge parameters - these are template specific fields
+            which can have various value types
+          type: object
+      type: object
     Meta_Request_Model:
       properties:
         siteId:
@@ -3588,6 +3678,9 @@ components:
       type: object
     SearchResponseModelResult_mappings:
       example:
+        badges:
+        - '{}'
+        - '{}'
         core:
           addToCartUrl: addToCartUrl
           rating: 7.061401241503109
@@ -3607,6 +3700,17 @@ components:
       properties:
         core:
           $ref: '#/components/schemas/SearchResponseModelResultCoreMappings'
+        badges:
+          description: List of matching badges for the result
+          items:
+            properties:
+              tag:
+                type: string
+              value:
+                type: string
+            type: object
+          title: Result Badges Array
+          type: array
       type: object
     SearchResponseModelResult_children:
       example:
@@ -3758,6 +3862,105 @@ components:
       properties:
         defaultPageSize:
           type: number
+      type: object
+    MetaResponseModel_badges_locations_overlay:
+      example:
+        left:
+        - name: name
+          description: description
+          label: label
+        - name: name
+          description: description
+          label: label
+        right:
+        - name: name
+          description: description
+          label: label
+        - name: name
+          description: description
+          label: label
+      properties:
+        left:
+          items:
+            $ref: '#/components/schemas/MetaResponseModelBadgeLocation'
+          type: array
+        right:
+          items:
+            $ref: '#/components/schemas/MetaResponseModelBadgeLocation'
+          type: array
+      type: object
+    MetaResponseModel_badges_locations:
+      example:
+        callouts:
+        - name: name
+          description: description
+          label: label
+        - name: name
+          description: description
+          label: label
+        overlay:
+          left:
+          - name: name
+            description: description
+            label: label
+          - name: name
+            description: description
+            label: label
+          right:
+          - name: name
+            description: description
+            label: label
+          - name: name
+            description: description
+            label: label
+      properties:
+        overlay:
+          $ref: '#/components/schemas/MetaResponseModel_badges_locations_overlay'
+        callouts:
+          items:
+            $ref: '#/components/schemas/MetaResponseModelBadgeLocation'
+          type: array
+      type: object
+    MetaResponseModel_badges:
+      example:
+        locations:
+          callouts:
+          - name: name
+            description: description
+            label: label
+          - name: name
+            description: description
+            label: label
+          overlay:
+            left:
+            - name: name
+              description: description
+              label: label
+            - name: name
+              description: description
+              label: label
+            right:
+            - name: name
+              description: description
+              label: label
+            - name: name
+              description: description
+              label: label
+        tags:
+          key:
+            component: component
+            location: location
+            priority: 6.027456183070403
+            parameters:
+              key: '{}'
+            enabled: true
+      properties:
+        locations:
+          $ref: '#/components/schemas/MetaResponseModel_badges_locations'
+        tags:
+          additionalProperties:
+            $ref: '#/components/schemas/MetaResponseModelBadgeTag'
+          type: object
       type: object
     MetaResponseModelFacetSlider_allOf:
       properties:

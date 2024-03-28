@@ -6,7 +6,7 @@
     },
     "description" : "Searchspring Snap Search API",
     "title" : "snAPI",
-    "version" : "0.1.32",
+    "version" : "0.1.33",
     "x-logo" : {
       "url" : "./images/searchspring_logo.svg",
       "altText" : "Searchspring Snap"
@@ -3379,6 +3379,22 @@
         "title" : "Result Core Field Mappings",
         "type" : "object"
       },
+      "SearchResponseModelResultBadges" : {
+        "description" : "List of matching badges for the result",
+        "items" : {
+          "properties" : {
+            "tag" : {
+              "type" : "string"
+            },
+            "value" : {
+              "type" : "string"
+            }
+          },
+          "type" : "object"
+        },
+        "title" : "Result Badges Array",
+        "type" : "array"
+      },
       "SearchResponseModelResultAttributes" : {
         "additionalProperties" : true,
         "description" : "Additional fields for results - these are site specific fields which can have various value types",
@@ -3465,6 +3481,9 @@
           },
           "pagination" : {
             "$ref" : "#/components/schemas/MetaResponseModel_pagination"
+          },
+          "badges" : {
+            "$ref" : "#/components/schemas/MetaResponseModel_badges"
           }
         },
         "type" : "object"
@@ -3572,6 +3591,42 @@
         }, {
           "$ref" : "#/components/schemas/MetaResponseModelFacetHierarchy_allOf"
         } ]
+      },
+      "MetaResponseModelBadgeLocation" : {
+        "properties" : {
+          "name" : {
+            "type" : "string"
+          },
+          "label" : {
+            "type" : "string"
+          },
+          "description" : {
+            "type" : "string"
+          }
+        },
+        "type" : "object"
+      },
+      "MetaResponseModelBadgeTag" : {
+        "properties" : {
+          "location" : {
+            "type" : "string"
+          },
+          "component" : {
+            "type" : "string"
+          },
+          "priority" : {
+            "type" : "number"
+          },
+          "enabled" : {
+            "type" : "boolean"
+          },
+          "parameters" : {
+            "additionalProperties" : true,
+            "description" : "Additional badge parameters - these are template specific fields which can have various value types",
+            "type" : "object"
+          }
+        },
+        "type" : "object"
       },
       "Meta_Request_Model" : {
         "properties" : {
@@ -3885,6 +3940,9 @@
         "properties" : {
           "core" : {
             "$ref" : "#/components/schemas/SearchResponseModelResultCoreMappings"
+          },
+          "badges" : {
+            "$ref" : "#/components/schemas/SearchResponseModelResultBadges"
           }
         },
         "type" : "object"
@@ -4050,6 +4108,51 @@
         "properties" : {
           "defaultPageSize" : {
             "type" : "number"
+          }
+        },
+        "type" : "object"
+      },
+      "MetaResponseModel_badges_locations_overlay" : {
+        "properties" : {
+          "left" : {
+            "items" : {
+              "$ref" : "#/components/schemas/MetaResponseModelBadgeLocation"
+            },
+            "type" : "array"
+          },
+          "right" : {
+            "items" : {
+              "$ref" : "#/components/schemas/MetaResponseModelBadgeLocation"
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object"
+      },
+      "MetaResponseModel_badges_locations" : {
+        "properties" : {
+          "overlay" : {
+            "$ref" : "#/components/schemas/MetaResponseModel_badges_locations_overlay"
+          },
+          "callouts" : {
+            "items" : {
+              "$ref" : "#/components/schemas/MetaResponseModelBadgeLocation"
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object"
+      },
+      "MetaResponseModel_badges" : {
+        "properties" : {
+          "locations" : {
+            "$ref" : "#/components/schemas/MetaResponseModel_badges_locations"
+          },
+          "tags" : {
+            "additionalProperties" : {
+              "$ref" : "#/components/schemas/MetaResponseModelBadgeTag"
+            },
+            "type" : "object"
           }
         },
         "type" : "object"
