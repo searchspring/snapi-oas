@@ -4,7 +4,7 @@ info:
     name: Searchspring
   description: Searchspring Snap Search API
   title: snAPI
-  version: 0.1.33
+  version: 0.1.34
   x-logo:
     url: ./images/searchspring_logo.svg
     altText: Searchspring Snap
@@ -2864,8 +2864,10 @@ components:
         results:
         - mappings:
             badges:
-            - '{}'
-            - '{}'
+            - tag: tag
+              value: value
+            - tag: tag
+              value: value
             core:
               addToCartUrl: addToCartUrl
               rating: 7.061401241503109
@@ -2892,8 +2894,10 @@ components:
           id: id
         - mappings:
             badges:
-            - '{}'
-            - '{}'
+            - tag: tag
+              value: value
+            - tag: tag
+              value: value
             core:
               addToCartUrl: addToCartUrl
               rating: 7.061401241503109
@@ -3017,8 +3021,10 @@ components:
       example:
         mappings:
           badges:
-          - '{}'
-          - '{}'
+          - tag: tag
+            value: value
+          - tag: tag
+            value: value
           core:
             addToCartUrl: addToCartUrl
             rating: 7.061401241503109
@@ -3126,17 +3132,6 @@ components:
           type: number
       title: Result Core Field Mappings
       type: object
-    SearchResponseModelResultBadges:
-      description: List of matching badges for the result
-      items:
-        properties:
-          tag:
-            type: string
-          value:
-            type: string
-        type: object
-      title: Result Badges Array
-      type: array
     SearchResponseModelResultAttributes:
       additionalProperties: true
       description: Additional fields for results - these are site specific fields
@@ -3374,6 +3369,8 @@ components:
           type: string
         description:
           type: string
+      required:
+      - name
       type: object
     MetaResponseModelBadgeTag:
       example:
@@ -3397,6 +3394,12 @@ components:
           description: Additional badge parameters - these are template specific fields
             which can have various value types
           type: object
+      required:
+      - component
+      - enabled
+      - location
+      - parameters
+      - priority
       type: object
     Meta_Request_Model:
       properties:
@@ -3676,11 +3679,25 @@ components:
           - desc
           type: string
       type: object
+    SearchResponseModelResult_mappings_badges:
+      example:
+        tag: tag
+        value: value
+      properties:
+        tag:
+          type: string
+        value:
+          type: string
+      required:
+      - tag
+      type: object
     SearchResponseModelResult_mappings:
       example:
         badges:
-        - '{}'
-        - '{}'
+        - tag: tag
+          value: value
+        - tag: tag
+          value: value
         core:
           addToCartUrl: addToCartUrl
           rating: 7.061401241503109
@@ -3703,12 +3720,7 @@ components:
         badges:
           description: List of matching badges for the result
           items:
-            properties:
-              tag:
-                type: string
-              value:
-                type: string
-            type: object
+            $ref: '#/components/schemas/SearchResponseModelResult_mappings_badges'
           title: Result Badges Array
           type: array
       type: object
@@ -3888,6 +3900,9 @@ components:
           items:
             $ref: '#/components/schemas/MetaResponseModelBadgeLocation'
           type: array
+      required:
+      - left
+      - right
       type: object
     MetaResponseModel_badges_locations:
       example:
@@ -3920,6 +3935,9 @@ components:
           items:
             $ref: '#/components/schemas/MetaResponseModelBadgeLocation'
           type: array
+      required:
+      - callouts
+      - overlay
       type: object
     MetaResponseModel_badges:
       example:
@@ -3961,6 +3979,9 @@ components:
           additionalProperties:
             $ref: '#/components/schemas/MetaResponseModelBadgeTag'
           type: object
+      required:
+      - locations
+      - tags
       type: object
     MetaResponseModelFacetSlider_allOf:
       properties:

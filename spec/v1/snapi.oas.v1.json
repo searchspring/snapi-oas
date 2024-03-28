@@ -6,7 +6,7 @@
     },
     "description" : "Searchspring Snap Search API",
     "title" : "snAPI",
-    "version" : "0.1.33",
+    "version" : "0.1.34",
     "x-logo" : {
       "url" : "./images/searchspring_logo.svg",
       "altText" : "Searchspring Snap"
@@ -3379,22 +3379,6 @@
         "title" : "Result Core Field Mappings",
         "type" : "object"
       },
-      "SearchResponseModelResultBadges" : {
-        "description" : "List of matching badges for the result",
-        "items" : {
-          "properties" : {
-            "tag" : {
-              "type" : "string"
-            },
-            "value" : {
-              "type" : "string"
-            }
-          },
-          "type" : "object"
-        },
-        "title" : "Result Badges Array",
-        "type" : "array"
-      },
       "SearchResponseModelResultAttributes" : {
         "additionalProperties" : true,
         "description" : "Additional fields for results - these are site specific fields which can have various value types",
@@ -3604,6 +3588,7 @@
             "type" : "string"
           }
         },
+        "required" : [ "name" ],
         "type" : "object"
       },
       "MetaResponseModelBadgeTag" : {
@@ -3626,6 +3611,7 @@
             "type" : "object"
           }
         },
+        "required" : [ "component", "enabled", "location", "parameters", "priority" ],
         "type" : "object"
       },
       "Meta_Request_Model" : {
@@ -3936,13 +3922,30 @@
         },
         "type" : "object"
       },
+      "SearchResponseModelResult_mappings_badges" : {
+        "properties" : {
+          "tag" : {
+            "type" : "string"
+          },
+          "value" : {
+            "type" : "string"
+          }
+        },
+        "required" : [ "tag" ],
+        "type" : "object"
+      },
       "SearchResponseModelResult_mappings" : {
         "properties" : {
           "core" : {
             "$ref" : "#/components/schemas/SearchResponseModelResultCoreMappings"
           },
           "badges" : {
-            "$ref" : "#/components/schemas/SearchResponseModelResultBadges"
+            "description" : "List of matching badges for the result",
+            "items" : {
+              "$ref" : "#/components/schemas/SearchResponseModelResult_mappings_badges"
+            },
+            "title" : "Result Badges Array",
+            "type" : "array"
           }
         },
         "type" : "object"
@@ -4127,6 +4130,7 @@
             "type" : "array"
           }
         },
+        "required" : [ "left", "right" ],
         "type" : "object"
       },
       "MetaResponseModel_badges_locations" : {
@@ -4141,6 +4145,7 @@
             "type" : "array"
           }
         },
+        "required" : [ "callouts", "overlay" ],
         "type" : "object"
       },
       "MetaResponseModel_badges" : {
@@ -4155,6 +4160,7 @@
             "type" : "object"
           }
         },
+        "required" : [ "locations", "tags" ],
         "type" : "object"
       },
       "MetaResponseModelFacetSlider_allOf" : {
