@@ -6,7 +6,7 @@
     },
     "description" : "Searchspring Snap Search API",
     "title" : "snAPI",
-    "version" : "0.1.34",
+    "version" : "0.1.35",
     "x-logo" : {
       "url" : "./images/searchspring_logo.svg",
       "altText" : "Searchspring Snap"
@@ -3578,17 +3578,17 @@
       },
       "MetaResponseModelBadgeLocation" : {
         "properties" : {
-          "name" : {
+          "tag" : {
             "type" : "string"
           },
-          "label" : {
+          "name" : {
             "type" : "string"
           },
           "description" : {
             "type" : "string"
           }
         },
-        "required" : [ "name" ],
+        "required" : [ "name", "tag" ],
         "type" : "object"
       },
       "MetaResponseModelBadgeTag" : {
@@ -4115,37 +4115,28 @@
         },
         "type" : "object"
       },
-      "MetaResponseModel_badges_locations_overlay" : {
-        "properties" : {
-          "left" : {
-            "items" : {
-              "$ref" : "#/components/schemas/MetaResponseModelBadgeLocation"
-            },
-            "type" : "array"
-          },
-          "right" : {
-            "items" : {
-              "$ref" : "#/components/schemas/MetaResponseModelBadgeLocation"
-            },
-            "type" : "array"
-          }
-        },
-        "required" : [ "left", "right" ],
-        "type" : "object"
-      },
       "MetaResponseModel_badges_locations" : {
         "properties" : {
-          "overlay" : {
-            "$ref" : "#/components/schemas/MetaResponseModel_badges_locations_overlay"
+          "overlay/left" : {
+            "items" : {
+              "$ref" : "#/components/schemas/MetaResponseModelBadgeLocation"
+            },
+            "type" : "array"
           },
-          "callouts" : {
+          "overlay/right" : {
+            "items" : {
+              "$ref" : "#/components/schemas/MetaResponseModelBadgeLocation"
+            },
+            "type" : "array"
+          },
+          "callout" : {
             "items" : {
               "$ref" : "#/components/schemas/MetaResponseModelBadgeLocation"
             },
             "type" : "array"
           }
         },
-        "required" : [ "callouts", "overlay" ],
+        "required" : [ "callout", "overlay/left", "overlay/right" ],
         "type" : "object"
       },
       "MetaResponseModel_badges" : {
@@ -4160,7 +4151,7 @@
             "type" : "object"
           }
         },
-        "required" : [ "locations", "tags" ],
+        "required" : [ "locations" ],
         "type" : "object"
       },
       "MetaResponseModelFacetSlider_allOf" : {

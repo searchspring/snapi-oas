@@ -4,7 +4,7 @@ info:
     name: Searchspring
   description: Searchspring Snap Search API
   title: snAPI
-  version: 0.1.34
+  version: 0.1.35
   x-logo:
     url: ./images/searchspring_logo.svg
     altText: Searchspring Snap
@@ -3220,28 +3220,27 @@ components:
       example:
         badges:
           locations:
-            callouts:
+            overlay/right:
             - name: name
               description: description
-              label: label
+              tag: tag
             - name: name
               description: description
-              label: label
-            overlay:
-              left:
-              - name: name
-                description: description
-                label: label
-              - name: name
-                description: description
-                label: label
-              right:
-              - name: name
-                description: description
-                label: label
-              - name: name
-                description: description
-                label: label
+              tag: tag
+            callout:
+            - name: name
+              description: description
+              tag: tag
+            - name: name
+              description: description
+              tag: tag
+            overlay/left:
+            - name: name
+              description: description
+              tag: tag
+            - name: name
+              description: description
+              tag: tag
           tags:
             key:
               component: component
@@ -3361,16 +3360,17 @@ components:
       example:
         name: name
         description: description
-        label: label
+        tag: tag
       properties:
-        name:
+        tag:
           type: string
-        label:
+        name:
           type: string
         description:
           type: string
       required:
       - name
+      - tag
       type: object
     MetaResponseModelBadgeTag:
       example:
@@ -3875,95 +3875,71 @@ components:
         defaultPageSize:
           type: number
       type: object
-    MetaResponseModel_badges_locations_overlay:
-      example:
-        left:
-        - name: name
-          description: description
-          label: label
-        - name: name
-          description: description
-          label: label
-        right:
-        - name: name
-          description: description
-          label: label
-        - name: name
-          description: description
-          label: label
-      properties:
-        left:
-          items:
-            $ref: '#/components/schemas/MetaResponseModelBadgeLocation'
-          type: array
-        right:
-          items:
-            $ref: '#/components/schemas/MetaResponseModelBadgeLocation'
-          type: array
-      required:
-      - left
-      - right
-      type: object
     MetaResponseModel_badges_locations:
       example:
-        callouts:
+        overlay/right:
         - name: name
           description: description
-          label: label
+          tag: tag
         - name: name
           description: description
-          label: label
-        overlay:
-          left:
-          - name: name
-            description: description
-            label: label
-          - name: name
-            description: description
-            label: label
-          right:
-          - name: name
-            description: description
-            label: label
-          - name: name
-            description: description
-            label: label
+          tag: tag
+        callout:
+        - name: name
+          description: description
+          tag: tag
+        - name: name
+          description: description
+          tag: tag
+        overlay/left:
+        - name: name
+          description: description
+          tag: tag
+        - name: name
+          description: description
+          tag: tag
       properties:
-        overlay:
-          $ref: '#/components/schemas/MetaResponseModel_badges_locations_overlay'
-        callouts:
+        overlay/left:
+          items:
+            $ref: '#/components/schemas/MetaResponseModelBadgeLocation'
+          type: array
+        overlay/right:
+          items:
+            $ref: '#/components/schemas/MetaResponseModelBadgeLocation'
+          type: array
+        callout:
           items:
             $ref: '#/components/schemas/MetaResponseModelBadgeLocation'
           type: array
       required:
-      - callouts
-      - overlay
+      - callout
+      - overlay/left
+      - overlay/right
       type: object
     MetaResponseModel_badges:
       example:
         locations:
-          callouts:
+          overlay/right:
           - name: name
             description: description
-            label: label
+            tag: tag
           - name: name
             description: description
-            label: label
-          overlay:
-            left:
-            - name: name
-              description: description
-              label: label
-            - name: name
-              description: description
-              label: label
-            right:
-            - name: name
-              description: description
-              label: label
-            - name: name
-              description: description
-              label: label
+            tag: tag
+          callout:
+          - name: name
+            description: description
+            tag: tag
+          - name: name
+            description: description
+            tag: tag
+          overlay/left:
+          - name: name
+            description: description
+            tag: tag
+          - name: name
+            description: description
+            tag: tag
         tags:
           key:
             component: component
@@ -3981,7 +3957,6 @@ components:
           type: object
       required:
       - locations
-      - tags
       type: object
     MetaResponseModelFacetSlider_allOf:
       properties:
