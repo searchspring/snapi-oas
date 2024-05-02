@@ -4,7 +4,7 @@ info:
     name: Searchspring
   description: Searchspring Snap Search API
   title: snAPI
-  version: 0.1.35
+  version: 0.1.36
   x-logo:
     url: ./images/searchspring_logo.svg
     altText: Searchspring Snap
@@ -3220,13 +3220,6 @@ components:
       example:
         badges:
           locations:
-            overlay/right:
-            - name: name
-              description: description
-              tag: tag
-            - name: name
-              description: description
-              tag: tag
             callout:
             - name: name
               description: description
@@ -3234,7 +3227,14 @@ components:
             - name: name
               description: description
               tag: tag
-            overlay/left:
+            left:
+            - name: name
+              description: description
+              tag: tag
+            - name: name
+              description: description
+              tag: tag
+            right:
             - name: name
               description: description
               tag: tag
@@ -3877,13 +3877,6 @@ components:
       type: object
     MetaResponseModel_badges_locations:
       example:
-        overlay/right:
-        - name: name
-          description: description
-          tag: tag
-        - name: name
-          description: description
-          tag: tag
         callout:
         - name: name
           description: description
@@ -3891,7 +3884,14 @@ components:
         - name: name
           description: description
           tag: tag
-        overlay/left:
+        left:
+        - name: name
+          description: description
+          tag: tag
+        - name: name
+          description: description
+          tag: tag
+        right:
         - name: name
           description: description
           tag: tag
@@ -3899,11 +3899,11 @@ components:
           description: description
           tag: tag
       properties:
-        overlay/left:
+        left:
           items:
             $ref: '#/components/schemas/MetaResponseModelBadgeLocation'
           type: array
-        overlay/right:
+        right:
           items:
             $ref: '#/components/schemas/MetaResponseModelBadgeLocation'
           type: array
@@ -3913,19 +3913,12 @@ components:
           type: array
       required:
       - callout
-      - overlay/left
-      - overlay/right
+      - left
+      - right
       type: object
     MetaResponseModel_badges:
       example:
         locations:
-          overlay/right:
-          - name: name
-            description: description
-            tag: tag
-          - name: name
-            description: description
-            tag: tag
           callout:
           - name: name
             description: description
@@ -3933,7 +3926,14 @@ components:
           - name: name
             description: description
             tag: tag
-          overlay/left:
+          left:
+          - name: name
+            description: description
+            tag: tag
+          - name: name
+            description: description
+            tag: tag
+          right:
           - name: name
             description: description
             tag: tag

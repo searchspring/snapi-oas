@@ -6,7 +6,7 @@
     },
     "description" : "Searchspring Snap Search API",
     "title" : "snAPI",
-    "version" : "0.1.35",
+    "version" : "0.1.36",
     "x-logo" : {
       "url" : "./images/searchspring_logo.svg",
       "altText" : "Searchspring Snap"
@@ -4117,13 +4117,13 @@
       },
       "MetaResponseModel_badges_locations" : {
         "properties" : {
-          "overlay/left" : {
+          "left" : {
             "items" : {
               "$ref" : "#/components/schemas/MetaResponseModelBadgeLocation"
             },
             "type" : "array"
           },
-          "overlay/right" : {
+          "right" : {
             "items" : {
               "$ref" : "#/components/schemas/MetaResponseModelBadgeLocation"
             },
@@ -4136,7 +4136,7 @@
             "type" : "array"
           }
         },
-        "required" : [ "callout", "overlay/left", "overlay/right" ],
+        "required" : [ "callout", "left", "right" ],
         "type" : "object"
       },
       "MetaResponseModel_badges" : {
