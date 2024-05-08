@@ -4,7 +4,7 @@ info:
     name: Searchspring
   description: Searchspring Snap Search API
   title: snAPI
-  version: 0.1.36
+  version: 0.1.37
   x-logo:
     url: ./images/searchspring_logo.svg
     altText: Searchspring Snap
@@ -2862,12 +2862,12 @@ components:
           label: label
           type: value
         results:
-        - mappings:
-            badges:
-            - tag: tag
-              value: value
-            - tag: tag
-              value: value
+        - badges:
+          - tag: tag
+            value: value
+          - tag: tag
+            value: value
+          mappings:
             core:
               addToCartUrl: addToCartUrl
               rating: 7.061401241503109
@@ -2892,12 +2892,12 @@ components:
           attributes:
             key: '{}'
           id: id
-        - mappings:
-            badges:
-            - tag: tag
-              value: value
-            - tag: tag
-              value: value
+        - badges:
+          - tag: tag
+            value: value
+          - tag: tag
+            value: value
+          mappings:
             core:
               addToCartUrl: addToCartUrl
               rating: 7.061401241503109
@@ -3019,12 +3019,12 @@ components:
       - $ref: '#/components/schemas/SearchRequestModelFilterRange_allOf'
     SearchResponseModelResult:
       example:
+        badges:
+        - tag: tag
+          value: value
+        - tag: tag
+          value: value
         mappings:
-          badges:
-          - tag: tag
-            value: value
-          - tag: tag
-            value: value
           core:
             addToCartUrl: addToCartUrl
             rating: 7.061401241503109
@@ -3063,6 +3063,12 @@ components:
         children:
           items:
             $ref: '#/components/schemas/SearchResponseModelResult_children'
+          type: array
+        badges:
+          description: List of matching badges for the result
+          items:
+            $ref: '#/components/schemas/SearchResponseModelResult_badges'
+          title: Result Badges Array
           type: array
       title: Result
       type: object
@@ -3222,24 +3228,18 @@ components:
           locations:
             callout:
             - name: name
-              description: description
               tag: tag
             - name: name
-              description: description
               tag: tag
             left:
             - name: name
-              description: description
               tag: tag
             - name: name
-              description: description
               tag: tag
             right:
             - name: name
-              description: description
               tag: tag
             - name: name
-              description: description
               tag: tag
           tags:
             key:
@@ -3359,14 +3359,11 @@ components:
     MetaResponseModelBadgeLocation:
       example:
         name: name
-        description: description
         tag: tag
       properties:
         tag:
           type: string
         name:
-          type: string
-        description:
           type: string
       required:
       - name
@@ -3679,25 +3676,8 @@ components:
           - desc
           type: string
       type: object
-    SearchResponseModelResult_mappings_badges:
-      example:
-        tag: tag
-        value: value
-      properties:
-        tag:
-          type: string
-        value:
-          type: string
-      required:
-      - tag
-      type: object
     SearchResponseModelResult_mappings:
       example:
-        badges:
-        - tag: tag
-          value: value
-        - tag: tag
-          value: value
         core:
           addToCartUrl: addToCartUrl
           rating: 7.061401241503109
@@ -3717,12 +3697,6 @@ components:
       properties:
         core:
           $ref: '#/components/schemas/SearchResponseModelResultCoreMappings'
-        badges:
-          description: List of matching badges for the result
-          items:
-            $ref: '#/components/schemas/SearchResponseModelResult_mappings_badges'
-          title: Result Badges Array
-          type: array
       type: object
     SearchResponseModelResult_children:
       example:
@@ -3735,6 +3709,18 @@ components:
             which can have various value types
           title: Result Custom Attributes
           type: object
+      type: object
+    SearchResponseModelResult_badges:
+      example:
+        tag: tag
+        value: value
+      properties:
+        tag:
+          type: string
+        value:
+          type: string
+      required:
+      - tag
       type: object
     SearchResponseModelFacetValue_allOf_values:
       properties:
@@ -3879,24 +3865,18 @@ components:
       example:
         callout:
         - name: name
-          description: description
           tag: tag
         - name: name
-          description: description
           tag: tag
         left:
         - name: name
-          description: description
           tag: tag
         - name: name
-          description: description
           tag: tag
         right:
         - name: name
-          description: description
           tag: tag
         - name: name
-          description: description
           tag: tag
       properties:
         left:
@@ -3921,24 +3901,18 @@ components:
         locations:
           callout:
           - name: name
-            description: description
             tag: tag
           - name: name
-            description: description
             tag: tag
           left:
           - name: name
-            description: description
             tag: tag
           - name: name
-            description: description
             tag: tag
           right:
           - name: name
-            description: description
             tag: tag
           - name: name
-            description: description
             tag: tag
         tags:
           key:

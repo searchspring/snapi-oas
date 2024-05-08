@@ -6,7 +6,7 @@
     },
     "description" : "Searchspring Snap Search API",
     "title" : "snAPI",
-    "version" : "0.1.36",
+    "version" : "0.1.37",
     "x-logo" : {
       "url" : "./images/searchspring_logo.svg",
       "altText" : "Searchspring Snap"
@@ -3307,6 +3307,14 @@
               "$ref" : "#/components/schemas/SearchResponseModelResult_children"
             },
             "type" : "array"
+          },
+          "badges" : {
+            "description" : "List of matching badges for the result",
+            "items" : {
+              "$ref" : "#/components/schemas/SearchResponseModelResult_badges"
+            },
+            "title" : "Result Badges Array",
+            "type" : "array"
           }
         },
         "title" : "Result",
@@ -3582,9 +3590,6 @@
             "type" : "string"
           },
           "name" : {
-            "type" : "string"
-          },
-          "description" : {
             "type" : "string"
           }
         },
@@ -3922,30 +3927,10 @@
         },
         "type" : "object"
       },
-      "SearchResponseModelResult_mappings_badges" : {
-        "properties" : {
-          "tag" : {
-            "type" : "string"
-          },
-          "value" : {
-            "type" : "string"
-          }
-        },
-        "required" : [ "tag" ],
-        "type" : "object"
-      },
       "SearchResponseModelResult_mappings" : {
         "properties" : {
           "core" : {
             "$ref" : "#/components/schemas/SearchResponseModelResultCoreMappings"
-          },
-          "badges" : {
-            "description" : "List of matching badges for the result",
-            "items" : {
-              "$ref" : "#/components/schemas/SearchResponseModelResult_mappings_badges"
-            },
-            "title" : "Result Badges Array",
-            "type" : "array"
           }
         },
         "type" : "object"
@@ -3956,6 +3941,18 @@
             "$ref" : "#/components/schemas/SearchResponseModelResultAttributes"
           }
         },
+        "type" : "object"
+      },
+      "SearchResponseModelResult_badges" : {
+        "properties" : {
+          "tag" : {
+            "type" : "string"
+          },
+          "value" : {
+            "type" : "string"
+          }
+        },
+        "required" : [ "tag" ],
         "type" : "object"
       },
       "SearchResponseModelFacetValue_allOf_values" : {
