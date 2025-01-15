@@ -1,4 +1,4 @@
-# Snap API OpenAPI Specification v0.1.37
+# Snap API OpenAPI Specification v0.1.38
 
 https://searchspring.github.io/snapi-oas/  
 
