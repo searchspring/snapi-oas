@@ -3448,6 +3448,12 @@
             },
             "type" : "array"
           },
+          "experiments" : {
+            "items" : {
+              "$ref" : "#/components/schemas/SearchResponseModelMerchandising_experiments"
+            },
+            "type" : "array"
+          },
           "personalized" : {
             "type" : "boolean"
           },
@@ -4037,6 +4043,20 @@
             "type" : "string"
           },
           "type" : {
+            "type" : "string"
+          }
+        },
+        "type" : "object"
+      },
+      "SearchResponseModelMerchandising_experiments" : {
+        "properties" : {
+          "campaignId" : {
+            "type" : "string"
+          },
+          "experimentId" : {
+            "type" : "string"
+          },
+          "variationId" : {
             "type" : "string"
           }
         },

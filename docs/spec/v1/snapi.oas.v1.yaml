@@ -2931,6 +2931,13 @@ components:
           - id: id
             title: title
             type: type
+          experiments:
+          - variationId: variationId
+            campaignId: campaignId
+            experimentId: experimentId
+          - variationId: variationId
+            campaignId: campaignId
+            experimentId: experimentId
           personalized: true
           content:
             inline:
@@ -3187,6 +3194,13 @@ components:
         - id: id
           title: title
           type: type
+        experiments:
+        - variationId: variationId
+          campaignId: campaignId
+          experimentId: experimentId
+        - variationId: variationId
+          campaignId: campaignId
+          experimentId: experimentId
         personalized: true
         content:
           inline:
@@ -3216,6 +3230,10 @@ components:
         campaigns:
           items:
             $ref: '#/components/schemas/SearchResponseModelMerchandising_campaigns'
+          type: array
+        experiments:
+          items:
+            $ref: '#/components/schemas/SearchResponseModelMerchandising_experiments'
           type: array
         personalized:
           type: boolean
@@ -3780,6 +3798,19 @@ components:
         title:
           type: string
         type:
+          type: string
+      type: object
+    SearchResponseModelMerchandising_experiments:
+      example:
+        variationId: variationId
+        campaignId: campaignId
+        experimentId: experimentId
+      properties:
+        campaignId:
+          type: string
+        experimentId:
+          type: string
+        variationId:
           type: string
       type: object
     SearchResponseModelMerchandising_content_config_position:
