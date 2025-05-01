@@ -6,7 +6,7 @@
     },
     "description" : "Searchspring Snap Search API",
     "title" : "snAPI",
-    "version" : "0.1.38",
+    "version" : "0.1.39",
     "x-logo" : {
       "url" : "./images/searchspring_logo.svg",
       "altText" : "Searchspring Snap"
@@ -3898,7 +3898,7 @@
           },
           "matchType" : {
             "description" : "Indicates the type of search matching that was required for this search. Will return \"expanded\" when an Expanded Search is applied after finding zero results for the initial strict search.",
-            "enum" : [ "expanded" ],
+            "enum" : [ "expanded", "primary" ],
             "type" : "string"
           }
         },

@@ -4,7 +4,7 @@ info:
     name: Searchspring
   description: Searchspring Snap Search API
   title: snAPI
-  version: 0.1.38
+  version: 0.1.39
   x-logo:
     url: ./images/searchspring_logo.svg
     altText: Searchspring Snap
@@ -3663,6 +3663,7 @@ components:
             after finding zero results for the initial strict search.
           enum:
           - expanded
+          - primary
           type: string
       type: object
     SearchResponseModel_pagination:
