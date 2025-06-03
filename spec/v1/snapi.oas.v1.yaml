@@ -4,7 +4,7 @@ info:
     name: Searchspring
   description: Searchspring Snap Search API
   title: snAPI
-  version: 0.1.39
+  version: 0.1.40
   x-logo:
     url: ./images/searchspring_logo.svg
     altText: Searchspring Snap
@@ -2870,17 +2870,17 @@ components:
           mappings:
             core:
               addToCartUrl: addToCartUrl
-              rating: 7.061401241503109
+              rating: 9.301444243932576
               description: description
               ratingCount: ratingCount
               url: url
               stockMessage: stockMessage
               uid: uid
               thumbnailImageUrl: thumbnailImageUrl
-              price: 5.637376656633329
-              msrp: 2.3021358869347655
+              price: 2.3021358869347655
+              msrp: 7.061401241503109
               imageUrl: imageUrl
-              popularity: 9.301444243932576
+              popularity: 3.616076749251911
               name: name
               sku: sku
               brand: brand
@@ -2892,6 +2892,7 @@ components:
           attributes:
             key: '{}'
           id: id
+          position: 5.637376656633329
         - badges:
           - tag: tag
             value: value
@@ -2900,17 +2901,17 @@ components:
           mappings:
             core:
               addToCartUrl: addToCartUrl
-              rating: 7.061401241503109
+              rating: 9.301444243932576
               description: description
               ratingCount: ratingCount
               url: url
               stockMessage: stockMessage
               uid: uid
               thumbnailImageUrl: thumbnailImageUrl
-              price: 5.637376656633329
-              msrp: 2.3021358869347655
+              price: 2.3021358869347655
+              msrp: 7.061401241503109
               imageUrl: imageUrl
-              popularity: 9.301444243932576
+              popularity: 3.616076749251911
               name: name
               sku: sku
               brand: brand
@@ -2922,6 +2923,7 @@ components:
           attributes:
             key: '{}'
           id: id
+          position: 5.637376656633329
         merchandising:
           redirect: redirect
           campaigns:
@@ -2943,11 +2945,11 @@ components:
             inline:
             - config:
                 position:
-                  index: 3.616076749251911
+                  index: 2.027123023002322
               value: value
             - config:
                 position:
-                  index: 3.616076749251911
+                  index: 2.027123023002322
               value: value
             footer:
             - footer
@@ -3034,17 +3036,17 @@ components:
         mappings:
           core:
             addToCartUrl: addToCartUrl
-            rating: 7.061401241503109
+            rating: 9.301444243932576
             description: description
             ratingCount: ratingCount
             url: url
             stockMessage: stockMessage
             uid: uid
             thumbnailImageUrl: thumbnailImageUrl
-            price: 5.637376656633329
-            msrp: 2.3021358869347655
+            price: 2.3021358869347655
+            msrp: 7.061401241503109
             imageUrl: imageUrl
-            popularity: 9.301444243932576
+            popularity: 3.616076749251911
             name: name
             sku: sku
             brand: brand
@@ -3056,9 +3058,12 @@ components:
         attributes:
           key: '{}'
         id: id
+        position: 5.637376656633329
       properties:
         id:
           type: string
+        position:
+          type: number
         mappings:
           $ref: '#/components/schemas/SearchResponseModelResult_mappings'
         attributes:
@@ -3083,17 +3088,17 @@ components:
       description: Mapping of core fields for the result object
       example:
         addToCartUrl: addToCartUrl
-        rating: 7.061401241503109
+        rating: 9.301444243932576
         description: description
         ratingCount: ratingCount
         url: url
         stockMessage: stockMessage
         uid: uid
         thumbnailImageUrl: thumbnailImageUrl
-        price: 5.637376656633329
-        msrp: 2.3021358869347655
+        price: 2.3021358869347655
+        msrp: 7.061401241503109
         imageUrl: imageUrl
-        popularity: 9.301444243932576
+        popularity: 3.616076749251911
         name: name
         sku: sku
         brand: brand
@@ -3206,11 +3211,11 @@ components:
           inline:
           - config:
               position:
-                index: 3.616076749251911
+                index: 2.027123023002322
             value: value
           - config:
               position:
-                index: 3.616076749251911
+                index: 2.027123023002322
             value: value
           footer:
           - footer
@@ -3699,17 +3704,17 @@ components:
       example:
         core:
           addToCartUrl: addToCartUrl
-          rating: 7.061401241503109
+          rating: 9.301444243932576
           description: description
           ratingCount: ratingCount
           url: url
           stockMessage: stockMessage
           uid: uid
           thumbnailImageUrl: thumbnailImageUrl
-          price: 5.637376656633329
-          msrp: 2.3021358869347655
+          price: 2.3021358869347655
+          msrp: 7.061401241503109
           imageUrl: imageUrl
-          popularity: 9.301444243932576
+          popularity: 3.616076749251911
           name: name
           sku: sku
           brand: brand
@@ -3816,7 +3821,7 @@ components:
       type: object
     SearchResponseModelMerchandising_content_config_position:
       example:
-        index: 3.616076749251911
+        index: 2.027123023002322
       properties:
         index:
           type: number
@@ -3824,7 +3829,7 @@ components:
     SearchResponseModelMerchandising_content_config:
       example:
         position:
-          index: 3.616076749251911
+          index: 2.027123023002322
       properties:
         position:
           $ref: '#/components/schemas/SearchResponseModelMerchandising_content_config_position'
@@ -3833,7 +3838,7 @@ components:
       example:
         config:
           position:
-            index: 3.616076749251911
+            index: 2.027123023002322
         value: value
       properties:
         config:
@@ -3846,11 +3851,11 @@ components:
         inline:
         - config:
             position:
-              index: 3.616076749251911
+              index: 2.027123023002322
           value: value
         - config:
             position:
-              index: 3.616076749251911
+              index: 2.027123023002322
           value: value
         footer:
         - footer
