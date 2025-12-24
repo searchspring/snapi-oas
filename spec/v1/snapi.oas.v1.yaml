@@ -2720,8 +2720,17 @@ components:
   schemas:
     AutocompleteRequestModel:
       allOf:
-      - $ref: '#/components/schemas/AutocompleteRequestModel_allOf'
       - $ref: '#/components/schemas/SearchRequestModel'
+      - $ref: '#/components/schemas/AutocompleteRequestModel_allOf'
+    AutocompleteRequestModelSearch:
+      allOf:
+      - $ref: '#/components/schemas/SearchRequestModelSearch'
+      - $ref: '#/components/schemas/AutocompleteRequestModelSearch_allOf'
+    AutocompleteRequestModelSuggestions:
+      properties:
+        count:
+          type: integer
+      type: object
     AutocompleteResponseModel:
       allOf:
       - $ref: '#/components/schemas/AutocompleteResponseModel_allOf'
@@ -2789,7 +2798,7 @@ components:
             $ref: '#/components/schemas/SearchRequestModel_sorts'
           type: array
         search:
-          $ref: '#/components/schemas/SearchRequestModel_search'
+          $ref: '#/components/schemas/SearchRequestModelSearch'
         filters:
           items:
             $ref: '#/components/schemas/SearchRequestModelFilter'
@@ -2805,6 +2814,35 @@ components:
         personalization:
           $ref: '#/components/schemas/SearchRequestModel_personalization'
       title: Search Request Data Model
+      type: object
+    SearchRequestModelSearch:
+      example:
+        query:
+          string: string
+          spellCorrection: true
+        originalQuery: originalQuery
+        redirectResponse: full
+        fallbackQuery: fallbackQuery
+        subQuery: subQuery
+      properties:
+        query:
+          $ref: '#/components/schemas/SearchRequestModelSearch_query'
+        subQuery:
+          type: string
+        originalQuery:
+          description: Original query if spell correction occured.
+          type: string
+        fallbackQuery:
+          description: Integrated spell correction parameter is used as a fallback
+            when the query parameter fails to return results.
+          type: string
+        redirectResponse:
+          description: Changes how Redirects behave in the response.
+          enum:
+          - full
+          - minimal
+          - direct
+          type: string
       type: object
     SearchRequestModelFilter:
       discriminator:
@@ -3426,16 +3464,19 @@ components:
       - siteId
       title: Meta Request Model
       type: object
-    AutocompleteRequestModel_suggestions:
-      properties:
-        count:
-          type: integer
-      title: AutocompleteRequestModel_suggestions
-      type: object
     AutocompleteRequestModel_allOf:
       properties:
+        search:
+          $ref: '#/components/schemas/AutocompleteRequestModelSearch'
         suggestions:
-          $ref: '#/components/schemas/AutocompleteRequestModel_suggestions'
+          $ref: '#/components/schemas/AutocompleteRequestModelSuggestions'
+      type: object
+    AutocompleteRequestModelSearch_allOf:
+      properties:
+        input:
+          type: string
+        source:
+          type: string
       type: object
     AutocompleteResponseModel_allOf_autocomplete_suggested:
       properties:
@@ -3482,47 +3523,6 @@ components:
           enum:
           - asc
           - desc
-          type: string
-      type: object
-    SearchRequestModel_search_query:
-      example:
-        string: string
-        spellCorrection: true
-      properties:
-        string:
-          description: Query value will search the index for terms that match the
-            query. Will support up to 256 characters.
-          type: string
-        spellCorrection:
-          type: boolean
-      type: object
-    SearchRequestModel_search:
-      example:
-        query:
-          string: string
-          spellCorrection: true
-        originalQuery: originalQuery
-        redirectResponse: full
-        fallbackQuery: fallbackQuery
-        subQuery: subQuery
-      properties:
-        query:
-          $ref: '#/components/schemas/SearchRequestModel_search_query'
-        subQuery:
-          type: string
-        originalQuery:
-          description: Original query if spell correction occured.
-          type: string
-        fallbackQuery:
-          description: Integrated spell correction parameter is used as a fallback
-            when the query parameter fails to return results.
-          type: string
-        redirectResponse:
-          description: Changes how Redirects behave in the response.
-          enum:
-          - full
-          - minimal
-          - direct
           type: string
       type: object
     SearchRequestModel_pagination:
@@ -3624,6 +3624,18 @@ components:
         shopper:
           description: logged in shopper identifier
           type: string
+      type: object
+    SearchRequestModelSearch_query:
+      example:
+        string: string
+        spellCorrection: true
+      properties:
+        string:
+          description: Query value will search the index for terms that match the
+            query. Will support up to 256 characters.
+          type: string
+        spellCorrection:
+          type: boolean
       type: object
     SearchRequestModelFilterValue_allOf:
       properties:
