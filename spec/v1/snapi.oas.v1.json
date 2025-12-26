@@ -6,7 +6,7 @@
     },
     "description" : "Searchspring Snap Search API",
     "title" : "snAPI",
-    "version" : "0.1.41",
+    "version" : "0.1.42",
     "x-logo" : {
       "url" : "./images/searchspring_logo.svg",
       "altText" : "Searchspring Snap"
@@ -3690,9 +3690,11 @@
       "AutocompleteRequestModelSearch_allOf" : {
         "properties" : {
           "input" : {
+            "description" : "current input from the user",
             "type" : "string"
           },
           "source" : {
+            "description" : "source of the autocomplete request (\"historical\", \"popular\", \"suggested\" or \"typed\")",
             "type" : "string"
           }
         },
