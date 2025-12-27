@@ -4,7 +4,7 @@ info:
     name: Searchspring
   description: Searchspring Snap Search API
   title: snAPI
-  version: 0.1.43
+  version: 0.1.44
   x-logo:
     url: ./images/searchspring_logo.svg
     altText: Searchspring Snap
@@ -2999,6 +2999,8 @@ components:
             banner:
             - banner
             - banner
+        tracking:
+          responseId: responseId
         facets:
         - field: field
           filtered: true
@@ -3029,6 +3031,8 @@ components:
           type: array
         merchandising:
           $ref: '#/components/schemas/SearchResponseModelMerchandising'
+        tracking:
+          $ref: '#/components/schemas/SearchResponseModelTracking'
       title: Search Response Data Model
       type: object
     SearchResponseModelFilter:
@@ -3277,6 +3281,13 @@ components:
           type: boolean
         content:
           $ref: '#/components/schemas/SearchResponseModelMerchandising_content'
+      type: object
+    SearchResponseModelTracking:
+      example:
+        responseId: responseId
+      properties:
+        responseId:
+          type: string
       type: object
     MetaResponseModel:
       example:
