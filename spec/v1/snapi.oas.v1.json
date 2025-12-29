@@ -6,7 +6,7 @@
     },
     "description" : "Searchspring Snap Search API",
     "title" : "snAPI",
-    "version" : "0.1.44",
+    "version" : "0.1.45",
     "x-logo" : {
       "url" : "./images/searchspring_logo.svg",
       "altText" : "Searchspring Snap"
@@ -547,6 +547,9 @@
           "merchandising" : {
             "redirect" : "",
             "content" : { }
+          },
+          "tracking" : {
+            "responseId" : "248176b4-7929-4c32-a8cf-484073befe28"
           }
         }
       },
@@ -884,6 +887,9 @@
           "merchandising" : {
             "redirect" : "",
             "content" : { }
+          },
+          "tracking" : {
+            "responseId" : "248176b4-7929-4c32-a8cf-484073befe28"
           }
         }
       },
@@ -1876,6 +1882,9 @@
           "merchandising" : {
             "redirect" : "",
             "content" : { }
+          },
+          "tracking" : {
+            "responseId" : "aa6967b1-9685-4eb8-94ff-27d139dcfb89"
           }
         }
       },
@@ -2992,6 +3001,9 @@
           "merchandising" : {
             "redirect" : "",
             "content" : { }
+          },
+          "tracking" : {
+            "responseId" : "aa6967b1-9685-4eb8-94ff-27d139dcfb89"
           }
         }
       },
@@ -3293,6 +3305,7 @@
             "$ref" : "#/components/schemas/SearchResponseModelTracking"
           }
         },
+        "required" : [ "tracking" ],
         "title" : "Search Response Data Model",
         "type" : "object"
       },
@@ -3511,6 +3524,7 @@
             "type" : "string"
           }
         },
+        "required" : [ "responseId" ],
         "type" : "object"
       },
       "MetaResponseModel" : {
@@ -3705,7 +3719,8 @@
             "type" : "string"
           },
           "source" : {
-            "description" : "source of the autocomplete request (\"historical\", \"popular\", \"suggested\" or \"typed\")",
+            "description" : "source of the autocomplete request",
+            "enum" : [ "historical", "trending", "suggested", "typed" ],
             "type" : "string"
           }
         },
