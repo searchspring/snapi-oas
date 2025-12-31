@@ -6,7 +6,7 @@
     },
     "description" : "Searchspring Snap Search API",
     "title" : "snAPI",
-    "version" : "0.1.45",
+    "version" : "0.1.46",
     "x-logo" : {
       "url" : "./images/searchspring_logo.svg",
       "altText" : "Searchspring Snap"
@@ -3719,8 +3719,8 @@
             "type" : "string"
           },
           "source" : {
-            "description" : "source of the autocomplete request",
-            "enum" : [ "historical", "trending", "suggested", "typed" ],
+            "description" : "Source of the autocomplete query",
+            "enum" : [ "historical", "trending", "suggested", "input" ],
             "type" : "string"
           }
         },

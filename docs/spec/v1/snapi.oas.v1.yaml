@@ -4,7 +4,7 @@ info:
     name: Searchspring
   description: Searchspring Snap Search API
   title: snAPI
-  version: 0.1.45
+  version: 0.1.46
   x-logo:
     url: ./images/searchspring_logo.svg
     altText: Searchspring Snap
@@ -3500,12 +3500,12 @@ components:
           description: current input from the user
           type: string
         source:
-          description: source of the autocomplete request
+          description: Source of the autocomplete query
           enum:
           - historical
           - trending
           - suggested
-          - typed
+          - input
           type: string
       type: object
     AutocompleteResponseModel_allOf_autocomplete_suggested:
